@@ -1,0 +1,73 @@
+{
+  "site": {
+    "title": "Biztrox Astro",
+    "base_url": "",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_width": "110",
+    "logo_height": "80",
+    "logo_footer": "/images/logo-footer.png",
+    "logo_footer_width": "180",
+    "logo_footer_height": "52",
+    "logo_text": "Biztrox"
+  },
+
+  "settings": {
+    "pagination": 6,
+    "blog_folder": "blog"
+  },
+
+  "params": {
+    "top_header": true,
+    "preloder": true,
+    "contact_form_action": "#",
+    "footer_description": "Lorem ipsum dolor amet consectetur adipisicing elit sed eiusm tempor incididunt labore dolore magna aliqua enim.",
+    "copyright": "Copyright by your company",
+    "contact_info": {
+      "email": "info@companyname.com",
+      "phone": "+211234565523"
+    },
+    "google_map": {
+      "enable": true,
+      "address": "https://www.google.com/maps/embed/v1/place?q=Hollywood+coffee+club,+Riyadh+Saudi+Arabia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+    }
+  },
+
+  "navigation_button": {
+    "enable": true,
+    "label": "Get A Quote",
+    "link": "/contact"
+  },
+
+  "subscription_in_footer": {
+    "enable": true,
+    "title": "Subscribe Us",
+    "description": "Lorem ipsum dolor sit amet, consect etur adipisicing. elit sed do eiusmod.",
+    "placeholder": "Enter Your Email Address",
+    "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
+    "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
+  },
+
+  "subscription_in_blog_sidebar": {
+    "enable": true,
+    "title": "Stay Updated",
+    "description": "Lorem ipsum dolor sit amet, consect etur adipisicing. elit sed do eiusmod.",
+    "placeholder": "Enter Your Email Address",
+    "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
+    "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
+  },
+
+  "service_consultation_form": {
+    "enable": true,
+    "title": "Request Free Consultation",
+    "form_action": "#"
+  },
+
+  "metadata": {
+    "meta_author": "Themefisher",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "this is meta description"
+  }
+}

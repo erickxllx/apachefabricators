@@ -1,0 +1,121 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Services",
+      "url": "/services"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Team",
+      "url": "/team"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "name": "Pages",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Elements",
+          "url": "/elements"
+        },
+        {
+          "name": "Pricing",
+          "url": "/pricing"
+        },
+        {
+          "name": "Projects",
+          "url": "/projects"
+        },
+        {
+          "name": "Authors",
+          "url": "/authors"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "Business Consulting",
+      "url": "/services/business-consulting"
+    },
+    {
+      "name": "Data-Driven Decision",
+      "url": "/services/data-driven-decision-support"
+    },
+    {
+      "name": "Market strategy",
+      "url": "/services/market-strategy"
+    },
+    {
+      "name": "Business Consultation",
+      "url": "/services/strategic-business-consultation"
+    },
+    {
+      "name": "Marketing Strategies",
+      "url": "/services/targeted-marketing-strategies"
+    },
+    {
+      "name": "Valuable Idea",
+      "url": "/services/valuable-idea"
+    }
+  ],
+  "quick_links": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Services",
+      "url": "/services"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Team",
+      "url": "/team"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Legal",
+      "url": "#"
+    },
+    {
+      "name": "Sitemap",
+      "url": "#"
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    },
+    {
+      "name": "Terms & Conditions",
+      "url": "#"
+    }
+  ]
+}

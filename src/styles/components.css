@@ -1,0 +1,299 @@
+/* section style */
+.section {
+  @apply py-14 md:py-24 xl:py-28;
+}
+.section-sm {
+  @apply py-10 xl:py-14;
+}
+.section-md {
+  @apply py-14 xl:py-20;
+}
+
+/* Container */
+.container {
+  @apply mx-auto px-4 !max-w-[1280px];
+}
+
+/* social icons */
+.social-icons {
+  @apply space-x-4;
+  li {
+    @apply inline-block;
+    a {
+      @apply flex h-10 w-10 items-center justify-center bg-transparent text-center rounded-full leading-10 border border-white text-white hover:bg-white hover:text-text-dark;
+      svg {
+        @apply h-4 w-4;
+      }
+    }
+  }
+}
+
+.social-icons-dark {
+  li {
+    a {
+      @apply border-dark/20 hover:bg-dark/80 hover:text-white text-text-dark/80;
+    }
+  }
+}
+
+/* notice */
+.notice {
+  @apply mb-6 rounded-lg border px-8 py-6;
+  &.note {
+    @apply text-[#1B83E2];
+    @apply border-current;
+  }
+  &.tip {
+    @apply text-[#40D294];
+    @apply border-current;
+  }
+  &.info {
+    @apply text-[#E3A72C];
+    @apply border-current;
+  }
+  &.warning {
+    @apply text-[#DB2C23];
+    @apply border-current;
+  }
+}
+.notice-head {
+  @apply flex items-center;
+  svg {
+    @apply mr-3;
+  }
+  p {
+    @apply text-xl font-medium text-text-dark;
+  }
+}
+.notice-body {
+  @apply mt-3;
+  p {
+    @apply my-0;
+  }
+}
+
+/* tab */
+.tab {
+  @apply overflow-hidden rounded-lg border border-border;
+}
+.tab-nav {
+  @apply flex border-b border-border bg-light;
+  @apply m-0!;
+  @apply list-none!;
+  .tab-nav-item {
+    @apply cursor-pointer border-b-[3px] border-border py-2 text-lg text-text-dark opacity-80;
+    @apply my-0!;
+    @apply px-8!;
+
+    &::before {
+      @apply content-[""] h-0 w-0 hidden;
+    }
+
+    &.active {
+      @apply border-b-[3px] border-dark opacity-100;
+    }
+  }
+}
+.tab-content {
+  .tab-content-panel {
+    @apply p-8;
+    p {
+      @apply mb-0;
+    }
+    &.active {
+      @apply block;
+    }
+  }
+}
+
+/* accordion */
+.accordion {
+  @apply mb-6 overflow-hidden p-0;
+}
+.accordion-header {
+  @apply flex items-center w-full text-left font-medium text-text-dark py-2 border border-border/80 rounded-full px-6 text-base md:text-lg;
+}
+.accordion-icon {
+  @apply fill-primary shrink-0 mr-4;
+}
+.accordion-content {
+  @apply grid text-text overflow-hidden transition-all duration-300 ease-in-out h-0;
+  &.active {
+    @apply h-full;
+  }
+  & > div > div > * > *:first-child {
+    @apply mt-0;
+  }
+  & > div > div > * > *:last-child {
+    @apply mb-0;
+  }
+}
+
+/* content style */
+.content {
+  @apply prose max-w-none;
+  @apply prose-headings:font-medium prose-headings:mb-[.3em] prose-headings:mt-[.6em];
+  @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
+  @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
+  @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
+  @apply prose-img:max-w-full prose-img:rounded;
+  @apply prose-hr:border-border;
+  @apply prose-p:text-text;
+  @apply prose-blockquote:my-4 prose-blockquote:rounded-md prose-blockquote:bg-light prose-blockquote:border-0 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-text-dark;
+  @apply prose-pre:rounded-lg prose-pre:bg-light;
+  @apply prose-code:px-1 prose-code:text-primary;
+  @apply prose-strong:text-text-dark;
+  @apply prose-a:text-text prose-a:underline hover:prose-a:text-primary;
+  @apply prose-li:text-text;
+  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:border-border prose-table:before:content-[""];
+  @apply prose-thead:border-border prose-thead:bg-light;
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-text-dark;
+  @apply prose-tr:border-border;
+  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
+
+  blockquote > p {
+    @apply before:hidden after:hidden;
+  }
+
+  & > *:first-child {
+    @apply mt-0;
+  }
+
+  & > *:last-child {
+    @apply mb-0;
+  }
+
+  ul {
+    @apply pl-0;
+    li {
+      @apply list-none relative pl-6;
+
+      &::before {
+        @apply absolute content-[""] h-4 w-4 -left-0 top-1/2 -translate-y-1/2 bg-center bg-no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='currentColor' stroke-width='0' version='1.1' viewBox='0 0 17 17' class='inline-block text-primary me-2' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3C/g%3E%3Cpath d='M6.854 4.146l4.353 4.354-4.354 4.354-0.707-0.707 3.647-3.647-3.647-3.646 0.708-0.708zM17 8.5c0 4.687-3.813 8.5-8.5 8.5s-8.5-3.813-8.5-8.5 3.813-8.5 8.5-8.5 8.5 3.813 8.5 8.5zM16 8.5c0-4.136-3.364-7.5-7.5-7.5s-7.5 3.364-7.5 7.5 3.364 7.5 7.5 7.5 7.5-3.364 7.5-7.5z'%3E%3C/path%3E%3C/svg%3E");
+        background-size: 80%;
+      }
+    }
+  }
+}
+
+/* Separtor */
+.separator {
+  @apply w-[100px] mx-auto mt-2 pt-4 relative;
+
+  &::before {
+    @apply content-[""] max-w-[150px] w-full h-[2px] bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bottom-0;
+  }
+  &::after {
+    @apply content-[""] w-2.5 h-2.5 rounded-full border-2 border-primary bg-white shadow-[0px_0px_0px_5px_white] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bottom-0;
+  }
+}
+.separator-secondary {
+  @apply ml-1 after:left-0 after:bg-secondary before:max-w-[80px] before:left-0 before:-translate-x-0;
+}
+
+/* overlay */
+.overlay {
+  @apply after:pointer-events-none relative after:content-[""] after:h-full after:w-full after:bg-black/60 after:absolute after:left-0 after:bottom-0;
+}
+
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Back to top */
+.back-to-top {
+  @apply absolute h-[50px] w-[50px] text-white top-[-25px] border text-center block duration-200 ease-in rounded-full border-solid border-border/10 right-2.5 hover:border-[$color-primary] bg-dark focus:outline-0;
+
+  i {
+    @apply leading-[50px];
+  }
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  @apply flex items-center flex-wrap gap-y-2 justify-center w-fit mx-auto;
+
+  li:not(:first-child) {
+    @apply relative pl-6 text-sm;
+    @apply after:content-[""] after:w-[1.5px] after:h-[14px] after:bg-white after:absolute after:left-[10px] after:rotate-[15deg] after:top-1/2 after:-translate-y-1/2;
+  }
+}
+
+/* Rectangle */
+
+.rectangle::before {
+  @apply absolute content-[''] h-[30px] w-[30px] top-[-15px] -translate-x-2/4 -rotate-45 transition-[0.2s] ease-in left-2/4 bg-white;
+}
+
+/* Project Filter */
+#projects-filter div[data-filter-type] {
+  @apply transition-all duration-[0.5s] translate-y-0 origin-left opacity-100 scale-100;
+}
+#projects-filter div[data-filter-type].hidden {
+  @apply duration-0 translate-y-2.5 opacity-0 block absolute pointer-events-none scale-[.96];
+}
+
+/* "If a specific project item is not eligible for animation, consider animating its parent instead." */
+#projects-filter {
+  @apply transition-all duration-[0.5s] translate-y-0 origin-left opacity-100 scale-100;
+  &.animate-parent {
+    @apply duration-0 translate-y-2.5 opacity-0 scale-[.96];
+  }
+}
+
+/* Modal Component */
+.modal {
+  @apply fixed z-[1055] w-full h-full overflow-x-hidden overflow-y-auto top-0 pointer-events-none;
+
+  &.show .modal-dialog {
+    @apply transform-none visible opacity-100;
+  }
+  .modal-dialog {
+    @apply relative max-w-[800px] mx-[0.5rem] sm:mx-auto pointer-events-none opacity-0 transition-all duration-300 translate-y-[-20px] motion-reduce:transition-none invisible;
+
+    &.modal-dialog-centered {
+      @apply flex items-center min-h-full;
+      .modal-content {
+        @apply relative flex flex-col w-full pointer-events-auto bg-clip-padding;
+
+        .modal-body {
+          @apply rounded-lg bg-white border-2 border-solid overflow-x-hidden;
+        }
+        .btn-close {
+          @apply w-10 h-10 leading-10 absolute right-0 -top-12 bg-white rounded-full font-bold hover:rotate-90 transition duration-300;
+        }
+      }
+    }
+  }
+}
+.modal-backdrop {
+  @apply fixed z-[1050] w-screen h-screen bg-dark left-0 top-0;
+  &.fade {
+    @apply opacity-0;
+  }
+  &.show {
+    @apply opacity-50;
+  }
+}
+
+/* For Footer Logo */
+.navbar-brand.logo-text {
+  @apply text-xl font-medium text-white;
+
+  img {
+    @apply max-h-full max-w-full object-contain max-lg:w-full;
+  }
+
+  @apply max-lg:h-auto!;
+}

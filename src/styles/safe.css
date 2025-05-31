@@ -1,0 +1,86 @@
+/* form style */
+.form-input {
+  @apply w-full rounded border border-border px-4 py-3 text-text-dark placeholder:text-text-dark/70 focus:border-dark/50 transition duration-300 focus:ring-transparent text-sm;
+}
+
+.form-label {
+  @apply mb-4 block text-xl font-normal text-text-dark;
+}
+
+/* swiper navigation */
+button.swiper-button-disabled {
+  @apply opacity-30;
+}
+
+/* swiper pagination */
+.swiper-pagination-bullet {
+  @apply h-2.5 w-2.5 bg-light opacity-100;
+}
+.swiper-pagination-bullet-active {
+  @apply h-4 w-4 bg-primary;
+}
+.pagination-rounded {
+  @apply flex justify-center gap-4 mt-8 px-3 sm:px-0;
+}
+.swiper-pagination-bullet {
+  @apply rounded-full border-2 border-border cursor-pointer h-4 w-10 bg-transparent opacity-100;
+}
+.swiper-pagination-bullet-active {
+  @apply border-primary;
+}
+.swiper-navigation {
+  .prev-arrow,
+  .next-arrow {
+    @apply absolute hidden focus:outline-0 hover:bg-primary/60 sm:block top-[calc(50%_-_35px)] -translate-y-1/2 w-16 h-16 text-white text-2xl leading-[64px] opacity-0 duration-200 ease-linear transition-all z-10 rounded-full bg-dark/60 border-0;
+  }
+
+  .prev-arrow {
+    @apply left-10;
+  }
+  .next-arrow {
+    @apply right-10;
+  }
+}
+.banner-slider:hover .swiper-navigation button {
+  @apply opacity-100;
+}
+.banner-slider {
+  .swiper-slide {
+    @apply flex items-center h-auto;
+  }
+}
+.banner-nav-slider {
+  @apply bottom-0 pl-0 text-center relative flex justify-center bg-white border-b border-border;
+
+  .swiper-slide {
+    @apply mx-0 h-[60px] leading-[60px] md:leading-[80px] md:h-20 inline-flex cursor-pointer relative rounded-none bg-white w-1/4 m-0 flex-row flex-wrap justify-center items-center;
+
+    &::before {
+      @apply absolute z-10 content-[""] h-[25px] w-[25px] -translate-x-2/4 -rotate-45 opacity-0 left-2/4 -top-3 bg-secondary;
+    }
+
+    button {
+      @apply block relative text-center ease-in text-text-dark;
+
+      svg {
+        @apply inline-block text-xl m-0 md:mr-1 lg:text-3xl align-middle lg:mr-[15px];
+      }
+
+      span {
+        @apply hidden md:inline-block align-middle lg:text-lg font-medium;
+      }
+    }
+
+    &.swiper-slide-thumb-active {
+      @apply bg-secondary;
+
+      button {
+        @apply text-white;
+      }
+
+      &::before {
+        @apply opacity-100;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.btn {
+  @apply inline-block text-sm capitalize font-medium duration-200 ease-in px-8 sm:px-11 py-3 sm:py-3.5 rounded-[40px] cursor-pointer;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    @apply shadow-none bg-primary/80 text-white outline-0;
+  }
+}
+.btn-sm {
+  @apply px-8 py-3 text-sm;
+}
+.btn-md {
+  @apply px-11 text-base;
+}
+
+.btn-primary {
+  @apply border-primary bg-primary !text-white no-underline;
+}
+.btn-primary-white {
+  @apply border-white bg-white uppercase no-underline border-2 hover:bg-transparent text-text-dark;
+}
+.btn-primary-dark {
+  @apply border-secondary bg-secondary text-white no-underline;
+}
+.btn-outline-dark {
+  @apply text-text-dark bg-transparent border-2 border-solid border-secondary px-11 text-base;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    @apply bg-secondary;
+  }
+}
+.btn-outline-primary {
+  @apply text-text-dark bg-transparent border-2 border-solid border-transparent;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    @apply bg-secondary;
+  }
+}

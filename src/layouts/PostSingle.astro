@@ -1,0 +1,103 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Share from "@/components/Share.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+const { data, body } = post;
+
+const { Content } = await render(post);
+const { title, description, author, categories, image, date, tags } = data;
+---
+
+<div class="border border-border rounded-md overflow-hidden">
+  {
+    image && (
+      <ImageMod
+        src={image}
+        height={500}
+        width={1200}
+        alt={title}
+        class="w-full rounded"
+      />
+    )
+  }
+  <div class="p-6">
+    <h1 set:html={markdownify(title)} class="h2 mb-4" />
+    <ul class="mb-4 text-base">
+      <li class="mr-4 inline-block text-base">
+        Posted By
+        <a href={`/authors/${slugify(author)}`}>
+          <span class="text-primary">{humanize(author)}</span>
+        </a>
+      </li>
+      {
+        date && (
+          <li class="mr-4 inline-block text-base">On {dateFormat(date)}</li>
+        )
+      }
+      <li class="mr-4 inline-block text-base">
+        {
+          categories.map((category: string, index: number) => (
+            <>
+              <span>Category : </span>
+              <a class="text-primary" href={`/categories/${slugify(category)}`}>
+                {category}
+                {index !== categories.length - 1 && ","}
+              </a>
+            </>
+          ))
+        }
+      </li>
+    </ul>
+    {
+      body && (
+        <div class="content">
+          <Content />
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<div
+  class="flex flex-wrap gap-x-8 gap-y-4 items-start justify-between py-5 border-b border-border">
+  <div class="flex items-center">
+    <h5 class="mr-3 text-base font-primary font-medium mb-0 whitespace-nowrap">
+      Share :
+    </h5>
+    <Share
+      className="flex gap-2 flex-wrap"
+      title={title}
+      description={description}
+      slug={post.id}
+    />
+  </div>
+  {
+    tags && tags[0] && (
+      <div class="flex items-center">
+        <h5 class="mr-3 mb-0 text-base font-primary font-medium whitespace-nowrap">
+          Tags :
+        </h5>
+        <ul class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <li>
+              <a
+                class="block px-4 py-1.5 border border-border rounded-full hover:bg-primary hover:text-white"
+                href={`/tags/${slugify(tag)}`}>
+                {tag}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</div>

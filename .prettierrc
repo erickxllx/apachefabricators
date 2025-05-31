@@ -1,0 +1,19 @@
+{
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "options": {
+        "parser": "astro",
+        "bracketSameLine": true,
+        "htmlWhitespaceSensitivity": "strict"
+      }
+    },
+    {
+      "files": ["*.tsx"],
+      "options": {
+        "bracketSameLine": true
+      }
+    }
+  ]
+}
