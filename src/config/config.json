@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Biztrox Astro",
+    "title": "Apache Fabricators",
     "base_url": "",
     "base_path": "/",
     "trailing_slash": false,
@@ -11,7 +11,7 @@
     "logo_footer": "/images/logo-footer.png",
     "logo_footer_width": "180",
     "logo_footer_height": "52",
-    "logo_text": "Biztrox"
+    "logo_text": "Apache Fabricators"
   },
 
   "settings": {
@@ -24,7 +24,7 @@
     "preloder": true,
     "contact_form_action": "#",
     "footer_description": "Lorem ipsum dolor amet consectetur adipisicing elit sed eiusm tempor incididunt labore dolore magna aliqua enim.",
-    "copyright": "Copyright by your company",
+    "copyright": "Copyright by Apache Fabricators",
     "contact_info": {
       "email": "info@companyname.com",
       "phone": "+211234565523"
