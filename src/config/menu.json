@@ -5,7 +5,7 @@
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "About Us",
       "url": "/about"
     },
     {
@@ -13,39 +13,12 @@
       "url": "/services"
     },
     {
-      "name": "Blog",
-      "url": "/blog"
+      "name": "Quality and Safety",
+      "url": "/quality_safety"
     },
     {
-      "name": "Team",
-      "url": "/team"
-    },
-    {
-      "name": "Contact",
+      "name": "Contact Us",
       "url": "/contact"
-    },
-    {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Elements",
-          "url": "/elements"
-        },
-        {
-          "name": "Pricing",
-          "url": "/pricing"
-        },
-        {
-          "name": "Projects",
-          "url": "/projects"
-        },
-        {
-          "name": "Authors",
-          "url": "/authors"
-        }
-      ]
     }
   ],
   "services": [

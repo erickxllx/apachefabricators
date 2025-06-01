@@ -5,11 +5,11 @@ banner_slider:
   slider_item:
     # slider item loop
     - bg_image: "/images/banner/banner-1.jpg"
-      subtitle: We are here to
-      title: Planning Business
-      content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
+      title: Apache Fabricators
+      subtitle: is a one-stop-shop for Fabrication and Machining.
+      content: We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical,industrial, refining, petrochemical, industrial, commercial and more.
       paginationIcon: TfiComments # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      paginationName: Consultation
+      paginationName: Welding
       button:
         enable: true
         label: More details
@@ -18,14 +18,15 @@ banner_slider:
     # slider item loop
     - bg_image: "/images/banner/banner-2.jpg"
       subtitle: Get your
-      title: Business Consultant
+      title: Apache Fabricators
       content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
       paginationIcon: TfiBarChart # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      paginationName: Marketing
+      paginationName: Fabrication
       button:
         enable: true
         label: More details
         link: /about
+
 
     # slider item loop
     - bg_image: "/images/banner/banner-3.jpg"
@@ -33,7 +34,7 @@ banner_slider:
       title: Future Plan
       content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
       paginationIcon: TfiStatsUp # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      paginationName: Finance
+      paginationName: CNC MACHINING
       button:
         enable: true
         label: More details
@@ -45,25 +46,26 @@ banner_slider:
       title: Be Inspired By Best
       content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
       paginationIcon: TfiPackage # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      paginationName: Human Resources
+      paginationName: Coating
       button:
         enable: true
         label: More details
         link: /about
 
+
 ########################################## Service ####################################
 service:
   enable: true
-  title: Service We Provide
   subtitle: Best Service
+  title: OUR SERVICES
   # service item comes from content/services folder
 
 ######################################## About #########################################
 about:
   enable: true
   bg_image: "/images/background/about-bg.jpg"
-  title: Who We Are?
-  content: Excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum.
+  title: OUR INDUSTRIES
+  content: Due to our knowledge and experience, we have gained experience across many different markets.
   # bullet point
   bulletPoint:
     - Business Services
@@ -72,22 +74,18 @@ about:
     - Business Services
     - Audit & Assurance
     - IT Control Solutions
-  button:
-    enable: true
-    label: Explore More
-    link: /about
 
 ##################################### Skill ##############################################
 our_expertise:
   enable: true
-  subtitle: Our Skills
-  title: Why Choose Us
-  content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt laboris nisi ut aliquip ex ea commodo consequat. <br><br> Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur. Excepteur sint ocaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum. sed perspiciatis unde omnisiste natus error sit voluptatem accusantium.doloremque ladantium totam rem aperieaque ipsa quae ab illo inventore.veritatis. et quasi architecto beatae vitae dicta sunt explicabo.
+  subtitle: Experience & Technology
+  title: Competitive Global Advantages
+  content: Apache Fabricators is a certified Manufacturing Company committed to meeting and exceeding customer’s requirements. We have reviewed the problems that cause delays and instituted procedures to ensure that your parts reach you on time we pledge to quote your parts at a fair price, and to offer suggestions for reducing cost whenever possible.
   # funfacts
   funfacts:
     - icon: TfiServer # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
       title: Projects Done
-      count: 230
+      count: 100
 
     - icon: TfiFaceSmile # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
       title: Satisfied Clients
@@ -99,17 +97,14 @@ our_expertise:
 
   # progressbar
   progressbar:
-    - title: Branding
-      progress: 85%
+    - title: Excelence
+      progress: 100%
 
-    - title: Consulting
-      progress: 90%
+    - title: Service
+      progress: 100%
 
-    - title: Business
-      progress: 75%
-
-    - title: Promotion
-      progress: 90%
+    - title: Delivery
+      progress: 100%
 
 ########################################## project ####################################
 project:
