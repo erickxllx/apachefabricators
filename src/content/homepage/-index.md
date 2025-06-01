@@ -109,7 +109,7 @@ our_expertise:
 ########################################## project ####################################
 project:
   enable: true
-  title: Our Works
+  title: Quality and Certifications
   subtitle: Latest Projects
   # project item comes from content/project folder
 
@@ -117,51 +117,4 @@ project:
 mission:
   enable: true
   # mission content comes from section mission-vision.md file
-
-##################################### Promo video ####################################
-promo_video:
-  enable: true
-  title: We Are Alawys <br> Comited
-  bg_image: "/images/background/promo-video.jpg"
-  videoURL: https://www.youtube.com/embed/ResipmZmpDU
-  videoTitle: Lorem ipsum dolor <br> sit amet con.
-
-##################################### Testimonial #################################
-testimonial:
-  enable: true
-  # testimonial content comes from section testimonial.md file
-
-##################################### Testimonial #################################
-call_to_action:
-  enable: true
-  # call to action content comes from section call-to-action.md file
-
-########################################## blog ####################################
-blog:
-  enable: true
-  title: Company News
-  subtitle: Latest News
-  # blog item comes from content/blog folder
-
-################################ clints logo slider ################################
-clients_logo_slider:
-  enable: true
-  clientLogos:
-    - logo: "/images/client-logo/client-logo-1.png"
-      link: "https://example.com"
-
-    - logo: "/images/client-logo/client-logo-2.png"
-      link: https://example.com
-
-    - logo: "/images/client-logo/client-logo-3.png"
-      link: "https://example.com"
-
-    - logo: "/images/client-logo/client-logo-4.png"
-      link: https://example.com
-
-    - logo: "/images/client-logo/client-logo-5.png"
-      link: "https://example.com"
-
-    - logo: "/images/client-logo/client-logo-3.png"
-      link: https://example.com
 ---
