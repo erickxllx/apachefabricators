@@ -56,24 +56,25 @@ banner_slider:
 ########################################## Service ####################################
 service:
   enable: true
-  subtitle: Best Service
-  title: OUR SERVICES
+
+  title: Our Industries
   # service item comes from content/services folder
 
 ######################################## About #########################################
 about:
   enable: true
   bg_image: "/images/background/about-bg.jpg"
-  title: OUR INDUSTRIES
-  content: Due to our knowledge and experience, we have gained experience across many different markets.
+  title: OUR Services
+  content: We understand that each customer has unique needs, and we are committed to providing every customer with the specific services they require why deal with all the hassles of different vendors when you can rest assured that when your part leaves apache Fabricators, it will be nothing less than perfect. Apache Fabricators has no limitations when it comes to fabrication. If it needs to be made of steel, we can fabricate it.
   # bullet point
   bulletPoint:
-    - Business Services
-    - Audit & Assurance
-    - IT Control Solutions
-    - Business Services
-    - Audit & Assurance
-    - IT Control Solutions
+    - Welding
+    - Fabrication
+    - CNC Machine
+    - Plate Processing
+    - Coating
+    - Load Testing
+    - Full Turnkey Service
 
 ##################################### Skill ##############################################
 our_expertise:
@@ -85,7 +86,7 @@ our_expertise:
   funfacts:
     - icon: TfiServer # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
       title: Projects Done
-      count: 100
+      count: 1000
 
     - icon: TfiFaceSmile # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
       title: Satisfied Clients
@@ -110,7 +111,6 @@ our_expertise:
 project:
   enable: true
   title: Quality and Certifications
-  subtitle: Latest Projects
   # project item comes from content/project folder
 
 ########################################### Mission ###################################

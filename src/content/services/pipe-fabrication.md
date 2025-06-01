@@ -1,11 +1,11 @@
 ---
-title: Targeted Marketing Strategies
-date: 2018-09-29T11:54:02+06:00
+title: Pipe Fabrication
+date: 2018-09-29T11:51:17+06:00
 description: This is meta description
-short_description: Precision-focused marketing plans designed to reach and engage your target customers effectively
-image: "/images/service/service-6.jpg"
+short_description: Marketing Oriented To The Targated Customers Lorem ipsum dolor sit amet, consectetur adipisicing
+image: "/images/service/service-2.jpg"
 bg_image: "/images/background/page-title.jpg"
-icon: TfiServer
+icon: TfiThought
 brochure: "#?"
 regular_day: Sun-Tues
 regular_time: 08.00am - 06.00pm
@@ -14,13 +14,15 @@ half_time: 08.00am - 01.00pm
 off_day: Friday
 ---
 
-### Precision-focused marketing plans
+### Marketing Oriented To The Targated Customers
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 > Excepteur sint occaecat cupidatat non proident sunt culpa officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis.
 
-1. Business Services
-2. Audit & Assurance
-3. IT Control Solutions
+- Business Services
+- Audit & Assurance
+- IT Control Solutions
 
 #### Marketing Improvement Strategy
 

@@ -221,7 +221,7 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
               {service.title && <h2 set:html={markdownify(service.title)} />}
               <div class="separator" />
             </div>
-            {servicesCollection.slice(0, 3).map((service) => {
+            {servicesCollection.slice(0, 6).map((service) => {
               return (
                 <div class="md:col-6 xl:col-4">
                   <ServiceCard content={service} />
@@ -290,12 +290,6 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
       <section class="section-sm overflow-hidden bg-light">
         <div class="row gy-4">
           <div class="col-12 text-center mb-5">
-            {project.subtitle && (
-              <span
-                class="text-lg text-text"
-                set:html={markdownify(project.subtitle)}
-              />
-            )}
             {project.title && <h2 set:html={markdownify(project.title)} />}
             <div class="separator after:shadow-red-500" />
           </div>

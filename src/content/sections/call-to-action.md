@@ -1,6 +1,6 @@
 ---
 enable: true
-title: Biztrox give the smart solution for your business
+title: Biztrox give the smart solution for your
 bg_image: "/images/background/cta.jpg"
 button:
   enable: true

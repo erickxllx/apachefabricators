@@ -1,6 +1,6 @@
 ---
 enable: true
-subtitle: Our Goal
+subtitle: Our Hola
 title: Company Mission
 content: Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor didunt laboris nisi ut aliquip ex ea commodo consequat.
 image: "/images/chart.png"

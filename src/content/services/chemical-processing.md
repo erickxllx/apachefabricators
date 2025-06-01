@@ -1,5 +1,5 @@
 ---
-title: Market strategy
+title: Chemical Processing
 date: 2018-09-29T11:54:02+06:00
 description: This is meta description
 short_description: Marketing Oriented To The Targated Customers Lorem ipsum dolor sit amet, consectetur adipisicing elit
