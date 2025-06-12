@@ -8,6 +8,7 @@ import {
   pricing,
   projects,
   services,
+  industries,
   team,
 } from "./types/pages.collections";
 import {
@@ -29,6 +30,7 @@ export const collections = {
   pricing,
   projects,
   services,
+  industries,
   team,
 
   // sections

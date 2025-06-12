@@ -8,15 +8,19 @@ image: ""
 
 ############################ Contact information ############################
 contact_info:
-  - name: mobile
-    icon: TfiMobile
-    content: +88 0123 456 789 <br> +88 987 654 3210
-
-  - name: mail
+  - name: Email
     icon: TfiEmail
-    content: info@biztrox.com <br> biztrox@email.com
-
-  - name: location
-    icon: TfiMapAlt
-    content: 24/B Garden Street. <br> Northambia, Weals, UK
+    content: |
+      **sales@apachefabricators.com**  
+      We reply within 24 hours
+  - name: Phone
+    icon: TfiMobile
+    content: |
+      **Have any questions?**  
+      [+1 (832) 804-6236](tel:+18328046236)
+  - name: Hours
+    icon: TfiTime
+    content: |
+      **Working hours**  
+      Mon-Fri, 8am until 5pm
 ---

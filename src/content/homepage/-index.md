@@ -52,11 +52,16 @@ banner_slider:
         label: More details
         link: /about
 
-
+########################################## Industries ####################################
+industries:
+  enable: true
+  subtitle: Serving key sectors with precision and quality
+  title: Our Industries
+  # service item comes from content/services folder
 ########################################## Service ####################################
 service:
   enable: true
-
+  subtitle: Serving key sectors with precision and quality
   title: Our Industries
   # service item comes from content/services folder
 
@@ -64,7 +69,7 @@ service:
 about:
   enable: true
   bg_image: "/images/background/about-bg.jpg"
-  title: OUR Services
+  title: Our Services
   content: We understand that each customer has unique needs, and we are committed to providing every customer with the specific services they require why deal with all the hassles of different vendors when you can rest assured that when your part leaves apache Fabricators, it will be nothing less than perfect. Apache Fabricators has no limitations when it comes to fabrication. If it needs to be made of steel, we can fabricate it.
   # bullet point
   bulletPoint:
@@ -111,6 +116,7 @@ our_expertise:
 project:
   enable: true
   title: Quality and Certifications
+  subtitle: Trusted certifications and top-tier project execution
   # project item comes from content/project folder
 
 ########################################### Mission ###################################

@@ -1,0 +1,39 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  content: CollectionEntry<"industries">;
+};
+
+const { content } = Astro.props;
+const { title, image, icon } = content.data;
+---
+
+<div class="text-center border border-border rounded-md relative pb-6 mb-6 group">
+  {title && <h3 class="h5 my-4" set:html={markdownify(title)} />}
+  <div>
+    <div class="overlay after:opacity-0 group-hover:after:opacity-100 after:duration-300">
+      {
+        image && (
+          <ImageMod
+            src={image}
+            width={400}
+            height={220}
+            class="w-full"
+            alt={title || "industry image"}
+          />
+        )
+      }
+    </div>
+    {
+      icon && (
+        <div class="w-16 h-16 bg-primary text-3xl rounded-md flex justify-center items-center mx-auto -mt-8 overlay-content text-white">
+          <DynamicIcon icon={icon} />
+        </div>
+      )
+    }
+  </div>
+</div>
