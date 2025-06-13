@@ -5,7 +5,6 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import bgImageMod from "@/lib/utils/bgImageMod";
 import { markdownify } from "@/lib/utils/textConverter";
 import Testimonial from "@/partials/Testimonial.astro";
-import CardIndustryItem from "@/components/CardIndustryItem.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import BlogCard from "@/components/BlogCard.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
@@ -14,7 +13,6 @@ import CallToAction from "@/partials/CallToAction.astro";
 import MissionVision from "@/partials/MissionVision.astro";
 import ImageMod from "@/components/ImageMod.astro";
 import DynamicIcon from "@/helpers/DynamicIcon";
-import { getCollection } from "astro:content";
 
 import type { CollectionEntry } from "astro:content";
 
@@ -46,7 +44,6 @@ const testimonialContent = (
 const BLOG_FOLDER = "blog";
 const blogCollection = await getSinglePage(BLOG_FOLDER);
 const servicesCollection = await getSinglePage("services");
-const industriesCollection = await getCollection("industries");
 const projectsCollection = await getSinglePage("projects");
 
 const homepageIndex = (await getEntry(
@@ -56,7 +53,6 @@ const homepageIndex = (await getEntry(
 
 const {
   banner_slider,
-  industries,
   service,
   about,
   project,
@@ -238,33 +234,6 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
       </section>
     )
   }
-{
-  industries?.enable && (
-    <section class="section">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-12 text-center mb-5">
-            {industries.subtitle && (
-              <span
-                class="text-lg text-text"
-                set:html={markdownify(industries.subtitle)}
-              />
-            )}
-            {industries.title && (
-              <h2 set:html={markdownify(industries.title)} />
-            )}
-            <div class="separator" />
-          </div>
-          {industriesCollection.slice(0, 6).map((industry) => (
-            <div class="md:col-6 xl:col-4" key={industry.slug}>
-              <CardIndustryItem content={industry} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 
   {

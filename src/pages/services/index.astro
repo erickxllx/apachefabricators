@@ -10,16 +10,16 @@ import Testimonial from "@/partials/Testimonial.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry, render } from "astro:content";
 
-const COLLECTION_FOLDER = "services";
+const COLLECTION_FOLDER = "servicesMain";
 const testimonialSection = (await getEntry(
   "testimonialSection",
   "testimonial"
 )) as CollectionEntry<"testimonialSection">;
 
 const servicesIndex = (await getEntry(
-  "services",
+  "servicesMain",
   "-index"
-)) as CollectionEntry<"services">;
+)) as CollectionEntry<"servicesMain">;
 const { title, bg_image, satisfied_clients, testimonial } = servicesIndex.data;
 const servicesCollection = await getSinglePage(COLLECTION_FOLDER);
 const { Content } = await render(servicesIndex);

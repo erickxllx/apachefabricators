@@ -58,6 +58,63 @@ export const about = defineCollection({
   }),
 });
 
+export const quality = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/quality" }),
+  schema: z.object({
+    title: z.string(),
+    bg_image: z.string().optional(),
+    description: z.string().optional(),
+    meta_title: z.string().optional(),
+    draft: z.boolean().optional(),
+    image: z.string().optional(),
+
+    philosophy: z
+      .object({
+        enable: z.boolean().default(true),
+        subtitle: z.string().optional(),
+        title: z.string(),
+        content: z.string(),
+        image: z.string().optional(),
+      })
+      .optional(),
+
+    ceo: z
+      .object({
+        enable: z.boolean().default(true),
+        bg_image: z.string().optional(),
+        title: z.string(),
+        content: z.string(),
+        signature: z.string().optional(),
+        name: z.string(),
+        designation: z.string(),
+      })
+      .optional(),
+
+    mission: z
+      .object({
+        enable: z.boolean().default(true),
+        content_from_file: z.string().optional(),
+      })
+      .optional(),
+
+    funfacts: z
+      .object({
+        enable: z.boolean().default(true),
+        bg_image: z.string().optional(),
+        counter: z
+          .array(
+            z.object({
+              title: z.string(),
+              icon: z.string(),
+              count: z.number(),
+            }),
+          )
+          .optional(),
+      })
+      .optional(),
+  }),
+});
+
 export const authors = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/authors" }),
   schema: z.object({
@@ -359,6 +416,43 @@ export const industries = defineCollection({
 });
 export const services = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/services" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    bg_image: z.string().optional(),
+    description: z.string().optional(),
+    meta_title: z.string().optional(),
+    short_description: z.string().optional(),
+    image: z.string().optional(),
+    icon: z.string().optional(),
+    brochure: z.string().optional(),
+    regular_day: z.string().optional(),
+    regular_time: z.string().optional(),
+    half_day: z.string().optional(),
+    half_time: z.string().optional(),
+    off_day: z.string().optional(),
+
+    satisfied_clients: z
+      .object({
+        enable: z.boolean().default(true),
+        bg_image: z.string().optional(),
+        subtitle: z.string(),
+        title: z.string(),
+        content: z.string(),
+        logo: z.array(z.string()),
+      })
+      .optional(),
+
+    testimonial: z
+      .object({
+        enable: z.boolean().default(true),
+        content_from_file: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+export const servicesMain = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/servicesMain" }),
   schema: z.object({
     title: z.string(),
     date: z.date(),

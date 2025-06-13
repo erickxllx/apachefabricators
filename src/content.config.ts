@@ -1,5 +1,6 @@
 import {
   about,
+  quality,
   authors,
   blog,
   contact,
@@ -8,6 +9,7 @@ import {
   pricing,
   projects,
   services,
+  servicesMain,
   industries,
   team,
 } from "./types/pages.collections";
@@ -22,6 +24,7 @@ import {
 export const collections = {
   //  pages
   about,
+  quality,
   authors,
   blog,
   contact,
@@ -30,6 +33,7 @@ export const collections = {
   pricing,
   projects,
   services,
+  servicesMain,
   industries,
   team,
 

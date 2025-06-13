@@ -52,19 +52,18 @@ banner_slider:
         label: More details
         link: /about
 
-########################################## Industries ####################################
-industries:
-  enable: true
-  subtitle: Serving key sectors with precision and quality
-  title: Our Industries
-  # service item comes from content/services folder
 ########################################## Service ####################################
 service:
   enable: true
   subtitle: Serving key sectors with precision and quality
   title: Our Industries
   # service item comes from content/services folder
-
+########################################## ServiceMain ####################################
+servicesMain:
+  enable: true
+  subtitle: Serving key sectors with precision and quality
+  title: Our Services
+  # service item comes from content/servicesMain folder
 ######################################## About #########################################
 about:
   enable: true
