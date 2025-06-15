@@ -46,20 +46,18 @@ const { enable, subtitle, title, content: data, accordion, image } = content;
         </div>
 
         <div class="lg:col-6 p-0">
-  {image && (
-    <ImageMod
-      src={image}
-      width={700}
-      height={700}
-      alt={title || "mission image"}
-      class="w-full h-full object-cover rounded-xl shadow-lg border border-gray-300"
-    />
-  )}
-</div>
-
+          {image && (
+            <ImageMod
+              src={image}
+              width={700}
+              height={700}
+              alt={title || "mission image"}
+              class="w-full h-full object-cover rounded-xl shadow-lg border border-gray-300"
+            />
           )}
         </div>
       </div>
     </div>
   </section>
-)}
+  )}
+

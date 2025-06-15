@@ -10,7 +10,7 @@ satisfied_clients:
   enable: true
   bg_image: "/images/background/clients-bg.jpg"
   subtitle: Our Some
-  title: Satisfied Clients
+  title: OUR SERVICES
   content: We understand that each customer has unique needs, and we are committed to providing every customer with the specific services they require why deal with all the hassles of different vendors when you can rest assured that when your part leaves apache Fabricators, it will be nothing less than perfect. Apache Fabricators has no limitations when it comes to fabrication. 
   logo:
     - "/images/client-logo/client-logo-1-white.png"
@@ -26,6 +26,6 @@ testimonial:
   # testimonial content comes from sections testimonial.md file
 ---
 
-## Our Best Services
+## OUR SERVICES
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+We understand that each customer has unique needs, and we are committed to providing every customer with the specific services they require.
