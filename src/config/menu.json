@@ -61,6 +61,10 @@
       "url": "/services"
     },
     {
+      "name": "Quality and Safety",
+      "url": "/quality"
+    },
+    {
       "name": "Blog",
       "url": "/blog"
     },
