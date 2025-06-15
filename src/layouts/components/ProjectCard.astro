@@ -27,29 +27,6 @@ const { image, title, category } = content.data;
           />
         )
       }
-      <div
-        class="absolute max-md:bg-gradient-to-r max-md:from-dark max-md:to-white/10 inset-0 flex flex-col justify-end text-white p-5 z-10">
-        {
-          title && (
-            <h3 class="text-lg mb-2 mt-auto text-white">
-              <a href={`/projects/${content.id}`} class="relative">
-                <span
-                  class="block md:translate-y-4 md:opacity-0 md:transition md:duration-300 group-hover:md:translate-y-0 group-hover:md:opacity-100"
-                  set:html={markdownify(title)}
-                />
-              </a>
-            </h3>
-          )
-        }
-        {
-          category && (
-            <p class="text-white/80 md:translate-y-2 md:opacity-0 md:transition md:duration-300 group-hover:md:translate-y-0 group-hover:md:opacity-100 delay-100">
-              <DynamicIcon className="inline-block me-2" icon="TfiTag" />
-              <span class="capitalize text-sm">{category}</span>
-            </p>
-          )
-        }
-      </div>
     </div>
   </div>
 </div>

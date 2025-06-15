@@ -115,7 +115,7 @@ our_expertise:
 project:
   enable: true
   title: Quality and Certifications
-  subtitle: Trusted certifications and top-tier project execution
+  subtitle: Trusted certifications and top-tier project execution 
   # project item comes from content/project folder
 
 ########################################### Mission ###################################
