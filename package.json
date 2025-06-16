@@ -4,7 +4,6 @@
   "description": "A secure, fast astro theme for business websites.",
   "author": "themefisher",
   "license": "UNLICENSED",
-  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
