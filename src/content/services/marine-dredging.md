@@ -5,7 +5,6 @@ description: This is meta description
 short_description: Precision-focused marketing plans designed to reach and engage your target customers effectively
 image: "/images/service/service-6.jpg"
 bg_image: "/images/background/page-title.jpg"
-icon: TfiServer
 brochure: "#?"
 regular_day: Sun-Tues
 regular_time: 08.00am - 06.00pm

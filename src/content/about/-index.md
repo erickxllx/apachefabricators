@@ -32,17 +32,13 @@ funfacts:
   counter:
     - title: "Projects Done"
       icon: "TfiServer" # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      count: 230
+      count: 5000
 
     - title: "Satisfied Clients"
       icon: "TfiFaceSmile" # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
       count: 789
 
-    - title: "Cup Of Coffee"
+    - title: "Deliveries"
       icon: "TfiThumbUp" # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      count: 580
-
-    - title: "Awards Win"
-      icon: "TfiCup" # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-      count: 130
+      count: 5000
 ---
