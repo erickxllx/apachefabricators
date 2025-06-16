@@ -16,45 +16,16 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
-const { navigation_button } = config;
 const { pathname } = Astro.url;
 ---
 
 <header class={`header lg:z-20 relative shadow`}>
-   <!--  Infomracion de la cabezera
-  {
-    config.params.top_header &&
-      (config.params.contact_info.email ||
-        config.params.contact_info.phone) && (
-        <div class="bg-dark py-3">
-          <div class="container">
-            <ul class="text-text-light flex flex-col sm:flex-row justify-center lg:justify-end font-light items-center">
-              {config.params.contact_info.email && (
-                <li set:html={markdownify(config.params.contact_info.email)} />
-              )}
-              {config.params.contact_info.email && (
-                <li>
-                  <a
-                    href={`tel:${config.params.contact_info.phone}`}
-                    class="sm:pl-5 sm:ml-5 sm:border-l sm:border-border"
-                    set:html={markdownify(
-                      "Call Us Now: <span class='underline ml-1'>" +
-                        config.params.contact_info.phone +
-                        "</span>"
-                    )}
-                  />
-                </li>
-              )}
-            </ul>
-          </div>
-        </div>
-      )
-  }-->
   <nav class="navbar container">
     <!-- logo -->
     <div class="order-0">
       <Logo />
     </div>
+
     <!-- navbar toggler -->
     <button
       class="relative group order-3 navbar-toggler cursor-pointer lg:hidden lg:order-1"
@@ -63,28 +34,18 @@ const { pathname } = Astro.url;
         class="relative flex overflow-hidden items-center justify-center w-[18px] h-[24px] transform transition-transform bg-white duration-200">
         <div
           class="flex flex-col justify-between w-full h-[14px] transform transition-transform duration-300 origin-center overflow-hidden">
-          <div
-            class="bg-dark h-[2px] w-full transform transition-transform duration-300 origin-left group-[.active]:translate-y-6 delay-100"
-          ></div>
-          <div
-            class="bg-dark h-[2px] w-full rounded transform transition-transform duration-300 group-[.active]:translate-y-6 delay-75"
-          ></div>
-          <div
-            class="bg-dark h-[2px] w-full transform transition-transform duration-300 origin-left group-[.active]:translate-y-6"
-          ></div>
-
+          <div class="bg-dark h-[2px] w-full transform transition-transform duration-300 origin-left group-[.active]:translate-y-6 delay-100" />
+          <div class="bg-dark h-[2px] w-full rounded transform transition-transform duration-300 group-[.active]:translate-y-6 delay-75" />
+          <div class="bg-dark h-[2px] w-full transform transition-transform duration-300 origin-left group-[.active]:translate-y-6" />
           <div
             class="absolute items-center justify-between transform transition-transform duration-500 top-1/2 -translate-x-10 group-[.active]:translate-x-0 flex w-0 group-[.active]:w-12">
-            <div
-              class="absolute bg-dark h-[2px] w-5 transform transition-transform duration-500 rotate-0 delay-300 group-[.active]:rotate-45"
-            ></div>
-            <div
-              class="absolute bg-dark h-[2px] w-5 transform transition-transform duration-500 -rotate-0 delay-300 group-[.active]:-rotate-45"
-            ></div>
+            <div class="absolute bg-dark h-[2px] w-5 transform transition-transform duration-500 rotate-0 delay-300 group-[.active]:rotate-45" />
+            <div class="absolute bg-dark h-[2px] w-5 transform transition-transform duration-500 -rotate-0 delay-300 group-[.active]:-rotate-45" />
           </div>
         </div>
       </div>
     </button>
+
     <!-- /navbar toggler -->
     <div class="navbar-nav-wrapper max-lg:w-full order-3 lg:ml-auto lg:order-1">
       <ul class="navbar-nav lg:flex lg:w-auto lg:space-x-2 xl:space-x-2">
@@ -96,9 +57,7 @@ const { pathname } = Astro.url;
                   <span
                     class={`nav-link inline-flex items-center ${
                       menu.children?.map(({ url }) => url).includes(pathname) ||
-                      menu.children
-                        ?.map(({ url }) => `${url}/`)
-                        .includes(pathname)
+                      menu.children?.map(({ url }) => `${url}/`).includes(pathname)
                         ? "active"
                         : ""
                     }`}>
@@ -116,9 +75,7 @@ const { pathname } = Astro.url;
                           <a
                             href={child.url}
                             class={`nav-dropdown-link block ${
-                              (pathname === `${child.url}/` ||
-                                pathname === child.url) &&
-                              "active"
+                              (pathname === `${child.url}/` || pathname === child.url) && "active"
                             }`}>
                             {child.name}
                           </a>
@@ -132,8 +89,7 @@ const { pathname } = Astro.url;
                   <a
                     href={menu.url}
                     class={`nav-link block ${
-                      (pathname === `${menu.url}/` || pathname === menu.url) &&
-                      "active"
+                      (pathname === `${menu.url}/` || pathname === menu.url) && "active"
                     }`}>
                     {menu.name}
                   </a>
@@ -142,27 +98,23 @@ const { pathname } = Astro.url;
             </>
           ))
         }
-        {
-          navigation_button.enable && (
-            <li class="mt-4 inline-block max-lg:w-full max-lg:text-center lg:hidden">
-              <a class="btn btn-primary btn-sm" href={navigation_button.link}>
-                {navigation_button.label}
-              </a>
-            </li>
-          )
-        }
+
+        <!-- Botón Contact Us para vista móvil -->
+        <li class="mt-4 inline-block max-lg:w-full max-lg:text-center lg:hidden">
+          <a class="btn btn-primary btn-sm" href="tel:+1234567890">
+            Contact Us: +1 (234) 567-890
+          </a>
+        </li>
       </ul>
     </div>
+
+    <!-- Botón Contact Us para escritorio -->
     <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      {
-        navigation_button.enable && (
-          <a
-            class="btn btn-primary btn-sm hidden lg:inline-block"
-            href={navigation_button.link}>
-            {navigation_button.label}
-          </a>
-        )
-      }
+      <a
+        class="btn btn-primary btn-sm hidden lg:inline-block"
+        href="tel:+18328046236">
+        Call now
+      </a>
     </div>
   </nav>
 </header>

@@ -14,8 +14,8 @@ funfacts:
     count: 789
 
   - icon: TfiThumbUp # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
-    title: Cup Of Coffee
-    count: 580
+    title: Deliveries
+    count: 5000
 
 progressbar:
   - title: Excelence

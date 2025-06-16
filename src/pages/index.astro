@@ -183,28 +183,23 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
     </div>
 
     <div class="container">
-      <div class="swiper banner-nav-slider">
-        <div class="swiper-wrapper">
-          {banner_slider.slider_item.map((slider) => {
-            let { paginationIcon, paginationName } = slider;
+  <div class="swiper banner-nav-slider">
+    <div class="swiper-wrapper">
+      {banner_slider.slider_item.map((slider) => {
+        let { paginationName } = slider; // Eliminamos paginationIcon
 
-            return (
-              <div class="swiper-slide">
-                <button type="button" title={paginationName}>
-                  {paginationIcon && (
-                    <DynamicIcon
-                      className="inline-block"
-                      icon={paginationIcon}
-                    />
-                  )}
-                  <span set:html={paginationName} />
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+        return (
+          <div class="swiper-slide">
+            <button type="button" title={paginationName}>
+              <span set:html={paginationName} />
+            </button>
+          </div>
+        );
+      })}
     </div>
+  </div>
+</div>
+
   </section>
 )}
 
