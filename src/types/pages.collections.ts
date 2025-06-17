@@ -77,6 +77,40 @@ export const quality = defineCollection({
         image: z.string().optional(),
       })
       .optional(),
+    
+    safety: z
+      .object({
+        enable: z.boolean().default(true),
+        subtitle: z.string().optional(),
+        title: z.string(),
+        content: z.string(),
+        image: z.string().optional(),
+        subtitleB: z.string().optional(),
+        contentB: z.string(),
+        imageB: z.string().optional(),
+        subtitleC: z.string().optional(),
+        contentC: z.string(),
+        imageC: z.string().optional(),
+
+      })
+      .optional(),
+
+    protocols: z
+      .object({
+        enable: z.boolean().default(true),
+        subtitle: z.string().optional(),
+        title: z.string(),
+        content: z.string(),
+        image: z.string().optional(),
+        subtitleB: z.string().optional(),
+        contentB: z.string(),
+        imageB: z.string().optional(),
+        subtitleC: z.string().optional(),
+        contentC: z.string(),
+        imageC: z.string().optional(),
+
+      })
+      .optional(),
 
     ceo: z
       .object({

@@ -1,31 +1,14 @@
 ---
+import config from "@/config/config.json";
 import ImageMod from "@/components/ImageMod.astro";
-import TextCounter from "@/components/TextCounter.astro";
-import DynamicIcon from "@/helpers/DynamicIcon";
 import Base from "@/layouts/Base.astro";
-import bgImageMod from "@/lib/utils/bgImageMod";
 import { markdownify } from "@/lib/utils/textConverter";
-import MissionVision from "@/partials/MissionVision.astro";
-import OurExpertise from "@/partials/OurExpertise.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import { getEntry, type CollectionEntry } from "astro:content";
 
-const ourExpertiseContent = (
-  (await getEntry(
-    "ourExpertiseSection",
-    "our-expertise"
-  )) as CollectionEntry<"ourExpertiseSection">
-).data;
-const missionVisionContent = (
-  (await getEntry(
-    "missionVisionSection",
-    "mission-vision"
-  )) as CollectionEntry<"missionVisionSection">
-).data;
-
 const aboutIndex = (await getEntry(
   "quality",
-  "-index"
+  "-index",
 )) as CollectionEntry<"quality">;
 const {
   title,
@@ -33,14 +16,9 @@ const {
   description,
   image,
   philosophy,
-  ceo,
-  mission,
-  funfacts,
-  bg_image,
+  safety,
+  protocols,
 } = aboutIndex.data;
-
-// Section Background Images
-const funfactsBgImage = await bgImageMod(funfacts?.bg_image!);
 ---
 
 <Base
@@ -48,38 +26,40 @@ const funfactsBgImage = await bgImageMod(funfacts?.bg_image!);
   meta_title={meta_title}
   description={description}
   image={image}>
-<PageHeader title="Quality and Safety" bg_image="/images/quality.png" />
+  
+  <!-- Header original -->
+  <PageHeader title="Quality and safety" bg_image="/images/quality.png" />
 
   {/* Philosophy Section */}
   {
     philosophy?.enable && (
       <section class="section pb-0">
-        <div class="container">
-          <div class="row gy-5 flex-col-reverse lg:flex-row">
-            <div class="lg:col-7">
+        <div class="container max-w-5xl">
+          <div class="row justify-center text-center mb-12">
+            <div class="lg:col-8">
+              {philosophy.title && (
+                <h2 
+                  class="text-4xl font-bold mb-4 text-primary"
+                  set:html={markdownify(philosophy.title)}
+                />
+              )}
+              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
+
               {philosophy.subtitle && (
                 <span
-                  class="text-lg text-text"
+                  class="text-xl text-text opacity-90"
                   set:html={markdownify(philosophy.subtitle)}
                 />
               )}
-              {philosophy.title && (
-                <h2 set:html={markdownify(philosophy.title)} />
-              )}
-              <div class="separator separator-secondary after:shadow-white after:bg-white" />
-
-              {philosophy.content && (
-                <p class="mt-8" set:html={markdownify(philosophy.content)} />
-              )}
             </div>
-            <div class="lg:col-5">
-              {philosophy.image && (
-                <ImageMod
-                  src={philosophy.image}
-                  width={530}
-                  height={400}
-                  class="w-full"
-                  alt={philosophy.title || "our philosophy"}
+          </div>
+          
+          <div class="row justify-center">
+            <div class="lg:col-10 text-center">
+              {philosophy.content && (
+                <p 
+                  class="mt-8 text-lg leading-relaxed"
+                  set:html={markdownify(philosophy.content)}
                 />
               )}
             </div>
@@ -89,65 +69,93 @@ const funfactsBgImage = await bgImageMod(funfacts?.bg_image!);
     )
   }
 
-  {/* CEO Section */}
+  {/* Safety Section - Modificado según lo solicitado */}
   {
-    ceo?.enable && (
-      <section class="section pb-0">
-        <div class="container">
-          <div class="bg-secondary text-white rounded-md overflow-hidden">
-            <div class="row gy-0 xl:items-center">
-              <div class="lg:col-5">
-                {ceo.bg_image && (
-                  <ImageMod
-                    src={ceo.bg_image}
-                    width={500}
-                    height={526}
-                    class="object-cover w-full h-96 lg:h-full object-center"
-                    alt={ceo.title || "our ceo"}
-                  />
-                )}
-              </div>
-              <div class="lg:col-7">
-                <div class="py-8 md:py-14 px-8">
-                  {ceo.title && (
-                    <h2
-                      class="text-inherit"
-                      set:html={markdownify(ceo.title)}
-                    />
-                  )}
-                  <div class="separator separator-secondary  after:bg-secondary after:border-white before:bg-white" />
+    safety?.enable && (
+      <section class="section py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container max-w-5xl">
+          {/* Título y subtítulo centrados sin imagen */}
+          <div class="row justify-center text-center mb-16">
+            <div >
+              {safety.title && (
+                <h2 
+                  class="text-3xl font-bold mb-6 text-primary"
+                  set:html={markdownify(safety.title)}
+                />
+              )}
+              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
 
-                  {ceo.content && (
-                    <p
-                      class="text-white mt-8 mb-6"
-                      set:html={markdownify(ceo.content)}
-                    />
-                  )}
-
-                  {ceo.signature && (
-                    <ImageMod
-                      src={ceo.signature}
-                      width={125}
-                      height={71}
-                      alt={ceo.title || "signature"}
-                    />
-                  )}
-
-                  {ceo.name && (
-                    <h3
-                      class="text-white h5 mt-2 font-medium"
-                      set:html={markdownify(ceo.name)}
-                    />
-                  )}
-
-                  {ceo.designation && (
-                    <p
-                      class="text-white font-medium"
-                      set:html={markdownify(ceo.designation)}
-                    />
-                  )}
-                </div>
-              </div>
+              {safety.subtitle && (
+                <span
+                  class="text-xl text-text opacity-90"
+                  set:html={markdownify(safety.subtitle)}
+                />
+              )}
+              {safety.content && (
+                <p 
+                  class="mt-8 text-lg leading-relaxed"
+                  set:html={markdownify(safety.content)}
+                />
+              )}
+            </div>
+          </div>
+          
+          {/* Contenido con imágenes (manteniendo el diseño alternado) */}
+          <div class="row items-center mt-10 gap-y-10">
+            <div class="lg:col-6">
+              {safety.imageB && (
+                <ImageMod
+                  src={safety.imageB}
+                  width={600}
+                  height={450}
+                  class="w-full rounded-lg shadow-xl"
+                  alt={safety.subtitleB || "our safety measures"}
+                />
+              )}
+            </div>
+            
+            <div class="lg:col-6">
+              {safety.subtitleB && (
+                <h2 
+                  class="text-2xl font-bold mb-6"
+                  set:html={markdownify(safety.subtitleB)}
+                />
+              )}
+              {safety.contentB && (
+                <p 
+                  class="text-lg leading-relaxed"
+                  set:html={markdownify(safety.contentB)}
+                />
+              )}
+            </div>
+          </div>
+          
+          <div class="row items-center mt-20 gap-y-10">
+            <div class="lg:col-6 order-2 lg:order-1">
+              {safety.subtitleC && (
+                <h2 
+                  class="text-2xl font-bold mb-6"
+                  set:html={markdownify(safety.subtitleC)}
+                />
+              )}
+              {safety.contentC && (
+                <p 
+                  class="text-lg leading-relaxed"
+                  set:html={markdownify(safety.contentC)}
+                />
+              )}
+            </div>
+            
+            <div class="lg:col-6 order-1 lg:order-2">
+              {safety.imageC && (
+                <ImageMod
+                  src={safety.imageC}
+                  width={350}
+                  height={350}
+                  class=" rounded-lg shadow-xl"
+                  alt={safety.subtitleC || "our safety measures"}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -155,60 +163,131 @@ const funfactsBgImage = await bgImageMod(funfacts?.bg_image!);
     )
   }
 
-  {/* Mission Section */}
-  {mission?.enable && <MissionVision content={missionVisionContent} />}
-
-  {/* Funfacts Section */}
+  {/* Protocols Section */}
   {
-    funfacts?.enable && (
-      <section
-        class="section-sm overlay after:bg-opacity-80 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${funfactsBgImage})` }}>
-        <div class="container z-10 relative">
-          <div class="row gy-4 justify-between">
-            {funfacts.counter &&
-              funfacts.counter.map((funfact) => (
-                <div class="md:col-6 lg:col-3 text-center">
-                  <div class="flex flex-col text-center md:text-start md:flex-row lg:justify-center items-center gap-4">
-                    {funfact && funfact.icon && (
-                      <span
-                        class={`${funfact.icon} h-[50px] xl:h-[70px] min-w-[50px] max-w-[50px] xl:min-w-[70px] xl:max-w-[70px] border border-border text-center leading-[50px] xl:leading-[70px] text-2xl xl:text-3xl bg-white text-primary inline-block rounded-full border-solid`}>
-                        {funfact.icon && (
-                          <DynamicIcon
-                            className="inline-block"
-                            icon={funfact.icon}
-                          />
-                        )}
-                        {funfact.title && (
-                          <span
-                            class="sr-only"
-                            set:html={markdownify(funfact.title) || "icon"}
-                          />
-                        )}
-                      </span>
-                    )}
-                    <div>
-                      {funfact?.count && (
-                        <h3 class="h3 mb-1 text-white">
-                          <TextCounter value={funfact.count} />
-                        </h3>
-                      )}
-                      {funfact?.title && (
-                        <p
-                          class="opacity-80 text-white font-medium"
-                          set:html={markdownify(funfact.title)}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
+    protocols?.enable && (
+      <section class="section py-16">
+        <div class="container max-w-6xl">
+          {/* Título principal */}
+          <div class="row justify-center text-center mb-16">
+            <div class="lg:col-8">
+              {protocols.title && (
+                <h2 
+                  class="text-4xl font-bold mb-6 text-primary"
+                  set:html={markdownify(protocols.title)}
+                />
+              )}
+              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
+            </div>
+          </div>
+          
+          {/* Primer bloque - Texto derecha, imagen izquierda */}
+          <div class="row items-center gap-y-10 mb-20">
+            <div class="lg:col-6">
+              {protocols.image && (
+                <ImageMod
+                  src={protocols.image}
+                  width={600}
+                  height={450}
+                  class="w-full rounded-lg shadow-xl"
+                  alt={protocols.subtitle || "our protocols"}
+                />
+              )}
+            </div>
+            
+            <div class="lg:col-6">
+              {protocols.subtitle && (
+                <h2 
+                  class="text-2xl font-bold mb-6"
+                  set:html={markdownify(protocols.subtitle)}
+                />
+              )}
+              {protocols.content && (
+                <p 
+                  class="text-lg leading-relaxed"
+                  set:html={markdownify(protocols.content)}
+                />
+              )}
+            </div>
+          </div>
+          
+          {/* Segundo bloque - Texto izquierda, imagen derecha */}
+          <div class="row items-center gap-y-10 mb-20">
+            <div class="lg:col-6 order-2 lg:order-1">
+              {protocols.subtitleB && (
+                <h2 
+                  class="text-2xl font-bold mb-6"
+                  set:html={markdownify(protocols.subtitleB)}
+                />
+              )}
+              {protocols.contentB && (
+                <p 
+                  class="text-lg leading-relaxed"
+                  set:html={markdownify(protocols.contentB)}
+                />
+              )}
+            </div>
+            
+            <div class="lg:col-6 order-1 lg:order-2">
+              {protocols.imageB && (
+                <ImageMod
+                  src={protocols.imageB}
+                  width={600}
+                  height={450}
+                  class="w-full rounded-lg shadow-xl"
+                  alt={protocols.subtitleB || "our protocols"}
+                />
+              )}
+            </div>
+          </div>
+          
+          {/* Tercer bloque - Texto derecha, imagen izquierda */}
+          <div class="row items-center gap-y-10">
+            <div class="lg:col-6">
+              {protocols.imageC && (
+                <ImageMod
+                  src={protocols.imageC}
+                  width={600}
+                  height={450}
+                  class="w-full rounded-lg shadow-xl"
+                  alt={protocols.subtitleC || "our protocols"}
+                />
+              )}
+            </div>
+            
+            <div class="lg:col-6">
+              {protocols.subtitleC && (
+                <h2 
+                  class="text-2xl font-bold mb-6"
+                  set:html={markdownify(protocols.subtitleC)}
+                />
+              )}
+              {protocols.contentC && (
+                <p 
+                  class="text-lg leading-relaxed"
+                  set:html={markdownify(protocols.contentC)}
+                />
+              )}
+            </div>
           </div>
         </div>
       </section>
     )
   }
 
-  {/* why choose us Section */}
-  <OurExpertise content={ourExpertiseContent} />
+  {/* Google Map Section */}
+  {
+    config.params.google_map &&
+      config.params.google_map.enable &&
+      config.params.google_map.address && (
+        <section>
+          <iframe
+            style="height:400px;width:100%;border:0;"
+            src={config.params.google_map.address}
+            title="google map"
+          />
+        </section>
+      )
+  }
+
 </Base>
