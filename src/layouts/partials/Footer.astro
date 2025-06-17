@@ -77,70 +77,6 @@ import { markdownify } from "@/lib/utils/textConverter";
             </div>
           )
         }
-
-        <!-- subscribe form -->
-        {
-          config.subscription_in_footer?.enable && (
-            <div class="md:col-6 lg:col-3">
-              <div class="mt-5 lg:mt-0">
-                {config.subscription_in_footer.title && (
-                  <h3
-                    class="h5 mb-4 text-white"
-                    set:html={markdownify(config.subscription_in_footer.title)}
-                  />
-                )}
-                {config.subscription_in_footer.description && (
-                  <p
-                    class="text-white mb-6 text-sm"
-                    set:html={markdownify(
-                      config.subscription_in_footer.description
-                    )}
-                  />
-                )}
-                <div id="mc_embed_signup">
-                  <form
-                    action={config.subscription_in_footer.mailchimp_form_action}
-                    method="post"
-                    id="mc-embedded-subscribe-form"
-                    name="mc-embedded-subscribe-form"
-                    class="validate"
-                    target="_blank"
-                    novalidate>
-                    <div id="mc_embed_signup_scroll" class="relative">
-                      <input
-                        type="email"
-                        name="EMAIL"
-                        class="required form-input placeholder:text-text-dark/70 pe-16 w-full !rounded-full p-3 pl-6"
-                        id="mce-EMAIL"
-                        placeholder={config.subscription_in_footer.placeholder}
-                        required
-                      />
-                      <button
-                        class="w-10 h-10 inline-flex justify-center items-center bg-primary border-0 rounded-full text-white absolute right-1.5 top-1/2 -translate-y-1/2 text-xs cursor-pointer"
-                        type="submit"
-                        name="subscribe"
-                        aria-label="subscribe btn">
-                        <DynamicIcon
-                          className="inline-block text-base"
-                          icon="TfiArrowRight"
-                        />
-                      </button>
-                      <div class="absolute left-[-5000px]" aria-hidden="true">
-                        <input
-                          type="text"
-                          tabindex="-1"
-                          name={
-                            config.subscription_in_footer.mailchimp_form_name
-                          }
-                        />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          )
-        }
       </div>
     </div>
   </div>
@@ -152,13 +88,13 @@ import { markdownify } from "@/lib/utils/textConverter";
           config.params.copyright && (
             <div>
               <p class="text-white text-sm">
-                {config.params.copyright} | Theme by
+                {config.params.copyright} | Created by
                 <a
                   target="_blank"
                   class="underline hover:text-primary"
                   rel="noopener noreferrer"
-                  href="https://themefisher.com/">
-                  Themefisher
+                  href="https://supremewebworks.com/">
+                  SupremeWebWorks
                 </a>
               </p>
             </div>

@@ -71,169 +71,167 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
 ---
 
 <Base>
-  {
-    banner_slider?.enable && (
-      <section>
-        <div class="banner-slider swiper relative">
-          <div class="swiper-wrapper">
-            {banner_slider.slider_item.map((slider, index) => {
-              let { title, subtitle, content, bg_image, button } = slider;
+{banner_slider?.enable && (
+  <section>
+    <div class="banner-slider swiper relative">
+      <div class="swiper-wrapper">
+        {banner_slider.slider_item.map((slider, index) => {
+          let { title, subtitle, content, bg_image, button } = slider;
 
-              return (
-                <div class="swiper-slide banner-slider-item py-36 anim">
-                  <div class="container">
-                    <div class="row items-center">
-                      <div class="col-lg-12">
-                        <div class="hero-content relative z-20">
-                          {subtitle && (
-                            <span
-                              class={`h4 uppercase font-normal text-text-dark mb-0 block anim-item ${
-                                index === 0
-                                  ? "anim-slide-right anim-delay-1"
-                                  : index === 1
-                                    ? "anim-slide-left anim-delay-1"
-                                    : index === 2
-                                      ? "anim-slide-top anim-delay-1"
-                                      : "anim-slide-bottom anim-delay-1"
-                              }`}
-                              set:html={markdownify(subtitle)}
-                            />
-                          )}
-                          {title && (
-                            <h1
-                              class={`text-5xl/tight lg:text-6xl/tight font-semibold sm:font-bold mb-6 anim-item ${
-                                index === 0
-                                  ? "anim-slide-right anim-delay-3"
-                                  : index === 1
-                                    ? "anim-slide-left anim-delay-3"
-                                    : index === 2
-                                      ? "anim-slide-top anim-delay-3"
-                                      : "anim-slide-bottom anim-delay-3"
-                              }`}
-                              set:html={markdownify(title)}
-                            />
-                          )}
-                          {content && (
-                            <p
-                              class={`text-text-dark anim-item ${
-                                index === 0
-                                  ? "anim-slide-right anim-delay-6"
-                                  : index === 1
-                                    ? "anim-slide-left anim-delay-6"
-                                    : index === 2
-                                      ? "anim-slide-top anim-delay-6"
-                                      : "anim-slide-bottom anim-delay-6"
-                              }`}
-                              set:html={markdownify(content)}
-                            />
-                          )}
-                          {button?.enable && (
-                            <div
-                              class={`anim-item relative w-fit mt-12 ${
-                                index === 0
-                                  ? "anim-slide-right anim-delay-8"
-                                  : index === 1
-                                    ? "anim-slide-left anim-delay-8"
-                                    : index === 2
-                                      ? "anim-slide-top anim-delay-8"
-                                      : "anim-slide-bottom anim-delay-8"
-                              }`}>
-                              <a
-                                class="btn btn-outline-dark uppercase"
-                                href={button.link}
-                                set:html={button.label}
-                              />
-                            </div>
-                          )}
-                        </div>
-                        {bg_image && (
-                          <ImageMod
-                            src={bg_image}
-                            width={1550}
-                            height={600}
-                            loading="eager"
-                            alt={title || "banner image"}
-                            class="z-10 absolute left-0 top-0 w-full h-full object-cover"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div class="swiper-navigation">
-            <button
-              type="button"
-              class="prev-arrow"
-              title="prev navigation button">
-              <span class="sr-only" set:html="see previous slide" />
-              <DynamicIcon className="inline-block" icon="TfiArrowLeft" />
-            </button>
-            <button
-              type="button"
-              class="next-arrow"
-              title="next navigation button">
-              <span class="sr-only" set:html="see next slide" />
-              <DynamicIcon className="inline-block" icon="TfiArrowRight" />
-            </button>
-          </div>
-        </div>
-        <div class="container">
-          <div class="swiper banner-nav-slider">
-            <div class="swiper-wrapper">
-              {banner_slider.slider_item.map((slider) => {
-                let { paginationIcon, paginationName } = slider;
-
-                return (
-                  <div class="swiper-slide">
-                    <button type="button" title={paginationName}>
-                      {paginationIcon && (
-                        <DynamicIcon
-                          className="inline-block"
-                          icon={paginationIcon}
+          return (
+            <div class="swiper-slide banner-slider-item py-36 anim">
+              <div class="container">
+                <div class="row items-center">
+                  <div class="col-lg-12">
+                    <div class="hero-content relative z-20">
+                      {subtitle && (
+                        <span
+                          class={`h4 uppercase font-normal text-white mb-0 block anim-item ${
+                            index === 0
+                              ? "anim-slide-right anim-delay-1"
+                              : index === 1
+                              ? "anim-slide-left anim-delay-1"
+                              : index === 2
+                              ? "anim-slide-top anim-delay-1"
+                              : "anim-slide-bottom anim-delay-1"
+                          }`}
+                          set:html={markdownify(subtitle)}
                         />
                       )}
-                      <span set:html={paginationName} />
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
+                      {title && (
+                        <h1
+                          class={`text-5xl/tight lg:text-6xl/tight font-semibold sm:font-bold mb-6 text-white anim-item ${
+                            index === 0
+                              ? "anim-slide-right anim-delay-3"
+                              : index === 1
+                              ? "anim-slide-left anim-delay-3"
+                              : index === 2
+                              ? "anim-slide-top anim-delay-3"
+                              : "anim-slide-bottom anim-delay-3"
+                          }`}
+                          set:html={markdownify(title)}
+                        />
+                      )}
+                      {content && (
+                        <p
+                          class={`text-white anim-item ${
+                            index === 0
+                              ? "anim-slide-right anim-delay-6"
+                              : index === 1
+                              ? "anim-slide-left anim-delay-6"
+                              : index === 2
+                              ? "anim-slide-top anim-delay-6"
+                              : "anim-slide-bottom anim-delay-6"
+                          }`}
+                          set:html={markdownify(content)}
+                        />
+                      )}
+                      {button?.enable && (
+                        <div
+                          class={`anim-item relative w-fit mt-12 ${
+                            index === 0
+                              ? "anim-slide-right anim-delay-8"
+                              : index === 1
+                              ? "anim-slide-left anim-delay-8"
+                              : index === 2
+                              ? "anim-slide-top anim-delay-8"
+                              : "anim-slide-bottom anim-delay-8"
+                          }`}>
+                          <a
+                            class="btn btn-outline-dark text-white border-white hover:bg-white hover:text-black uppercase transition"
+                            href={button.link}
+                            set:html={button.label}
+                          />
+                        </div>
+                      )}
+                    </div>
 
-  {
-    service?.enable && (
-      <section class="section">
-        <div class="container">
-          <div class="row gy-4">
-            <div class="col-12 text-center mb-5">
-              {service.subtitle && (
-                <span
-                  class="text-lg text-text"
-                  set:html={markdownify(service.subtitle)}
-                />
-              )}
-              {service.title && <h2 set:html={markdownify(service.title)} />}
-              <div class="separator" />
-            </div>
-            {servicesCollection.slice(0, 6).map((service) => {
-              return (
-                <div class="md:col-6 xl:col-4">
-                  <ServiceCard content={service} />
+                    {bg_image && (
+                      <ImageMod
+                        src={bg_image}
+                        width={1550}
+                        height={600}
+                        loading="eager"
+                        alt={title || "banner image"}
+                        class="z-10 absolute left-0 top-0 w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="swiper-navigation">
+        <button
+          type="button"
+          class="prev-arrow"
+          title="prev navigation button">
+          <span class="sr-only" set:html="see previous slide" />
+          <DynamicIcon className="inline-block" icon="TfiArrowLeft" />
+        </button>
+        <button
+          type="button"
+          class="next-arrow"
+          title="next navigation button">
+          <span class="sr-only" set:html="see next slide" />
+          <DynamicIcon className="inline-block" icon="TfiArrowRight" />
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+  <div class="swiper banner-nav-slider">
+    <div class="swiper-wrapper">
+      {banner_slider.slider_item.map((slider) => {
+        let { paginationName } = slider; // Eliminamos paginationIcon
+
+        return (
+          <div class="swiper-slide">
+            <button type="button" title={paginationName}>
+              <span set:html={paginationName} />
+            </button>
           </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+  </section>
+)}
+
+{
+  service?.enable && (
+    <section class="section">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-12 text-center mb-5">
+            {service.subtitle && (
+              <span
+                class="text-lg text-text"
+                set:html={markdownify(service.subtitle)}
+              />
+            )}
+            {service.title && <h2 set:html={markdownify(service.title)} />}
+            <div class="separator" />
+          </div>
+
+          {servicesCollection.slice(0, 6).map((service) => {
+            return (
+              <div class="md:col-6 xl:col-4 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1">
+                <ServiceCard content={service} />
+              </div>
+            );
+          })}
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
+}
+
 
 
   {

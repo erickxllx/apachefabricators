@@ -5,7 +5,6 @@ description: This is meta description
 short_description: Marketing Oriented To The Targated Customers Lorem ipsum dolor sit amet, consectetur adipisicing
 image: "/images/service/service-2.jpg"
 bg_image: "/images/background/page-title.jpg"
-icon: TfiThought
 brochure: "#?"
 regular_day: Sun-Tues
 regular_time: 08.00am - 06.00pm

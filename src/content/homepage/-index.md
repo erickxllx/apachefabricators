@@ -3,54 +3,56 @@
 banner_slider:
   enable: true
   slider_item:
-    # slider item loop
+    # visible slide
     - bg_image: "/images/banner/banner-1.jpg"
       title: Apache Fabricators
       subtitle: is a one-stop-shop for Fabrication and Machining.
-      content: We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical,industrial, refining, petrochemical, industrial, commercial and more.
-      paginationIcon: TfiComments # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
+      content: We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical, industrial, refining, commercial and more.
+      paginationIcon: TfiComments
       paginationName: Welding
       button:
         enable: true
         label: More details
-        link: /about
+        link: /services
+      hidden: false
 
-    # slider item loop
+    # hidden slide - only for button
     - bg_image: "/images/banner/banner-2.jpg"
-      subtitle: Get your
-      title: Apache Fabricators
-      content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
-      paginationIcon: TfiBarChart # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
+      subtitle: Precision-crafted metal structures for demanding environments.
+      title: Fabrication
+      content: We specialize in the fabrication of custom metal structures and components with high precision and efficiency. Our facility is equipped to handle complex projects across multiple industries, delivering superior quality and durability for offshore, onshore, and subsea applications.
+      paginationIcon: TfiBarChart
       paginationName: Fabrication
       button:
         enable: true
         label: More details
-        link: /about
+        link: /services
+      hidden: true
 
-
-    # slider item loop
     - bg_image: "/images/banner/banner-3.jpg"
-      subtitle: Start your
-      title: Future Plan
-      content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
-      paginationIcon: TfiStatsUp # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
+      subtitle: High-accuracy machining for complex industrial components.
+      title: CNC Machining
+      content: Our advanced CNC machining capabilities allow us to produce intricate and high-tolerance parts with exceptional accuracy. We work with various materials to meet the demanding specifications of the energy, automotive, and industrial sectors.
+      paginationIcon: TfiStatsUp
       paginationName: CNC MACHINING
       button:
         enable: true
         label: More details
-        link: /about
+        link: /services
+      hidden: true
 
-    # slider item loop
     - bg_image: "/images/banner/banner-4.jpg"
-      subtitle: We are always
-      title: Be Inspired By Best
-      content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua.
-      paginationIcon: TfiPackage # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
+      subtitle: Protective finishes engineered to last in extreme conditions.
+      title: Coating
+      content: We offer professional industrial coating services that enhance the durability, resistance, and lifespan of your equipment. From corrosion protection to specialized finishes, our coating solutions are tailored to withstand extreme conditions and heavy-duty use.
+      paginationIcon: TfiPackage
       paginationName: Coating
       button:
         enable: true
         label: More details
-        link: /about
+        link: /services
+      hidden: true
+
 
 ########################################## Service ####################################
 service:
@@ -115,7 +117,7 @@ our_expertise:
 project:
   enable: true
   title: Quality and Certifications
-  subtitle: Trusted certifications and top-tier project execution
+  subtitle: Trusted certifications and top-tier project execution 
   # project item comes from content/project folder
 
 ########################################### Mission ###################################

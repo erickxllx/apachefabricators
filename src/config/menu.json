@@ -21,30 +21,18 @@
       "url": "/contact"
     }
   ],
-  "services": [
+  "industry": [
     {
-      "name": "Business Consulting",
-      "url": "/services/business-consulting"
+      "name": "Chemical Processing",
+      "url": "/about"
     },
     {
-      "name": "Data-Driven Decision",
-      "url": "/services/data-driven-decision-support"
+      "name": "Construction and Infrastructure",
+      "url": "/about"
     },
     {
-      "name": "Market strategy",
-      "url": "/services/market-strategy"
-    },
-    {
-      "name": "Business Consultation",
-      "url": "/services/strategic-business-consultation"
-    },
-    {
-      "name": "Marketing Strategies",
-      "url": "/services/targeted-marketing-strategies"
-    },
-    {
-      "name": "Valuable Idea",
-      "url": "/services/valuable-idea"
+      "name": "Marine and Dredging",
+      "url": "/about"
     }
   ],
   "quick_links": [
@@ -65,34 +53,8 @@
       "url": "/quality"
     },
     {
-      "name": "Blog",
-      "url": "/blog"
-    },
-    {
-      "name": "Team",
-      "url": "/team"
-    },
-    {
       "name": "Contact",
       "url": "/contact"
-    }
-  ],
-  "footer": [
-    {
-      "name": "Legal",
-      "url": "#"
-    },
-    {
-      "name": "Sitemap",
-      "url": "#"
-    },
-    {
-      "name": "Privacy Policy",
-      "url": "/privacy-policy"
-    },
-    {
-      "name": "Terms & Conditions",
-      "url": "#"
     }
   ]
 }

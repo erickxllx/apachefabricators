@@ -20,10 +20,10 @@ const pageHeaderBgImage = await bgImageMod(bg_image);
 ---
 
 <section
-  class="overlay after:bg-opacity-60 bg-no-repeat bg-center bg-cover"
+  class="overlay after:bg-opacity-60 bg-no-repeat bg-center bg-cover h-[700px]"
   style={`background-image: url(${pageHeaderBgImage})`}>
-  <div class="container text-center z-10 relative">
-    <div class="sm:px-8 py-32">
+  <div class="container text-center z-10 relative h-full flex flex-col justify-center items-center">
+    <div class="sm:px-8">
       <h1
         class="h2 font-bold text-white"
         set:text={humanize(meta_title ? meta_title : title)}
