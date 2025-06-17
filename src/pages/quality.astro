@@ -21,257 +21,211 @@ const {
 } = aboutIndex.data;
 ---
 
+<style>
+/* Initial hidden state with transform for all slide classes */
+:global(.slide-in-left) {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideInLeft 0.8s ease-out forwards;
+  animation-delay: 2s;
+}
+:global(.slide-in-right) {
+  opacity: 0;
+  transform: translateX(100px);
+  animation: slideInRight 0.8s ease-out forwards;
+  animation-delay: 2s;
+}
+:global(.slide-in-down) {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideInDown 0.8s ease-out forwards;
+  animation-delay: 2s;
+}
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
 <Base
   title={title}
   meta_title={meta_title}
   description={description}
   image={image}>
   
-  <!-- Header original -->
-  <PageHeader title="Quality and safety" bg_image="/images/quality.png" />
+  <!-- Header original with slide-down animation -->
+  <PageHeader title="Quality and safety" bg_image="/images/quality.png" class="slide-in-down" />
 
   {/* Philosophy Section */}
-  {
-    philosophy?.enable && (
-      <section class="section pb-0">
-        <div class="container max-w-5xl">
-          <div class="row justify-center text-center mb-12">
-            <div class="lg:col-8">
-              {philosophy.title && (
-                <h2 
-                  class="text-4xl font-bold mb-4 text-primary"
-                  set:html={markdownify(philosophy.title)}
-                />
-              )}
-              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
+  {philosophy?.enable && (
+    <section class="section pb-0">
+      <div class="container max-w-5xl">
+        <div class="row justify-center text-center mb-12 slide-in-down">
+          <div class="lg:col-8">
+            {philosophy.title && (
+              <h2 
+                class="text-4xl font-bold mb-4 text-primary"
+                set:html={markdownify(philosophy.title)}
+              />
+            )}
+            <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
 
-              {philosophy.subtitle && (
-                <span
-                  class="text-xl text-text opacity-90"
-                  set:html={markdownify(philosophy.subtitle)}
-                />
-              )}
-            </div>
-          </div>
-          
-          <div class="row justify-center">
-            <div class="lg:col-10 text-center">
-              {philosophy.content && (
-                <p 
-                  class="mt-8 text-lg leading-relaxed"
-                  set:html={markdownify(philosophy.content)}
-                />
-              )}
-            </div>
+            {philosophy.subtitle && (
+              <span
+                class="text-xl text-text opacity-90"
+                set:html={markdownify(philosophy.subtitle)}
+              />
+            )}
           </div>
         </div>
-      </section>
-    )
-  }
-
-  {/* Safety Section - Modificado según lo solicitado */}
-  {
-    safety?.enable && (
-      <section class="section py-16 bg-gradient-to-b from-gray-50 to-white">
-        <div class="container max-w-5xl">
-          {/* Título y subtítulo centrados sin imagen */}
-          <div class="row justify-center text-center mb-16">
-            <div >
-              {safety.title && (
-                <h2 
-                  class="text-3xl font-bold mb-6 text-primary"
-                  set:html={markdownify(safety.title)}
-                />
-              )}
-              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
-
-              {safety.subtitle && (
-                <span
-                  class="text-xl text-text opacity-90"
-                  set:html={markdownify(safety.subtitle)}
-                />
-              )}
-              {safety.content && (
-                <p 
-                  class="mt-8 text-lg leading-relaxed"
-                  set:html={markdownify(safety.content)}
-                />
-              )}
-            </div>
-          </div>
-          
-          {/* Contenido con imágenes (manteniendo el diseño alternado) */}
-          <div class="row items-center mt-10 gap-y-10">
-            <div class="lg:col-6">
-              {safety.imageB && (
-                <ImageMod
-                  src={safety.imageB}
-                  width={600}
-                  height={450}
-                  class="w-full rounded-lg shadow-xl"
-                  alt={safety.subtitleB || "our safety measures"}
-                />
-              )}
-            </div>
-            
-            <div class="lg:col-6">
-              {safety.subtitleB && (
-                <h2 
-                  class="text-2xl font-bold mb-6"
-                  set:html={markdownify(safety.subtitleB)}
-                />
-              )}
-              {safety.contentB && (
-                <p 
-                  class="text-lg leading-relaxed"
-                  set:html={markdownify(safety.contentB)}
-                />
-              )}
-            </div>
-          </div>
-          
-          <div class="row items-center mt-20 gap-y-10">
-            <div class="lg:col-6 order-2 lg:order-1">
-              {safety.subtitleC && (
-                <h2 
-                  class="text-2xl font-bold mb-6"
-                  set:html={markdownify(safety.subtitleC)}
-                />
-              )}
-              {safety.contentC && (
-                <p 
-                  class="text-lg leading-relaxed"
-                  set:html={markdownify(safety.contentC)}
-                />
-              )}
-            </div>
-            
-            <div class="lg:col-6 order-1 lg:order-2">
-              {safety.imageC && (
-                <ImageMod
-                  src={safety.imageC}
-                  width={350}
-                  height={350}
-                  class=" rounded-lg shadow-xl"
-                  alt={safety.subtitleC || "our safety measures"}
-                />
-              )}
-            </div>
+        
+        <div class="row justify-center">
+          <div class="lg:col-10 text-center slide-in-down">
+            {philosophy.content && (
+              <p 
+                class="mt-8 text-lg leading-relaxed"
+                set:html={markdownify(philosophy.content)}
+              />
+            )}
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )}
+
+  {/* Safety Section */}
+  {safety?.enable && (
+    <section class="section py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div class="container max-w-5xl">
+        <div class="row justify-center text-center mb-16 slide-in-down">
+          <div>
+            {safety.title && (
+              <h2 
+                class="text-3xl font-bold mb-6 text-primary"
+                set:html={markdownify(safety.title)}
+              />
+            )}
+            <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
+            {safety.subtitle && (
+              <span
+                class="text-xl text-text opacity-90"
+                set:html={markdownify(safety.subtitle)}
+              />
+            )}
+            {safety.content && (
+              <p 
+                class="mt-8 text-lg leading-relaxed"
+                set:html={markdownify(safety.content)}
+              />
+            )}
+          </div>
+        </div>
+        <div class="row items-center mt-10 gap-y-10">
+          <div class="lg:col-6 slide-in-left">
+            {safety.imageB && (
+              <ImageMod src={safety.imageB} width={600} height={450} class="w-full rounded-lg shadow-xl" alt={safety.subtitleB || "our safety measures"} />
+            )}
+          </div>
+          <div class="lg:col-6 slide-in-right">
+            {safety.subtitleB && (
+              <h2 class="text-2xl font-bold mb-6" set:html={markdownify(safety.subtitleB)} />
+            )}
+            {safety.contentB && (
+              <p class="text-lg leading-relaxed" set:html={markdownify(safety.contentB)} />
+            )}
+          </div>
+        </div>
+        <div class="row items-center mt-20 gap-y-10">
+          <div class="lg:col-6 order-2 lg:order-1 slide-in-right">
+            {safety.subtitleC && (
+              <h2 class="text-2xl font-bold mb-6" set:html={markdownify(safety.subtitleC)} />
+            )}
+            {safety.contentC && (
+              <p class="text-lg leading-relaxed" set:html={markdownify(safety.contentC)} />
+            )}
+          </div>
+          <div class="lg:col-6 order-1 lg:order-2 slide-in-left">
+            {safety.imageC && (
+              <ImageMod src={safety.imageC} width={350} height={350} class="rounded-lg shadow-xl" alt={safety.subtitleC || "our safety measures"} />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   {/* Protocols Section */}
-  {
-    protocols?.enable && (
-      <section class="section py-16">
-        <div class="container max-w-6xl">
-          {/* Título principal */}
-          <div class="row justify-center text-center mb-16">
-            <div class="lg:col-8">
-              {protocols.title && (
-                <h2 
-                  class="text-4xl font-bold mb-6 text-primary"
-                  set:html={markdownify(protocols.title)}
-                />
-              )}
-              <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
-            </div>
-          </div>
-          
-          {/* Primer bloque - Texto derecha, imagen izquierda */}
-          <div class="row items-center gap-y-10 mb-20">
-            <div class="lg:col-6">
-              {protocols.image && (
-                <ImageMod
-                  src={protocols.image}
-                  width={600}
-                  height={450}
-                  class="w-full rounded-lg shadow-xl"
-                  alt={protocols.subtitle || "our protocols"}
-                />
-              )}
-            </div>
-            
-            <div class="lg:col-6">
-              {protocols.subtitle && (
-                <h2 
-                  class="text-2xl font-bold mb-6"
-                  set:html={markdownify(protocols.subtitle)}
-                />
-              )}
-              {protocols.content && (
-                <p 
-                  class="text-lg leading-relaxed"
-                  set:html={markdownify(protocols.content)}
-                />
-              )}
-            </div>
-          </div>
-          
-          {/* Segundo bloque - Texto izquierda, imagen derecha */}
-          <div class="row items-center gap-y-10 mb-20">
-            <div class="lg:col-6 order-2 lg:order-1">
-              {protocols.subtitleB && (
-                <h2 
-                  class="text-2xl font-bold mb-6"
-                  set:html={markdownify(protocols.subtitleB)}
-                />
-              )}
-              {protocols.contentB && (
-                <p 
-                  class="text-lg leading-relaxed"
-                  set:html={markdownify(protocols.contentB)}
-                />
-              )}
-            </div>
-            
-            <div class="lg:col-6 order-1 lg:order-2">
-              {protocols.imageB && (
-                <ImageMod
-                  src={protocols.imageB}
-                  width={600}
-                  height={450}
-                  class="w-full rounded-lg shadow-xl"
-                  alt={protocols.subtitleB || "our protocols"}
-                />
-              )}
-            </div>
-          </div>
-          
-          {/* Tercer bloque - Texto derecha, imagen izquierda */}
-          <div class="row items-center gap-y-10">
-            <div class="lg:col-6">
-              {protocols.imageC && (
-                <ImageMod
-                  src={protocols.imageC}
-                  width={600}
-                  height={450}
-                  class="w-full rounded-lg shadow-xl"
-                  alt={protocols.subtitleC || "our protocols"}
-                />
-              )}
-            </div>
-            
-            <div class="lg:col-6">
-              {protocols.subtitleC && (
-                <h2 
-                  class="text-2xl font-bold mb-6"
-                  set:html={markdownify(protocols.subtitleC)}
-                />
-              )}
-              {protocols.contentC && (
-                <p 
-                  class="text-lg leading-relaxed"
-                  set:html={markdownify(protocols.contentC)}
-                />
-              )}
-            </div>
+  {protocols?.enable && (
+    <section class="section py-16">
+      <div class="container max-w-6xl">
+        <div class="row justify-center text-center mb-16 slide-in-down">
+          <div class="lg:col-8">
+            {protocols.title && (
+              <h2 class="text-4xl font-bold mb-6 text-primary" set:html={markdownify(protocols.title)} />
+            )}
+            <div class="separator separator-secondary after:shadow-white after:bg-white mx-auto" />
           </div>
         </div>
-      </section>
-    )
-  }
+        <div class="row items-center gap-y-10 mb-20">
+          <div class="lg:col-6 slide-in-left">
+            {protocols.image && (
+              <ImageMod src={protocols.image} width={600} height={450} class="w-full rounded-lg shadow-xl" alt={protocols.subtitle || "our protocols"} />
+            )}
+          </div>
+          <div class="lg:col-6 slide-in-right">
+            {protocols.subtitle && (
+              <h2 class="text-2xl font-bold mb-6" set:html={markdownify(protocols.subtitle)} />
+            )}
+            {protocols.content && (
+              <p class="text-lg leading-relaxed" set:html={markdownify(protocols.content)} />
+            )}
+          </div>
+        </div>
+        <div class="row items-center gap-y-10 mb-20">
+          <div class="lg:col-6 order-2 lg:order-1 slide-in-right">
+            {protocols.subtitleB && (
+              <h2 class="text-2xl font-bold mb-6" set:html={markdownify(protocols.subtitleB)} />
+            )}
+            {protocols.contentB && (
+              <p class="text-lg leading-relaxed" set:html={markdownify(protocols.contentB)} />
+            )}
+          </div>
+          <div class="lg:col-6 order-1 lg:order-2 slide-in-left">
+            {protocols.imageB && (
+              <ImageMod src={protocols.imageB} width={600} height={450} class="w-full rounded-lg shadow-xl" alt={protocols.subtitleB || "our protocols"} />
+            )}
+          </div>
+        </div>
+        <div class="row items-center gap-y-10">
+          <div class="lg:col-6 slide-in-left">
+            {protocols.imageC && (
+              <ImageMod src={protocols.imageC} width={600} height={450} class="w-full rounded-lg shadow-xl" alt={protocols.subtitleC || "our protocols"} />
+            )}
+          </div>
+          <div class="lg:col-6 slide-in-right">
+            {protocols.subtitleC && (
+              <h2 class="text-2xl font-bold mb-6" set:html={markdownify(protocols.subtitleC)} />
+            )}
+            {protocols.contentC && (
+              <p class="text-lg leading-relaxed" set:html={markdownify(protocols.contentC)} />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 </Base>
