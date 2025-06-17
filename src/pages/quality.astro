@@ -274,20 +274,4 @@ const {
       </section>
     )
   }
-
-  {/* Google Map Section */}
-  {
-    config.params.google_map &&
-      config.params.google_map.enable &&
-      config.params.google_map.address && (
-        <section>
-          <iframe
-            style="height:400px;width:100%;border:0;"
-            src={config.params.google_map.address}
-            title="google map"
-          />
-        </section>
-      )
-  }
-
 </Base>
