@@ -3,7 +3,7 @@ title: COATING
 date: 2018-09-29T11:51:17+06:00
 description: This is meta description
 short_description: Leverage data analytics for informed decision-making. Our consultants provide data-driven insights
-image: "/images/service/service-4.jpg"
+image: "/images/service/coating.png"
 bg_image: "/images/background/page-title.jpg"
 brochure: "#?"
 regular_day: Sun-Tues
