@@ -3,7 +3,7 @@ title: PLATE PROCESSING
 date: 2018-09-29T11:54:02+06:00
 description: This is meta description
 short_description: Precision-focused marketing plans designed to reach and engage your target customers effectively
-image: "/images/service/service-6.jpg"
+image: "/images/service/plate.png"
 bg_image: "/images/background/page-title.jpg"
 brochure: "#?"
 regular_day: Sun-Tues
