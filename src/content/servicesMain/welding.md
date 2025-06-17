@@ -3,7 +3,7 @@ title: WELDING
 date: 2018-09-29T11:54:02+06:00
 description: This is meta description
 short_description: Marketing Oriented To The Targated Customers Lorem ipsum dolor sit amet, consectetur adipisicing elit
-image: "/images/service/service-3.jpg"
+image: "/images/service/weldin.png"
 bg_image: "/images/background/page-title.jpg"
 brochure: "#?"
 regular_day: Sun-Tues
