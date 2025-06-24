@@ -9,122 +9,92 @@ import social from "@/config/social.json";
 import { markdownify } from "@/lib/utils/textConverter";
 ---
 
-<footer class="bg-dark text-sm">
-  <div class="py-12 md:py-28 border-b border-border/10">
+<footer class="bg-black text-white">
+  <!-- Top section: 3 columns with vertical dividers -->
+  <div class="py-12 border-b border-white/20">
     <div class="container">
-      <div class="row gy-4 justify-between">
-        <div class="md:col-6 lg:col-4 xl:col-4">
-          <div class="mb-5 mb-md-0">
-            <Logo
-              src={config.site.logo_footer}
-              class="inline-block"
-              footerLogo={true}
-            />
-            {
-              config.params.footer_description && (
-                <p
-                  class="text-white my-8 text-sm"
-                  set:html={markdownify(config.params.footer_description)}
-                />
-              )
-            }
-            <Social source={social.main} className="social-icons" />
-          </div>
-        </div>
-        {
-          menu.services && menu.services[0] && (
-            <div class="xl:col-2 lg:col-3 md:col-6 sm:col-8 col-6">
-              <h3 class="h5 text-white mb-5" set:html="Services" />
-              <ul class="flex flex-col gap-4">
-                {menu.services.map((menu) => (
-                  <li>
-                    <DynamicIcon
-                      className="inline-block text-white me-2 align-[-1px] text-xs"
-                      icon="TfiAngleRight"
-                    />
-                    <a
-                      href={menu.url}
-                      class="text-white text-sm hover:text-primary"
-                      set:html={menu.name}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-y-6 md:gap-y-0">
 
-        {
-          menu.quick_links && menu.quick_links[0] && (
-            <div class="lg:col-2 md:col-4 sm:col-4 col-6">
-              <h3 class="h5 text-white mb-5" set:html="Services" />
-              <ul class="flex flex-col gap-4">
-                {menu.quick_links.map((menu) => (
-                  <li>
-                    <DynamicIcon
-                      className="inline-block text-white me-2 align-[-1px] text-xs"
-                      icon="TfiAngleRight"
-                    />
-                    <a
-                      href={menu.url}
-                      title={menu.name}
-                      class="text-white text-sm hover:text-primary"
-                      set:html={menu.name}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
+        <!-- Column 1: Main navigation -->
+        <div class="md:flex-1">
+          <ul class="space-y-4 text-left">
+            {(menu.main ?? []).map(item => (
+              <li>
+                <a
+                  href={item.url}
+                  class="text-white uppercase hover:text-red-600 transition-colors"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Vertical divider -->
+        <div class="self-stretch hidden md:block border-l border-white/20 mx-8"></div>
+
+        <!-- Column 2: Contact information -->
+        <div class="md:flex-1">
+          <ul class="space-y-6 text-left">
+            <li class="flex items-center gap-3">
+              <DynamicIcon icon="TfiLocationPin" className="text-red-600" />
+              <a
+                href="https://www.google.com/maps/dir//8101+E+Mt+Houston+Rd+Houston,+TX+77050/@29.8925511,-95.2710786,13z"
+                target="_blank"
+                rel="noopener"
+                class="text-white hover:text-red-600 transition-colors"
+              >
+                8101 E Mt Houston Rd. Houston, TX 77050
+              </a>
+            </li>
+            <li class="flex items-center gap-3">
+              <DynamicIcon icon="TfiEmail" className="text-red-600" />
+              <a
+                href="mailto:sales@apachefabricators.com"
+                class="text-white hover:text-red-600 transition-colors"
+              >
+                sales@apachefabricators.com
+              </a>
+            </li>
+            <li class="flex items-center gap-3">
+              <DynamicIcon icon="TfiHeadphoneAlt" className="text-red-600" />
+              <a
+                href="tel:+18328046236"
+                class="text-white hover:text-red-600 transition-colors"
+              >
+                24/7 Customer Support
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Vertical divider -->
+        <div class="self-stretch hidden md:block border-l border-white/20 mx-8"></div>
+
+        <!-- Column 3: Empty placeholder to maintain layout -->
+        <div class="md:flex-1">
+          <ul class="space-y-4 text-left">
+            <!-- Intentionally left blank -->
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
-  <!-- copyright -->
-  <div class="py-8 relative">
-    <div class="container">
-      <div class="flex md:justify-between flex-wrap gap-x-5 gap-y-2">
-        {
-          config.params.copyright && (
-            <div>
-              <p class="text-white text-sm">
-                {config.params.copyright} | Created by
-                <a
-                  target="_blank"
-                  class="underline hover:text-primary"
-                  rel="noopener noreferrer"
-                  href="https://supremewebworks.com/">
-                  SupremeWebWorks
-                </a>
-              </p>
-            </div>
-          )
-        }
-        {
-          menu.footer && menu.footer[0] && (
-            <ul class="flex flex-wrap gap-y-0 gap-x-4 lg:gap-x-10 md:justify-end text-center md:text-end">
-              {menu.footer.map((menu) => (
-                <li>
-                  <a
-                    class="text-white capitalize text-sm hover:text-primary"
-                    href={menu.url}
-                    title={menu.name}
-                    set:html={menu.name}
-                  />
-                </li>
-              ))}
-            </ul>
-          )
-        }
-      </div>
+
+  <!-- Horizontal separator -->
+  <hr class="border-white/10" />
+
+  <!-- Bottom section: copyright only -->
+  <div class="py-6">
+    <div class="container text-center">
+      <p class="text-white text-sm">
+        © 2022, Company Apache Fabricator. All rights reserved.
+      </p>
     </div>
-    <!-- back to top -->
-    <button class="back-to-top cursor-pointer" aria-label="scroll to top">
-      <DynamicIcon className="inline-block" icon="TfiAngleUp" />
-    </button>
   </div>
 </footer>
-
 <!-- Preloader -->
 {config.params.preloder && <Preloader />}
 
