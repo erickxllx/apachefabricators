@@ -60,7 +60,8 @@ const {
                     <div>
                       {funfact?.count && (
                         <h3 class="lg:h3 mb-1">
-                          <TextCounter value={funfact.count} />
+                          <span>+<TextCounter value={(String(funfact.count)).replace('+', '')} /></span>
+
                         </h3>
                       )}
                       {funfact?.title && (
@@ -93,6 +94,7 @@ const {
                           aria-label="progressbar"
                           style={`width: ${progressbar.progress}`}>
                           <div class="progress-bar-striped absolute w-full h-full left-0 bottom-0" />
+                          <span class="relative z-10">{progressbar.progress}</span>
                         </div>
                       </div>
                     )}

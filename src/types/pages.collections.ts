@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import type { string } from "astro:schema";
 
 export const about = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/about" }),
@@ -277,7 +278,7 @@ export const homepage = defineCollection({
             z.object({
               icon: z.string(),
               title: z.string(),
-              count: z.number(),
+              string: z.string(),
             }),
           )
           .optional(),
