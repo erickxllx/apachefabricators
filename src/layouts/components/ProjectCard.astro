@@ -13,20 +13,17 @@ const { image, title, category } = content.data;
 ---
 
 <div class="relative overflow-hidden">
-  <div class="group">
-    <div
-      class="relative after:content-[''] after:absolute after:inset-0 after:bg-dark/80 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity after:duration-300">
-      {
-        image && (
-          <ImageMod
-            src={image}
-            width={460}
-            height={460}
-            class="w-full"
-            alt={title || "project image"}
-          />
-        )
-      }
-    </div>
+  <div>
+    {
+      image && (
+        <ImageMod
+          src={image}
+          width={460}
+          height={460}
+          class="w-full"
+          alt={title || "project image"}
+        />
+      )
+    }
   </div>
-</div>
+</div> 

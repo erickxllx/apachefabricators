@@ -313,13 +313,16 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
           <div class="col-12">
             <div class="work-slider swiper">
               <div class="swiper-wrapper">
-                {projectsCollection.map((project) => {
-                  return (
-                    <div class="swiper-slide">
+                {projectsCollection
+                  .filter(p => !["project-5", "project-7"].includes(p.id))
+                  .map((project) => (
+                <div class="swiper-slide flex justify-center">
+                    {/* limitamos el ancho de cada tarjeta */}
+                    <div class="max-w-xs">
                       <ProjectCard content={project} />
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </div>
             <div class="swiper-pagination pagination-rounded" />
