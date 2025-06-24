@@ -31,8 +31,8 @@
     },
 "google_map": {
   "enable": true,
-  "address": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.6203990818334!2d-95.26334232365398!3d29.86929277500896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c5ed41cc2dc1%3A0xa309e7edcf79d4c9!2s8101%20E%20Mt%20Houston%20Rd%2C%20Houston%2C%20TX%2077050!5e0!3m2!1ses!2sus!4v1718217924009!5m2!1ses!2sus"
-  }  
+  "address": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13892.3863808551!2d-95.2710786!3d29.8925511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b0f52794f33d%3A0x3b8b98deb6596d0!2s8101%20E%20Mt%20Houston%20Rd%2C%20Houston%2C%20TX%2077050%2C%20USA!5e0!3m2!1sen!2sus!4v1719261768359!5m2!1sen!2sus"
+  }
 },
 
   "navigation_button": {

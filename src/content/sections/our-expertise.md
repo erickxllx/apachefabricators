@@ -7,15 +7,15 @@ content: Apache Fabricators is a certified Manufacturing Company committed to me
 funfacts:
   - icon: TfiServer # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
     title: Projects Done
-    string: +5000
+    count: +5000
 
   - icon: TfiFaceSmile # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
     title: Satisfied Clients
-    string: +789
+    count: +789
 
   - icon: TfiThumbUp # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/
     title: Deliveries
-    string: +5000
+    count: +5000
 
 progressbar:
   - title: Excelence

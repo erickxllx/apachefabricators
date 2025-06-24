@@ -61,17 +61,32 @@ const { title, meta_title, description, image, bg_image, contact_info } =
     </div>
   </section>
 
-  {
-    config.params.google_map &&
-      config.params.google_map.enable &&
-      config.params.google_map.address && (
-        <section>
-          <iframe
-            style="height:400px;width:100%;border:0;"
-            src={config.params.google_map.address}
-            title="google map"
-          />
-        </section>
-      )
-  }
+{
+  config.params.google_map &&
+  config.params.google_map.enable &&
+  config.params.google_map.address && (
+    <section class="flex flex-wrap w-full h-[500px] mt-8 gap-0">
+      {/* Satellite Static Image */}
+      <div class="w-full md:w-1/2 h-full overflow-hidden rounded-none md:rounded-l-lg">
+        <img
+          src="/images/apache_satellite.png"
+          alt="Satellite view of Apache Workforce"
+          class="w-full h-full object-contain"
+        />
+      </div>
+
+      {/* Embedded Google Map */}
+      <div class="w-full md:w-1/2 h-full overflow-hidden rounded-none md:rounded-r-lg">
+        <iframe
+          title="Google Map"
+          loading="lazy"
+          allowFullScreen
+          class="w-full h-full"
+          src={config.params.google_map.address}
+        />
+      </div>
+    </section>
+  )
+}
+
 </Base>

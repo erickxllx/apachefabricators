@@ -1,5 +1,8 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import type { string } from "astro:schema";
+import type { count } from "console";
+import type { Value } from "sass";
 
 export const ctaSection = defineCollection({
   loader: glob({
@@ -49,7 +52,7 @@ export const ourExpertiseSection = defineCollection({
     enable: z.boolean().default(true),
     subtitle: z.string(),
     title: z.string(),
-    content: z.string(),
+    content: z.string(), 
     funfacts: z
       .array(
         z.object({
