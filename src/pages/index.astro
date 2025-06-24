@@ -203,36 +203,53 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
   </section>
 )}
 
-{
-  service?.enable && (
-    <section class="section">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-12 text-center mb-5">
-            {service.subtitle && (
-              <span
-                class="text-lg text-text"
-                set:html={markdownify(service.subtitle)}
-              />
-            )}
-            {service.title && <h2 set:html={markdownify(service.title)} />}
-            <div class="separator" />
-          </div>
+{service?.enable && (
+  <section class="section">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-12 text-center mb-5">
+          {service.subtitle && (
+            <span
+              class="text-lg text-text"
+              set:html={markdownify(service.subtitle)}
+            />
+          )}
+          {service.title && <h2 set:html={markdownify(service.title)} />}
+          <div class="separator" />
+        </div>
 
-          {servicesCollection.slice(0, 6).map((service) => {
+        {servicesCollection.slice(0, 6).map((service, index) => {
+          const baseClass = "md:col-4 xl:col-3";
+
+          // Si estamos en los dos últimos (índices 4 y 5), y quieres centrar
+          if (index === 4) {
             return (
-              <div class="md:col-6 xl:col-4 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1">
+              <div class="flex justify-center w-full gap-4">
+                <div class={baseClass}>
+                  <ServiceCard content={servicesCollection[4]} />
+                </div>
+                <div class={baseClass}>
+                  <ServiceCard content={servicesCollection[5]} />
+                </div>
+              </div>
+            );
+          }
+
+          // Para los primeros 4, sigue igual
+          if (index < 4) {
+            return (
+              <div class={baseClass}>
                 <ServiceCard content={service} />
               </div>
             );
-          })}
-        </div>
+          }
+
+          return null;
+        })}
       </div>
-    </section>
-  )
-}
-
-
+    </div>
+  </section>
+)}
 
   {
     about?.enable && (
