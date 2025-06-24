@@ -221,7 +221,6 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
         {servicesCollection.slice(0, 6).map((service, index) => {
           const baseClass = "md:col-4 xl:col-3";
 
-          // Si estamos en los dos últimos (índices 4 y 5), y quieres centrar
           if (index === 4) {
             return (
               <div class="flex justify-center w-full gap-4">
@@ -235,7 +234,6 @@ const promoVideoBgImage = await bgImageMod(promo_video?.bg_image!);
             );
           }
 
-          // Para los primeros 4, sigue igual
           if (index < 4) {
             return (
               <div class={baseClass}>

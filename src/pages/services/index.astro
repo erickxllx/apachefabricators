@@ -47,7 +47,7 @@ const { Content } = await render(servicesIndex);
 </style>
 
 <Base {...servicesIndex.data}>
-<PageHeader title="Services" bg_image="/images/service/services.png" />
+  <PageHeader title="Services" bg_image="/images/service/services.png" />
 
   <section class="section">
     <div class="container">
@@ -62,7 +62,7 @@ const { Content } = await render(servicesIndex);
 
         {servicesCollection.map((service, index) => {
           let animationClass = "";
-          let delay = index * 0.2; // Delay progresivo
+          let delay = index * 0.2;
 
           if (index < 3) {
             animationClass = "animate-slide-left";
@@ -74,10 +74,12 @@ const { Content } = await render(servicesIndex);
 
           return (
             <div
-              class={`md:col-6 xl:col-4 opacity-0 ${animationClass} transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
+              class={`md:col-6 xl:col-4 opacity-0 ${animationClass}`}
               style={`animation-delay: ${delay}s`}
             >
-              <ServiceCard content={service} />
+              <div class="max-w-xs mx-auto">
+                <ServiceCard content={service} />
+              </div>
             </div>
           );
         })}
