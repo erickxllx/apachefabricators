@@ -9,7 +9,7 @@ draft: false
 philosophy:
   enable: true
   subtitle: QUALITY
-  title: Quality and Safety above ALL!
+  title: Quality And Safety Above All!
   content: We provide the highest quality products and services. We strive to continually improve quality and effectiveness by constant evaluation and review of quality procedures and updating them to remain on the cutting edge of industry standards. Apache Fabricators is dedicated to achieving these goals through ongoing training and communication throughout all levels of the company. The highest emphasis is placed on Safety, Quality and On-Time delivery. Our Quality Management System has been established and implemented to address the design, development, fabrication, installation, and servicing of our products.rem aperieaque ipsa quae ab illo inventore.veritatis. et quasi architecto
   image: "/images/about/philosophy.jpg"
 
@@ -29,7 +29,7 @@ safety:
 protocols:
   enable: true
   subtitle: Enhanced New Hire Orientation Process
-  title: Safety Practices and Protocols
+  title: Safety Practices And Protocols
   content: Apache Fabricators  feels the right attitude is the single largest driver in safe workplace behavior. To ensure the right cultural fit an improved hands-on training program was developed and implemented, mentors assigned, and supervisor evaluations at every stage of training prior to any employee being given autonomous work assignments
   subtitleB: Measurement & Education
   contentB: Apache Fabricators  maintains a comprehensive deck of Safety metrics. The EHS team leverages this data to develop upcoming safety talks, identify areas for improvement, continue to tailor & improve existing initiatives or programs but most importantly to educate the general employee base on what this information means, why it is important & how it can directly impact themselves
