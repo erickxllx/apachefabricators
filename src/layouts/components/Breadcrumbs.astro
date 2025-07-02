@@ -1,9 +1,15 @@
 ---
 import { humanize } from "@/lib/utils/textConverter";
 
-const { class: className }: { class?: string } = Astro.props;
+interface Props {
+  class?: string;
+  title?: string;
+}
+
+const { class: className, title }: Props = Astro.props;
 
 const paths = Astro.url.pathname.split("/").filter((x) => x);
+
 let parts = [
   {
     label: "Home",
@@ -23,6 +29,11 @@ paths.forEach((label: string, i: number) => {
     });
   }
 });
+
+// Sobrescribe el último label si se pasa title
+if (title && parts.length > 1) {
+  parts[parts.length - 1].label = title;
+}
 ---
 
 <nav aria-label="Breadcrumb" class={className}>
@@ -31,7 +42,7 @@ paths.forEach((label: string, i: number) => {
       parts.map(({ label, ...attrs }, index) => (
         <li class="capitalize text-white font-medium" role="listitem">
           {index !== parts.length - 1 ? (
-            <a class="text-white  hover:text-primary" {...attrs}>
+            <a class="text-white hover:text-primary" {...attrs}>
               {label}
             </a>
           ) : (

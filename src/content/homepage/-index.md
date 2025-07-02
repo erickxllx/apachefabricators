@@ -5,13 +5,13 @@ banner_slider:
   slider_item:
     # visible slide
     - bg_image: "/images/banner/banner-1.jpg"
-      title: Apache Fabricators
-      subtitle: is a one-stop-shop for Fabrication and Machining.
+      subtitle:  Is a one-stop-shop for fabrication and machining.
+      title: Apache Fabricators 
       content: We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical, industrial, refining, commercial and more.
       paginationIcon: TfiComments
       paginationName: Welding
       button:
-        enable: true
+        enable: false
         label: More details
         link: /services
       hidden: false
@@ -24,7 +24,7 @@ banner_slider:
       paginationIcon: TfiBarChart
       paginationName: Fabrication
       button:
-        enable: true
+        enable: false
         label: More details
         link: /services
       hidden: true
@@ -36,7 +36,7 @@ banner_slider:
       paginationIcon: TfiStatsUp
       paginationName: CNC MACHINING
       button:
-        enable: true
+        enable: false
         label: More details
         link: /services
       hidden: true
@@ -48,7 +48,7 @@ banner_slider:
       paginationIcon: TfiPackage
       paginationName: Coating
       button:
-        enable: true
+        enable: false
         label: More details
         link: /services
       hidden: true

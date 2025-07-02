@@ -278,7 +278,7 @@ export const homepage = defineCollection({
             z.object({
               icon: z.string(),
               title: z.string(),
-              string: z.string(),
+              count: z.number(),
             }),
           )
           .optional(),

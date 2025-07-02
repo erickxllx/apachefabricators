@@ -67,11 +67,11 @@ const { title, meta_title, description, image, bg_image, contact_info } =
   config.params.google_map.address && (
     <section class="flex flex-wrap w-full h-[500px] mt-8 gap-0">
       {/* Satellite Static Image */}
-      <div class="w-full md:w-1/2 h-full overflow-hidden rounded-none md:rounded-l-lg">
+      <div class="w-full md:w-1/2 h-[500px] bg-white flex items-center justify-center overflow-hidden rounded-none md:rounded-l-lg">
         <img
           src="/images/apache_satellite.png"
           alt="Satellite view of Apache Workforce"
-          class="w-full h-full object-contain"
+          class="max-h-full max-w-full object-contain"
         />
       </div>
 
