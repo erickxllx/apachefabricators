@@ -25,6 +25,12 @@ const { title, meta_title, description, image, bg_image, overview, category } =
   project.data;
 const { Content } = await render(project);
 
+// Most entries carry the same sentence as body and description. Render the
+// body only when it actually says something the statement above does not.
+const normalize = (value = "") => value.replace(/\s+/g, " ").trim();
+const hasExtraBody =
+  !!project.body && normalize(project.body) !== normalize(description);
+
 const email = config.params.contact_info.email;
 const phone = config.params.contact_info.phone;
 const phoneDisplay = phone.replace(
@@ -97,7 +103,7 @@ const others = siblings.filter((item) => item.id !== project.id);
             )
           }
           {
-            project.body && (
+            hasExtraBody && (
               <div class="content mt-8 max-w-[64ch]">
                 <Content />
               </div>

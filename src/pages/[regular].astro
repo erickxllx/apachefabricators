@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import { render } from "astro:content";
@@ -18,8 +19,14 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const { title, meta_title, description, image } = page.data;
-const { Content } = await render(page);
+const { title, meta_title, description, image, updated } = page.data;
+const { Content, headings } = await render(page);
+
+// These pages are reference documents, not articles: a reader arrives looking
+// for one clause. The section list is the way in.
+const sections = headings.filter((heading) => heading.depth === 2);
+
+const email = config.params.contact_info.email;
 ---
 
 <Base
@@ -28,19 +35,114 @@ const { Content } = await render(page);
   description={description}
   image={image}>
   <PageHeader title={title} />
+
   <section class="section-sm">
     <div class="container">
-      <div class="row justify-center">
-        <div class="lg:col-10">
+      <div class="grid gap-x-16 gap-y-10 lg:grid-cols-12">
+        <!-- Section index -->
+        {
+          sections.length > 1 && (
+            <nav
+              aria-labelledby="contents-heading"
+              class="lg:col-span-3 lg:sticky lg:top-8 lg:self-start">
+              <h2 id="contents-heading" class="label border-b border-border pb-3">
+                Contents
+              </h2>
+              <ol class="mt-4 space-y-2.5">
+                {sections.map((section, index) => (
+                  <li class="flex gap-3">
+                    <span class="data text-xs text-text-light pt-[3px]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <a
+                      href={`#${section.slug}`}
+                      class="text-[14px] leading-6 text-text transition-colors hover:text-primary">
+                      {section.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )
+        }
+
+        <!-- The document -->
+        <div
+          class={
+            sections.length > 1
+              ? "lg:col-span-8 lg:col-start-5"
+              : "lg:col-span-9"
+          }>
+          {
+            updated && (
+              <p class="label border-b border-border pb-4">
+                Last updated {updated}
+              </p>
+            )
+          }
+
+          {
+            description && (
+              <p class="mt-8 max-w-[34ch] text-[clamp(1.35rem,1.05rem+1.1vw,1.85rem)] font-extrabold leading-[1.25] tracking-[-0.025em] text-text-dark">
+                {description}
+              </p>
+            )
+          }
+
           {
             page.body && (
-              <div class="content">
+              <div class="content legal-doc mt-10 max-w-[68ch]">
                 <Content />
               </div>
             )
           }
+
+          <aside class="mt-14 border-t-2 border-text-dark pt-6">
+            <p class="label">Questions about this policy</p>
+            <p class="mt-3 text-text">
+              Write to{" "}
+              <a class="font-semibold text-primary underline" href={`mailto:${email}`}>
+                {email}
+              </a>{" "}
+              and we will answer.
+            </p>
+          </aside>
         </div>
       </div>
     </div>
   </section>
 </Base>
+
+<style is:global>
+  /* A legal document is scanned for one clause, so the section starts have to
+     be findable. Rules and generous leading do that work, not larger type. */
+  .legal-doc h2 {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-top: 2.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+    scroll-margin-top: 2rem;
+  }
+
+  .legal-doc h2:first-child {
+    margin-top: 0;
+  }
+
+  .legal-doc p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-top: 1rem;
+  }
+
+  .legal-doc p strong {
+    color: var(--color-text-dark);
+  }
+
+  /* The closing address block reads as an address, not as prose. */
+  .legal-doc h2:last-of-type + p {
+    line-height: 1.8;
+  }
+</style>

@@ -387,6 +387,9 @@ export const pages = defineCollection({
     meta_title: z.string().optional(),
     image: z.string().optional(),
     draft: z.boolean().optional(),
+    // Legal pages are read against their revision date, so it belongs in the
+    // page furniture rather than buried in the first line of the body.
+    updated: z.string().optional(),
   }),
 });
 
