@@ -23,6 +23,11 @@
     "contact_form_action": "/contact",
     "footer_description": "Fabrication, machining and repair for onshore, offshore, subsea, petrochemical, refining, industrial and commercial markets. One 60,000 sq ft shop in Houston, Texas.",
     "copyright": "Apache Fabricators. All rights reserved.",
+    "credit": {
+      "label": "Website by",
+      "name": "Supreme WebWorks",
+      "url": "https://supremewebworks.com/"
+    },
     "contact_info": {
       "email": "sales@apachefabricators.com",
       "phone": "+18328046236"

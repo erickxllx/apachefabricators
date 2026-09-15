@@ -12,6 +12,7 @@ const phoneDisplay = phone.replace(
   /^\+1(\d{3})(\d{3})(\d{4})$/,
   "+1 ($1) $2-$3",
 );
+const credit = config.params.credit;
 const address = "8101 E Mt Houston Rd. Houston, TX 77050";
 const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
 const year = new Date().getFullYear();
@@ -105,9 +106,26 @@ const year = new Date().getFullYear();
 
   <div class="py-6">
     <div class="container">
-      <p class="text-center text-sm text-white/70">
-        &copy; {year} {config.params.copyright}
-      </p>
+      <div
+        class="flex flex-col items-center justify-between gap-2 text-sm sm:flex-row">
+        <p class="m-0 text-white/70">
+          &copy; {year} {config.params.copyright}
+        </p>
+        {
+          credit?.url && (
+            <p class="m-0 text-white/50">
+              {credit.label}{" "}
+              <a
+                href={credit.url}
+                target="_blank"
+                rel="noopener"
+                class="text-white/75 underline decoration-white/25 underline-offset-4 transition-colors hover:text-secondary hover:decoration-secondary">
+                {credit.name}
+              </a>
+            </p>
+          )
+        }
+      </div>
     </div>
   </div>
 </footer>
