@@ -10,11 +10,17 @@ const { class: className, title }: Props = Astro.props;
 
 const paths = Astro.url.pathname.split("/").filter((x) => x);
 
-let parts = [
+type Crumb = {
+  label: string;
+  href: string;
+  "aria-current"?: "page";
+};
+
+let parts: Crumb[] = [
   {
     label: "Home",
     href: "/",
-    "aria-label": Astro.url.pathname === "/" ? "page" : undefined,
+    "aria-current": Astro.url.pathname === "/" ? "page" : undefined,
   },
 ];
 
@@ -25,7 +31,7 @@ paths.forEach((label: string, i: number) => {
     parts.push({
       label: humanize(label.replace(".html", "").replace(/[-_]/g, " ")) || "",
       href,
-      "aria-label": Astro.url.pathname === href ? "page" : undefined,
+      "aria-current": Astro.url.pathname === href ? ("page" as const) : undefined,
     });
   }
 });
@@ -37,16 +43,16 @@ if (title && parts.length > 1) {
 ---
 
 <nav aria-label="Breadcrumb" class={className}>
-  <ol class="breadcrumb" role="list">
+  <ol class="breadcrumb">
     {
       parts.map(({ label, ...attrs }, index) => (
-        <li class="capitalize text-white font-medium" role="listitem">
+        <li class="capitalize text-white font-medium">
           {index !== parts.length - 1 ? (
             <a class="text-white hover:text-primary" {...attrs}>
               {label}
             </a>
           ) : (
-            <span class="text-sm" set:html={label} />
+            <span class="text-sm" aria-current="page" set:html={label} />
           )}
         </li>
       ))

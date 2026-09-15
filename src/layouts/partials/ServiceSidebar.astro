@@ -1,162 +1,100 @@
 ---
 import config from "@/config/config.json";
 import DynamicIcon from "@/helpers/DynamicIcon";
-import { markdownify, slugify } from "@/lib/utils/textConverter";
-import type { CollectionEntry } from "astro:content";
+import { markdownify } from "@/lib/utils/textConverter";
+
+type Entry = {
+  id: string;
+  data: { title: string; regular_day?: string; regular_time?: string; off_day?: string };
+};
 
 type Props = {
-  content: CollectionEntry<"services">;
-  servicesCollection: CollectionEntry<"services">[];
+  content: Entry;
+  servicesCollection: Entry[];
 };
 
 const { content, servicesCollection } = Astro.props;
+const { regular_day, regular_time, off_day } = content.data;
 
-const { brochure, regular_day, regular_time, half_day, half_time, off_day } =
-  content.data;
+const { phone, email } = config.params.contact_info;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
 ---
 
 <aside class="lg:col-4 lg:order-1 order-2">
   <div class="flex flex-col gap-10 lg:gap-14">
     {
       servicesCollection && (
-        <ul class="[&>:not(:last-child)]:border-b [&>:not(:last-child)]:border-border border border-border pl-0 rounded overflow-hidden">
-          {servicesCollection.map((serviceItem) => {
-            if (!serviceItem.data.title) return null;
-            const { title } = serviceItem.data;
+        <nav aria-label="Services">
+          <ul class="border border-border">
+            {servicesCollection.map((serviceItem) => {
+              const { title } = serviceItem.data;
+              if (!title) return null;
+              const isCurrent = serviceItem.id === content.id;
 
-            return (
-              <li>
-                <a
-                  href={`/services/${slugify(title)}`}
-                  class={`btn hover:btn-primary-dark w-full rounded-none px-6 py-6${
-                    serviceItem.id === content.id ? ` btn-primary-dark` : ""
-                  }`}
-                  set:html={markdownify(title)}
-                />
-              </li>
-            );
-          })}
-        </ul>
+              return (
+                <li class="border-b border-border last:border-b-0">
+                  {/* The link is built from the entry id. Building it from
+                      slugify(title) produced URLs that did not exist. */}
+                  <a
+                    href={`/services/${serviceItem.id}`}
+                    aria-current={isCurrent ? "page" : undefined}
+                    class={`block px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] transition-colors ${
+                      isCurrent
+                        ? "bg-primary text-white"
+                        : "text-text-dark hover:bg-light hover:text-primary"
+                    }`}
+                    set:html={markdownify(title)}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       )
     }
 
-    {
-      brochure && (
-        <div class="rounded border border-border py-4 px-6 flex gap-1">
-          <DynamicIcon
-            className="inline-block mr-2 mt-1 text-text-dark text-xl"
-            icon="TfiFiles"
-          />
-          <div class="ml-1">
-            <h2 class="mb-1 inline-block h5" set:html="Service Brochure" />
-            <a
-              download=""
-              class="block text-text-dark underline"
-              href={brochure}
-              set:html="Download pdf"
-            />
-          </div>
-        </div>
-      )
-    }
-
-    <div>
-      <h2 class="mb-5 h5" set:html="Opening Hours" />
-      <ul class="flex flex-col gap-3 border border-border rounded px-6 py-8 h5">
+    <div class="border border-border p-6">
+      <h2 class="h6 mb-4">Opening Hours</h2>
+      <dl class="space-y-2">
         {
           regular_time && (
-            <li class="text-sm flex">
-              <span class="inline-block font-light text-text-dark w-[80px]">
-                {regular_day}:
-              </span>
-              {regular_time}
-            </li>
-          )
-        }
-        {
-          half_day && (
-            <li class="text-sm flex">
-              <span class="inline-block font-light text-text-dark w-[80px]">
-                {half_day}:
-              </span>
-              {half_time}
-            </li>
+            <div class="flex justify-between gap-4 text-sm">
+              <dt class="text-text">{regular_day}</dt>
+              <dd class="data text-text-dark">{regular_time}</dd>
+            </div>
           )
         }
         {
           off_day && (
-            <li class="text-sm flex">
-              <span class="inline-block font-light text-text-dark w-[80px]">
-                {off_day}:
-              </span>
-              {off_day}
-            </li>
+            <div class="flex justify-between gap-4 text-sm">
+              <dt class="text-text">{off_day}</dt>
+              <dd class="data text-text-dark">Closed</dd>
+            </div>
           )
         }
-      </ul>
+      </dl>
     </div>
 
-    {
-      config.service_consultation_form &&
-        config.service_consultation_form.enable && (
-          <div>
-            <h2
-              class="mb-5 h5"
-              set:html={markdownify(config.service_consultation_form.title)}
-            />
-            <form
-              action={config.service_consultation_form.form_action}
-              method="post"
-              class="row gy-3">
-              <div class="lg:col-12">
-                <input
-                  type="text"
-                  class="form-input"
-                  name="name"
-                  id="name"
-                  placeholder="Name"
-                  required
-                />
-              </div>
-              <div class="lg:col-12">
-                <input
-                  type="email"
-                  class="form-input"
-                  name="email"
-                  id="email"
-                  placeholder="Email Address"
-                  required
-                />
-              </div>
-              <div class="lg:col-12">
-                <input
-                  type="text"
-                  class="form-input"
-                  name="subject"
-                  id="subject"
-                  placeholder="Subject"
-                  required
-                />
-              </div>
-              <div class="lg:col-12">
-                <textarea
-                  name="question"
-                  id="question"
-                  class="form-input"
-                  placeholder="Your Question Here..."
-                  style="height: 150px;"
-                />
-              </div>
-              <div class="lg:col-12">
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  set:html="Submit"
-                />
-              </div>
-            </form>
-          </div>
-        )
-    }
+    <div class="border border-border p-6">
+      <h2 class="h6 mb-2">Request a quote</h2>
+      <p class="mb-5 text-sm leading-6 text-text-dark/75">
+        Send drawings or a scope of work and we will come back with pricing and
+        a schedule.
+      </p>
+      <ul class="mb-5 space-y-2 text-sm">
+        <li class="flex items-center gap-2">
+          <DynamicIcon icon="TfiHeadphoneAlt" className="text-secondary" />
+          <a class="data" href={`tel:${phone}`}>{phoneDisplay}</a>
+        </li>
+        <li class="flex items-center gap-2">
+          <DynamicIcon icon="TfiEmail" className="text-secondary" />
+          <a href={`mailto:${email}`}>{email}</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary btn-sm w-full" href="/contact">Contact us</a>
+    </div>
   </div>
 </aside>

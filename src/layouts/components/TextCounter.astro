@@ -1,10 +1,13 @@
 ---
 interface Props {
   dataCounterTime?: string;
-  value: number;
+  value: number | string;
 }
 
 const { value, dataCounterTime = "1800" } = Astro.props;
+
+// Strip any decoration so the counter script always sees a plain integer.
+const numeric = String(value).replace(/[^\d]/g, "");
 ---
 
-<span class="counter" data-counter-time={dataCounterTime} set:html={value} />
+<span class="counter" data-counter-time={dataCounterTime} set:html={numeric} />

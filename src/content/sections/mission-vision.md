@@ -4,7 +4,7 @@ subtitle: Experience to be trusted
 title: Company Mission
 content: Apache Fabricators Mission Statement! Apache Fabricators mission is to provide an exceptional level of Fabrication services resulting in recognition as the leader and preferred contractor in the global offshore, onshore and subsea energy industry. Apache Fabricators are committed to delivering unparalleled service and industry solution – with the highest priority on safety that exceeds client’s expectations.
 
-image: "/images/chart.png"
+image: "/images/chart.jpg"
 accordion:
   - title: Our Company Mission
     description: At Apache Fabricators, our mission is to deliver exceptional fabrication services that position us as the leader and preferred contractor in the global offshore, onshore, and subsea energy industry. We are committed to providing unparalleled service and tailored industry solutions while prioritizing safety and consistently exceeding our clients' expectations.

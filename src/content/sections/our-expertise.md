@@ -18,7 +18,7 @@ funfacts:
     count: +5000
 
 progressbar:
-  - title: Excelence
+  - title: Excellence
     progress: 100%
 
   - title: Service

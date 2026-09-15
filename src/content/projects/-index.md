@@ -1,12 +1,12 @@
 ---
-title: Our Project
-date: 2018-07-12T18:19:33+06:00
+title: Certifications
+date: 2025-01-01T00:00:00+00:00
 bg_image: "/images/background/page-title.jpg"
-description: This is meta description
-meta_title: Our Project
+description: "Certifications held by Apache Fabricators: AISC, ASME U Stamp, National Board R Stamp, ASME Certification Mark, ISO 9001:2015 and ISO 45001."
+meta_title: Certifications
 image: ""
 ---
 
-## Our Projects
+## Certifications
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br> tempor incididunt ut labore et dolore magna aliqua.
+Apache Fabricators holds current certifications covering structural steel, pressure vessels, repair and alteration, quality management and occupational health and safety.

@@ -1,27 +1,17 @@
 ---
-title: COATING
+title: Coating
 date: 2018-09-29T11:51:17+06:00
-description: This is meta description
-short_description: Leverage data analytics for informed decision-making. Our consultants provide data-driven insights
-image: "/images/service/coating.png"
+description: "Industrial coating and corrosion protection at Apache Fabricators."
+short_description: "Industrial coating and corrosion protection at Apache Fabricators."
+image: "/images/capability/coating.png"
+detail_image: "/images/service-detail/coating.webp"
 bg_image: "/images/background/page-title.jpg"
-brochure: "#?"
-regular_day: Sun-Tues
-regular_time: 08.00am - 06.00pm
-half_day: Thursday
-half_time: 08.00am - 01.00pm
-off_day: Friday
+brochure: ""
+regular_day: Mon-Fri
+regular_time: 8:00am - 5:00pm
+half_day: ""
+half_time: ""
+off_day: Sat-Sun
 ---
 
-### Leverage data analytics for informed decision-making
-Hola
-
-> Excepteur sint occaecat cupidatat non proident sunt culpa officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis.
-
-1. Business Hola
-2. Audit & Assurance
-3. IT Control Solutions
-
-#### Marketing Improvement Strategy
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+Industrial coating and corrosion protection at Apache Fabricators.

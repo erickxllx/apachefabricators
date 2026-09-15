@@ -6,83 +6,50 @@ import PageHeader from "@/partials/PageHeader.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry, render } from "astro:content";
 
-const COLLECTION_FOLDER = "servicesMain";
 const servicesIndex = (await getEntry(
   "servicesMain",
-  "-index"
+  "-index",
 )) as CollectionEntry<"servicesMain">;
-const { title, bg_image } = servicesIndex.data;
-const servicesCollection = await getSinglePage(COLLECTION_FOLDER);
+
+const capabilities = await getSinglePage("servicesMain");
+const industries = await getSinglePage("services");
 const { Content } = await render(servicesIndex);
 ---
 
-<style>
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  .animate-slide-left {
-    animation-name: slideInLeft;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-  }
-
-  .animate-slide-right {
-    animation-name: slideInRight;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-  }
-
-  .content h2 {
-    text-align: center;
-  }
-</style>
-
 <Base {...servicesIndex.data}>
-  <PageHeader title="Services" bg_image="/images/service/services.png" />
+  <PageHeader title="Services" bg_image="/images/service/services.jpg" />
 
   <section class="section">
     <div class="container">
-      <div class="row gy-4">
-        <div class="col-12 mb-5">
-          {servicesIndex.body && (
-            <div class="content max-w-3xl mx-auto text-center">
-              {Content && <Content />}
+      <div class="mb-12 max-w-[68ch]">
+        {
+          servicesIndex.body && (
+            <div class="content">
+              <Content />
             </div>
-          )}
-        </div>
+          )
+        }
+      </div>
 
-        {servicesCollection.map((service, index) => {
-          let animationClass = "";
-          let delay = index * 0.2;
+      <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        {
+          capabilities.map((service) => (
+            <ServiceCard content={service} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-          if (index < 3) {
-            animationClass = "animate-slide-left";
-          } else if (index >= 3 && index < 6) {
-            animationClass = "animate-slide-right";
-          } else if (index === 6) {
-            animationClass = "mx-auto animate-slide-left";
-          }
+  <section class="section border-t border-border bg-light">
+    <div class="container">
+      <div class="mb-8">
+        <p class="kicker">Industries</p>
+      </div>
+      <h2 class="mb-10 max-w-[24ch]">Markets We Serve</h2>
 
-          return (
-            <div
-              class={`md:col-6 xl:col-4 opacity-0 ${animationClass}`}
-              style={`animation-delay: ${delay}s`}
-            >
-              <div class="max-w-xs mx-auto">
-                <ServiceCard content={service} />
-              </div>
-            </div>
-          );
-        })}
+      <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        {industries.map((service) => <ServiceCard content={service} />)}
       </div>
     </div>
   </section>

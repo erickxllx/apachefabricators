@@ -1,15 +1,23 @@
 ---
+import config from "@/config/config.json";
+
 interface Props {
   class?: string;
+  src?: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, src } = Astro.props;
+const { logo, logo_width, logo_height, logo_text, title } = config.site;
 ---
 
-<a href="/" class="inline-block">
+<a href="/" class="inline-block" aria-label={`${logo_text || title} — home`}>
   <img
-    src="/images/logo.png"
-    class={`h-[100px] ${className ?? ""}`}
-    loading="lazy"
+    src={src || logo}
+    alt={logo_text || title}
+    width={logo_width}
+    height={logo_height}
+    class={`h-[100px] w-auto ${className ?? ""}`}
+    loading="eager"
+    decoding="async"
   />
 </a>

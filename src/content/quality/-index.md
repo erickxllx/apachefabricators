@@ -1,7 +1,7 @@
 ---
 title: Quality and Safety
 bg_image: "/images/background/page-title.jpg"
-description: This is meta description
+description: "Apache Fabricators quality and safety program: ASME, AISC and ISO certifications, the 20-20-20 exercise, Stop Work Obligation and a drug-free workplace."
 meta_title: Quality and Safety
 image: ""
 draft: false
@@ -10,7 +10,7 @@ philosophy:
   enable: true
   subtitle: QUALITY
   title: Quality And Safety Above All!
-  content: We provide the highest quality products and services. We strive to continually improve quality and effectiveness by constant evaluation and review of quality procedures and updating them to remain on the cutting edge of industry standards. Apache Fabricators is dedicated to achieving these goals through ongoing training and communication throughout all levels of the company. The highest emphasis is placed on Safety, Quality and On-Time delivery. Our Quality Management System has been established and implemented to address the design, development, fabrication, installation, and servicing of our products.rem aperieaque ipsa quae ab illo inventore.veritatis. et quasi architecto
+  content: We provide the highest quality products and services. We strive to continually improve quality and effectiveness by constant evaluation and review of quality procedures and updating them to remain on the cutting edge of industry standards. Apache Fabricators is dedicated to achieving these goals through ongoing training and communication throughout all levels of the company. The highest emphasis is placed on Safety, Quality and On-Time delivery. Our Quality Management System has been established and implemented to address the design, development, fabrication, installation, and servicing of our products.
   image: "/images/about/philosophy.jpg"
 
 safety:

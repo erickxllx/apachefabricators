@@ -36,7 +36,7 @@ const uniqCategories = [...new Set([...categories])];
       <section class="section">
         <div class="container">
           <div class="row gy-4">
-            <div class="col-12 text-center mb-5">
+            <div class="col-12 mb-10 max-w-[60ch]">
               {projectsIndex.body && (
                 <div class="content">
                   <Content />
@@ -45,10 +45,10 @@ const uniqCategories = [...new Set([...categories])];
             </div>
             <div class="col-12">
               {uniqCategories && (
-                <ul class="flex flex-wrap justify-start md:justify-center gap-2 md:gap-x-4 gap-y-4">
+                <ul class="flex flex-wrap justify-start gap-2 gap-y-3">
                   <li>
                     <button
-                      class="transition block px-6 py-1.5 border border-border rounded-full text-text-dark bg-light text-base hover:bg-primary hover:text-white [&.active]:bg-primary [&.active]:text-white active"
+                      class="transition block px-6 py-1.5 border border-border rounded-sm text-text-dark bg-light text-base hover:bg-primary hover:text-white [&.active]:bg-primary [&.active]:text-white active"
                       data-clear-filter-btn="all"
                       set:html="All"
                     />
@@ -56,7 +56,7 @@ const uniqCategories = [...new Set([...categories])];
                   {uniqCategories.map((category) => (
                     <li>
                       <button
-                        class="filter-btn transition block px-6 py-1.5 border border-border rounded-full text-text-dark bg-light text-sm md:text-base hover:bg-primary hover:text-white [&.active]:bg-primary [&.active]:text-white"
+                        class="filter-btn transition block px-6 py-1.5 border border-border rounded-sm text-text-dark bg-light text-sm md:text-base hover:bg-primary hover:text-white [&.active]:bg-primary [&.active]:text-white"
                         data-type-filter-btn={category}
                         set:html={category}
                       />

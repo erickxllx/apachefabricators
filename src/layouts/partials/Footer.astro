@@ -6,283 +6,284 @@ import config from "@/config/config.json";
 import DynamicIcon from "@/helpers/DynamicIcon";
 import menu from "@/config/menu.json";
 import social from "@/config/social.json";
-import { markdownify } from "@/lib/utils/textConverter";
+
+const { phone, email } = config.params.contact_info;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
+const address = "8101 E Mt Houston Rd. Houston, TX 77050";
+const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+const year = new Date().getFullYear();
 ---
 
-<footer class="bg-black text-white">
-  <!-- Top section: 3 columns with vertical dividers -->
-  <div class="py-12 border-b border-white/20">
+<footer class="bg-dark text-white">
+  <div class="border-b border-white/15 py-14">
     <div class="container">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-y-6 md:gap-y-0">
-
-        <!-- Column 1: Main navigation -->
-        <div class="md:flex-1">
-          <ul class="space-y-4 text-left">
-            {(menu.main ?? []).map(item => (
-              <li>
-                <a
-                  href={item.url}
-                  class="text-white uppercase hover:text-red-600 transition-colors"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+      <div class="grid gap-10 md:grid-cols-3 md:gap-8">
+        <!-- Column 1: identity -->
+        <div>
+          <Logo src="/images/logo-light.png" class="!h-[56px]" />
+          <p class="mt-5 max-w-[38ch] text-sm leading-6 text-white/75">
+            {config.params.footer_description}
+          </p>
+          {
+            social.main?.length > 0 && (
+              <Social source={social.main} className="social-icons mt-6" />
+            )
+          }
         </div>
 
-        <!-- Vertical divider -->
-        <div class="self-stretch hidden md:block border-l border-white/20 mx-8"></div>
+        <!-- Column 2: navigation -->
+        <nav aria-label="Footer">
+          <h2
+            class="kicker kicker-quiet mb-5 !text-white/55">
+            Site
+          </h2>
+          <ul class="space-y-3">
+            {
+              (menu.main ?? []).map((item) => (
+                <li>
+                  <a
+                    href={item.url}
+                    class="text-sm uppercase tracking-[0.06em] text-white transition-colors hover:text-secondary">
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
 
-        <!-- Column 2: Contact information -->
-        <div class="md:flex-1">
-          <ul class="space-y-6 text-left">
-            <li class="flex items-center gap-3">
-              <DynamicIcon icon="TfiLocationPin" className="text-red-600" />
+        <!-- Column 3: contact -->
+        <div>
+          <h2
+            class="kicker kicker-quiet mb-5 !text-white/55">
+            Contact
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <DynamicIcon
+                icon="TfiLocationPin"
+                className="mt-1 shrink-0 text-secondary"
+              />
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=8101+E+Mt+Houston+Rd,+Houston,+TX+77050&hl=en"
+                href={mapsHref}
                 target="_blank"
                 rel="noopener"
-                class="text-white hover:text-red-600 transition-colors"
-              >
-                8101 E Mt Houston Rd. Houston, TX 77050
+                class="text-white transition-colors hover:text-secondary">
+                {address}
               </a>
             </li>
-            <li class="flex items-center gap-3">
-              <DynamicIcon icon="TfiEmail" className="text-red-600" />
+            <li class="flex items-start gap-3">
+              <DynamicIcon
+                icon="TfiEmail"
+                className="mt-1 shrink-0 text-secondary"
+              />
               <a
-                href="mailto:sales@apachefabricators.com"
-                class="text-white hover:text-red-600 transition-colors"
-              >
-                sales@apachefabricators.com
+                href={`mailto:${email}`}
+                class="text-white transition-colors hover:text-secondary">
+                {email}
               </a>
             </li>
-            <li class="flex items-center gap-3">
-              <DynamicIcon icon="TfiHeadphoneAlt" className="text-red-600" />
+            <li class="flex items-start gap-3">
+              <DynamicIcon
+                icon="TfiHeadphoneAlt"
+                className="mt-1 shrink-0 text-secondary"
+              />
               <a
-                href="tel:+18328046236"
-                class="text-white hover:text-red-600 transition-colors"
-              >
-                24/7 Customer Support
+                href={`tel:${phone}`}
+                class="data text-white transition-colors hover:text-secondary">
+                {phoneDisplay}
               </a>
             </li>
           </ul>
         </div>
-
-        <!-- Vertical divider -->
-        <div class="self-stretch hidden md:block border-l border-white/20 mx-8"></div>
-
-        <!-- Column 3: Empty placeholder to maintain layout -->
-        <div class="md:flex-1">
-          <ul class="space-y-4 text-left">
-            <!-- Intentionally left blank -->
-          </ul>
-        </div>
-
       </div>
     </div>
   </div>
 
-  <!-- Horizontal separator -->
-  <hr class="border-white/10" />
-
-  <!-- Bottom section: copyright only -->
   <div class="py-6">
-    <div class="container text-center">
-      <p class="text-white text-sm">
-        © 2025, Company Apache Fabricator. All rights reserved.
+    <div class="container">
+      <p class="text-center text-sm text-white/70">
+        &copy; {year} {config.params.copyright}
       </p>
     </div>
   </div>
 </footer>
-<!-- Preloader -->
 {config.params.preloder && <Preloader />}
 
 <script>
   import { Swiper } from "swiper";
   import "swiper/css";
-  import { Autoplay, Navigation, Pagination, Thumbs } from "swiper/modules";
+  import {
+    A11y,
+    Autoplay,
+    Keyboard,
+    Navigation,
+    Pagination,
+    Thumbs,
+  } from "swiper/modules";
 
-  window.addEventListener("load", function () {
+  // Wait for the DOM, not for every image. Waiting on `load` left the sliders
+  // dead and the preloader up until the last asset had downloaded.
+  const start = () => {
     const body = document.body;
 
-    // Hide preloader
-    const preloader = document.querySelector(".preloader");
-    preloader?.classList.add("hidden");
+    // Nothing auto-advances when the visitor has asked for reduced motion.
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const autoplay = (delay: number) =>
+      reduceMotion ? false : { delay, pauseOnMouseEnter: true };
 
-    // back to top button in plain js
-    let backToTop = document.querySelector(".back-to-top");
-    backToTop?.addEventListener("click", function () {
+    document.querySelector(".preloader")?.classList.add("hidden");
+
+    document.querySelector(".back-to-top")?.addEventListener("click", () => {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     });
 
-    // Toggle active class on dropdown item
-    const navLinks = document.querySelectorAll(".nav-dropdown .nav-link");
-    navLinks.forEach((navlink) => {
-      navlink.addEventListener("click", function () {
-        // @ts-ignore
-        this.parentElement.classList.toggle("active");
+    document.querySelectorAll(".nav-dropdown .nav-link").forEach((navlink) => {
+      navlink.addEventListener("click", function (this: HTMLElement) {
+        this.parentElement?.classList.toggle("active");
       });
     });
 
-    // Sliders
-    // ----------------------------------------
-    // Hero Slider
+    // Hero slider
     const bannerNavSlider = new Swiper(".banner-nav-slider", {
       spaceBetween: 10,
       slidesPerView: 4,
       watchSlidesProgress: true,
     });
     new Swiper(".banner-slider", {
-      modules: [Navigation, Pagination, Autoplay, Thumbs],
+      modules: [Navigation, Pagination, Autoplay, Thumbs, A11y, Keyboard],
       slidesPerView: 1,
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 10000,
-      },
+      // `rewind` instead of `loop`: loop clones slides, which duplicated the
+      // hero heading several times over in the DOM.
+      rewind: true,
+      autoplay: autoplay(10000),
+      keyboard: { enabled: true },
+      a11y: { enabled: true },
       navigation: {
         nextEl: ".swiper-navigation .next-arrow",
         prevEl: ".swiper-navigation .prev-arrow",
       },
-      thumbs: {
-        swiper: bannerNavSlider,
-      },
+      thumbs: { swiper: bannerNavSlider },
     });
 
-    // Work Slider
-    new Swiper(".work-slider", {
-      modules: [Pagination, Autoplay],
-      autoHeight: true,
+    // Certification slider
+    const certSlider = new Swiper(".work-slider", {
+      modules: [Pagination, Autoplay, A11y, Keyboard],
       loop: true,
-      autoplay: {
-        delay: 1000,
-        pauseOnMouseEnter: true,
-      },
+      // Was 1000ms, which made the certifications unreadable.
+      autoplay: autoplay(7000),
+      keyboard: { enabled: true },
+      a11y: { enabled: true },
       pagination: {
         el: ".work-slider + .swiper-pagination",
         clickable: true,
       },
       breakpoints: {
-        0: {
-          slidesPerView: "auto",
-        },
-        576: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-        991: {
-          slidesPerView: 4,
-        },
+        0: { slidesPerView: 1 },
+        576: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        991: { slidesPerView: 4 },
       },
     });
 
-    // Testimonial Slider
+    // Visible, permanent pause control (WCAG 2.2.2)
+    const toggle = document.querySelector<HTMLButtonElement>(
+      "[data-slider-toggle]",
+    );
+    if (toggle) {
+      if (reduceMotion) {
+        toggle.hidden = true;
+      } else {
+        let playing = true;
+        const paint = () => {
+          toggle.setAttribute("aria-pressed", String(!playing));
+          toggle.textContent = playing ? "Pause" : "Play";
+        };
+        toggle.addEventListener("click", () => {
+          playing = !playing;
+          if (playing) certSlider.autoplay?.start();
+          else certSlider.autoplay?.stop();
+          paint();
+        });
+        paint();
+      }
+    }
+
+    // Testimonial slider
     new Swiper(".testimonial-slider", {
-      modules: [Navigation, Autoplay],
+      modules: [Navigation, Autoplay, A11y, Keyboard],
       slidesPerView: 1,
       centeredSlides: true,
       spaceBetween: 80,
-      autoplay: {
-        delay: 3000,
-        pauseOnMouseEnter: true,
-      },
+      autoplay: autoplay(8000),
+      keyboard: { enabled: true },
+      a11y: { enabled: true },
       navigation: {
         prevEl: ".swiper-navigation .prevArrow",
         nextEl: ".swiper-navigation .nextArrow",
       },
     });
 
-    // Client Logo Slider
+    // Client logo slider
     new Swiper(".client-logo-slider", {
-      modules: [Autoplay],
+      modules: [Autoplay, A11y],
       loop: true,
-      autoplay: {
-        delay: 3000,
-        pauseOnMouseEnter: true,
-      },
+      autoplay: autoplay(5000),
+      a11y: { enabled: true },
       breakpoints: {
-        0: {
-          slidesPerView: 2,
-        },
-        576: {
-          slidesPerView: 3,
-        },
-        1024: {
-          slidesPerView: 5,
-        },
+        0: { slidesPerView: 2 },
+        576: { slidesPerView: 3 },
+        1024: { slidesPerView: 5 },
       },
     });
 
-    // Counter
-    // ----------------------------------------
-
-    // You can change this class to specify which elements are going to behave as counters.
-    const elements = document.querySelectorAll<HTMLElement>(".counter");
-
-    elements.forEach((item) => {
-      // Add new attributes to the elements with the '.counter' HTML class
-      (item as any).counterAlreadyFired = false;
-      (item as any).counterSpeed =
-        parseInt(item.getAttribute("data-counter-time") || "0", 10) / 45;
-      (item as any).counterTarget = +item.innerText;
-      (item as any).counterCount = 0;
-      (item as any).counterStep =
-        (item as any).counterTarget / (item as any).counterSpeed;
-
-      (item as any).updateCounter = function () {
-        (item as any).counterCount =
-          (item as any).counterCount + (item as any).counterStep;
-        item.innerText = Math.ceil((item as any).counterCount).toString();
-
-        if ((item as any).counterCount < (item as any).counterTarget) {
-          setTimeout((item as any).updateCounter, (item as any).counterSpeed);
-        } else {
-          item.innerText = (item as any).counterTarget.toString();
+    // Counters
+    document
+      .querySelectorAll<HTMLElement>(".counter")
+      .forEach((item) => {
+        const target = parseInt(item.innerText.replace(/\D/g, ""), 10) || 0;
+        if (reduceMotion) {
+          item.innerText = target.toLocaleString("en-US");
+          return;
         }
-      };
-    });
-
-    // Function to determine if an element is visible on the web page
-    const isElementVisible = (el: HTMLElement) => {
-      const scroll = window.scrollY || window.scrollY;
-      const boundsTop = el.getBoundingClientRect().top + scroll;
-      const viewport = {
-        top: scroll,
-        bottom: scroll + window.innerHeight,
-      };
-      const bounds = {
-        top: boundsTop,
-        bottom: boundsTop + el.clientHeight,
-      };
-      return (
-        (bounds.bottom >= viewport.top && bounds.bottom <= viewport.bottom) ||
-        (bounds.top <= viewport.bottom && bounds.top >= viewport.top)
-      );
-    };
-
-    // Function that will get fired upon scrolling
-    const handleScroll = () => {
-      elements.forEach((item) => {
-        if (true === (item as any).counterAlreadyFired) return;
-        if (!isElementVisible(item)) return;
-        (item as any).updateCounter();
-        (item as any).counterAlreadyFired = true;
+        let fired = false;
+        const run = () => {
+          if (fired) return;
+          const rect = item.getBoundingClientRect();
+          if (rect.top > window.innerHeight || rect.bottom < 0) return;
+          fired = true;
+          const started = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - started) / 1200, 1);
+            item.innerText = Math.ceil(target * progress).toLocaleString(
+              "en-US",
+            );
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        run();
+        window.addEventListener("scroll", run, { passive: true });
       });
-    };
 
-    // Fire the function on scroll
-    window.addEventListener("scroll", handleScroll);
-
-    // Navbar Toggler
-    // ----------------------------------------
+    // Navbar toggler
     const navbarToggler = document.querySelector(".navbar-toggler");
     navbarToggler?.addEventListener("click", function () {
-      navbarToggler.classList.toggle("active");
+      const open = navbarToggler.classList.toggle("active");
       body.classList.toggle("navbar-nav-collapsed");
+      navbarToggler.setAttribute("aria-expanded", String(open));
     });
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
 </script>

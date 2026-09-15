@@ -1,10 +1,16 @@
 /* form style */
 .form-input {
-  @apply w-full rounded border border-border px-4 py-3 text-text-dark placeholder:text-text-dark/70 focus:border-dark/50 transition duration-300 focus:ring-transparent text-sm;
+  @apply w-full rounded-sm border border-border px-4 py-3 text-text-dark placeholder:text-text-dark/70 focus:border-primary transition duration-300 text-base;
+  min-height: 48px;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
 }
 
 .form-label {
-  @apply mb-4 block text-xl font-normal text-text-dark;
+  @apply mb-2 block text-sm font-semibold uppercase tracking-[0.08em] text-text-dark;
 }
 
 /* swiper navigation */
@@ -31,7 +37,7 @@ button.swiper-button-disabled {
 .swiper-navigation {
   .prev-arrow,
   .next-arrow {
-    @apply absolute hidden focus:outline-0 hover:bg-primary/60 sm:block top-[calc(50%_-_35px)] -translate-y-1/2 w-16 h-16 text-white text-2xl leading-[64px] opacity-0 duration-200 ease-linear transition-all z-10 rounded-full bg-dark/60 border-0;
+    @apply absolute hidden hover:bg-primary/60 sm:block top-[calc(50%_-_35px)] -translate-y-1/2 w-16 h-16 text-white text-2xl leading-[64px] opacity-0 duration-200 ease-linear transition-all z-10 rounded-full bg-dark/60 border-0;
   }
 
   .prev-arrow {
@@ -83,4 +89,16 @@ button.swiper-button-disabled {
       }
     }
   }
+}
+
+/* Certification slider: every card matches the tallest one in the row. */
+.work-slider .swiper-wrapper {
+  align-items: stretch;
+}
+.work-slider .swiper-slide {
+  height: auto;
+  display: flex;
+}
+.work-slider .swiper-slide > * {
+  width: 100%;
 }

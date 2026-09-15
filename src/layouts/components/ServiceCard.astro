@@ -1,42 +1,64 @@
 ---
 import ImageMod from "@/components/ImageMod.astro";
-import DynamicIcon from "@/helpers/DynamicIcon";
 import { markdownify, plainify } from "@/lib/utils/textConverter";
-import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  content: CollectionEntry<"services">;
+  content: {
+    id: string;
+    data: {
+      title: string;
+      image?: string;
+      short_description?: string;
+      description?: string;
+    };
+  };
+  href?: string;
 };
 
-const { content } = Astro.props;
-const { title, image, icon } = content.data;
+const { content, href } = Astro.props;
+const { title, image, short_description, description } = content.data;
+const summary = short_description || description || "";
+const link = href ?? `/services/${content.id}`;
 ---
 
-<div
-  class="text-center border border-border rounded-md relative pb-6 mb-6 group">
-  {title && <h3 class="h5 my-4" set:html={markdownify(title)} />}
-  <div>
-    <div
-      class="">
-      {
-        image && (
-          <ImageMod
-            src={image}
-            width={400}
-            height={220}
-            class="w-full"
-            alt={title || "service image"}
-          />
-        )
-      }
-    </div>
+<article
+  class="group relative flex h-full flex-col border border-border bg-body transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_10px_26px_rgba(22,24,29,0.10)]">
+  {
+    image && (
+      <div class="flex min-h-[212px] items-center justify-center border-b border-border bg-light p-5 transition-colors duration-200 group-hover:bg-[#EAECF0]">
+        <ImageMod
+          src={image}
+          width={384}
+          class="h-[166px] w-auto max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
+          alt=""
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col p-6 pb-7">
     {
-      icon && (
-        <div class="w-16 h-16 bg-primary text-3xl rounded-md flex justify-center items-center mx-auto -mt-8 overlay-content text-white">
-          <DynamicIcon icon={icon} />
-        </div>
+      title && (
+        <h3 class="h5">
+          <a
+            href={link}
+            class="text-text-dark after:absolute after:inset-0 after:content-[''] group-hover:text-primary">
+            <Fragment set:html={markdownify(title)} />
+          </a>
+        </h3>
       )
     }
+
+    {
+      summary && (
+        <p class="mt-2 text-[15px] leading-6 text-text">{plainify(summary)}</p>
+      )
+    }
+
+    <span
+      class="kicker kicker-quiet mt-auto pt-5 !text-primary group-hover:!text-secondary">
+      Details &rarr;
+    </span>
   </div>
-  
-</div>
+</article>

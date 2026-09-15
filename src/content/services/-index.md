@@ -26,6 +26,6 @@ testimonial:
   # testimonial content comes from sections testimonial.md file
 ---
 
-## Our Best Services
+## Industries We Serve
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+Apache Fabricators supplies fabrication, machining and repair to offshore, onshore, subsea, petrochemical, refining, industrial and commercial markets.

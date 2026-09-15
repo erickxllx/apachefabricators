@@ -7,12 +7,14 @@ interface Props {
   title: string;
   meta_title?: string;
   bg_image?: string;
+  class?: string;
 }
 
 const {
   title,
   meta_title,
   bg_image = "/images/background/page-title.jpg",
+  class: className,
 } = Astro.props;
 
 // Section Background Images
@@ -20,15 +22,14 @@ const pageHeaderBgImage = await bgImageMod(bg_image);
 ---
 
 <section
-  class="overlay after:bg-opacity-60 bg-no-repeat bg-center bg-cover h-[700px]"
+  class={`overlay bg-no-repeat bg-center bg-cover min-h-[320px] lg:min-h-[420px] flex ${className ?? ""}`}
   style={`background-image: url(${pageHeaderBgImage})`}>
-  <div class="container text-center z-10 relative h-full flex flex-col justify-center items-center">
-    <div class="sm:px-8">
-      <h1
-        class="h2 font-bold text-white"
-        set:text={humanize(meta_title ? meta_title : title)}
-      />
-        <Breadcrumbs class="mt-2" title={title} />
-    </div>
+  <div
+    class="container overlay-content flex w-full flex-col items-start justify-center py-16 text-left">
+    <h1
+      class="text-white"
+      set:text={humanize(meta_title ? meta_title : title)}
+    />
+    <Breadcrumbs class="mt-3" title={title} />
   </div>
 </section>

@@ -1,3 +1,27 @@
+/* Section kicker and data values carry the technical texture. Mono is used
+   only where the content is genuinely a label or a figure, never for prose. */
+.kicker {
+  @apply font-mono text-[11px] font-medium uppercase text-secondary;
+
+  letter-spacing: 0.16em;
+}
+.kicker-quiet {
+  @apply text-text;
+}
+
+.data {
+  @apply font-mono font-medium;
+
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  @apply text-[11px] font-bold uppercase text-text;
+
+  letter-spacing: 0.13em;
+}
+
 /* section style */
 .section {
   @apply py-14 md:py-24 xl:py-28;
@@ -213,7 +237,7 @@
 
 /* Back to top */
 .back-to-top {
-  @apply absolute h-[50px] w-[50px] text-white top-[-25px] border text-center block duration-200 ease-in rounded-full border-solid border-border/10 right-2.5 hover:border-[$color-primary] bg-dark focus:outline-0;
+  @apply absolute h-[50px] w-[50px] text-white top-[-25px] border text-center block duration-200 ease-in rounded-full border-solid border-border/10 right-2.5 hover:border-primary bg-dark;
 
   i {
     @apply leading-[50px];
@@ -222,7 +246,7 @@
 
 /* Breadcrumb */
 .breadcrumb {
-  @apply flex items-center flex-wrap gap-y-2 justify-center w-fit mx-auto;
+  @apply flex items-center flex-wrap gap-y-2 justify-start w-fit;
 
   li:not(:first-child) {
     @apply relative pl-6 text-sm;

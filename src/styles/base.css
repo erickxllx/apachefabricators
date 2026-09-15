@@ -4,61 +4,102 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke: 0px;
+  font-kerning: normal;
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-sm text-text;
+  @apply bg-body font-primary font-normal text-base text-text-dark;
+
+  line-height: 1.65;
 }
 
 p,
 .paragraph {
-  @apply font-normal text-text-dark/80 text-sm leading-6;
+  @apply font-normal text-text-dark/85 text-base;
+
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 li {
-  @apply font-normal leading-6 text-sm;
+  @apply font-normal text-base;
+
+  line-height: 1.6;
 }
 
 a {
-  @apply hover:text-primary/90 duration-200;
+  @apply hover:text-primary duration-200;
 }
 
+/* Visible keyboard focus is mandatory across the site. Anything that removes
+   it must provide an equally visible replacement. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Type scale. Hierarchy comes from weight and tracking as much as from size:
+   display is 900 and tightly tracked, section headings 800, object titles 700.
+   Display sizes are fluid so they breathe on wide screens instead of jumping
+   at a breakpoint; body-level sizes stay fixed so layouts stay predictable.
+   --------------------------------------------------------------------------- */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply font-medium leading-tight text-text-dark mb-2;
+  @apply text-text-dark mb-2;
+
+  text-wrap: balance;
 }
 
 h1,
 .h1 {
-  @apply text-h1-sm md:text-h1;
+  font-size: clamp(2.5rem, 1.55rem + 3.1vw, 4.125rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
 }
 
 h2,
 .h2 {
-  @apply text-h2-sm md:text-h2;
+  font-size: clamp(1.9rem, 1.36rem + 1.9vw, 2.875rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
 }
 
 h3,
 .h3 {
-  @apply text-h3-sm md:text-h3;
+  font-size: clamp(1.4rem, 1.22rem + 0.62vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.018em;
 }
 
 h4,
 .h4 {
-  @apply text-h4-sm md:text-h4 font-medium;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.014em;
 }
 
 h5,
 .h5 {
-  @apply text-h5 font-medium;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 h6,
 .h6 {
-  @apply text-h6 font-medium;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.006em;
 }
 
 b,
@@ -68,4 +109,21 @@ strong {
 
 code {
   @apply after:border-none;
+}
+
+/* Motion is opt-in. Anything animated must come to rest when the visitor asks
+   for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

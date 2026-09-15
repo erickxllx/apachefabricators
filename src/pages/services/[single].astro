@@ -4,31 +4,34 @@ import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import ServiceSidebar from "@/partials/ServiceSidebar.astro";
-import { render, type CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 
-type Props = {
-  service: CollectionEntry<"services">;
-};
-
-const COLLECTION_FOLDER = "services";
+// Both collections live under /services. Building only one of them left the
+// other's detail pages unreachable.
 export async function getStaticPaths() {
-  const COLLECTION_FOLDER = "services";
-  const servicesCollection = await getSinglePage(COLLECTION_FOLDER);
+  const industries = await getSinglePage("services");
+  const capabilities = await getSinglePage("servicesMain");
 
-  const paths = servicesCollection.map((service) => ({
-    params: {
-      single: service.id,
-    },
-    props: { service },
-  }));
-  return paths;
+  return [
+    ...industries.map((service) => ({
+      params: { single: service.id },
+      props: { service, siblings: industries },
+    })),
+    ...capabilities.map((service) => ({
+      params: { single: service.id },
+      props: { service, siblings: capabilities },
+    })),
+  ];
 }
 
-const { service } = Astro.props;
-const { title, meta_title, description, image, bg_image } = service.data;
+const { service, siblings } = Astro.props;
+const { title, meta_title, description, image, detail_image, bg_image } =
+  service.data;
+
+// Detail pages get the full photograph; the small cutout is for cards only.
+const hero = detail_image || image;
 
 const { Content } = await render(service);
-const servicesCollection = await getSinglePage(COLLECTION_FOLDER);
 ---
 
 <Base
@@ -41,20 +44,19 @@ const servicesCollection = await getSinglePage(COLLECTION_FOLDER);
   <section class="section">
     <div class="container">
       <div class="row gy-4">
-        <ServiceSidebar
-          content={service}
-          servicesCollection={servicesCollection}
-        />
+        <ServiceSidebar content={service} servicesCollection={siblings} />
         <article class="lg:col-8 lg:order-2 order-1">
           {
-            image && (
-              <ImageMod
-                src={image}
-                width={900}
-                height={500}
-                class="w-full mb-8 md:mb-16 rounded-t"
-                alt="service"
-              />
+            hero && (
+              <figure class="mb-10 flex items-center justify-center border border-border bg-light p-5 md:mb-14 md:p-8">
+                <ImageMod
+                  src={hero}
+                  width={1000}
+                  class="max-h-[460px] w-auto max-w-full object-contain"
+                  alt={title}
+                  loading="eager"
+                />
+              </figure>
             )
           }
           {

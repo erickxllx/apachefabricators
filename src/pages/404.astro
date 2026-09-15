@@ -1,16 +1,60 @@
 ---
-import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
+import menu from "@/config/menu.json";
+
+const { phone, email } = config.params.contact_info;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
 ---
 
-<Base title="Page Not Found">
-  <section class="max-h-[800px] overflow-hidden">
-    <ImageMod
-      src="/images/background/404-page.jpg"
-      width={1920}
-      height={1080}
-      class="object-cover"
-      alt="404 error image"
-    />
+<Base
+  title="Page not found"
+  description="That page does not exist. Use the links below to reach the section you were looking for."
+  noindex={true}>
+  <section class="section">
+    <div class="container">
+      <p class="kicker">Error 404</p>
+
+      <div class="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <h1>Page not found</h1>
+          <p class="mt-4 max-w-[52ch]">
+            The page you asked for does not exist, or it has moved. Everything
+            on the site is reachable from the links on the right.
+          </p>
+          <a class="btn btn-primary mt-8" href="/">Back to home</a>
+        </div>
+
+        <nav class="lg:col-span-6 lg:col-start-7" aria-label="Site sections">
+          <ul class="border-t border-border">
+            {
+              (menu.main ?? []).map((item) => (
+                <li class="border-b border-border">
+                  <a
+                    class="flex items-center justify-between gap-4 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-text-dark hover:text-primary"
+                    href={item.url}>
+                    {item.name}
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-8 border border-border p-6">
+            <h2 class="h6 mb-3">Need something specific?</h2>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a class="data" href={`tel:${phone}`}>{phoneDisplay}</a>
+              </li>
+              <li><a href={`mailto:${email}`}>{email}</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
   </section>
 </Base>

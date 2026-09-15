@@ -1,4 +1,5 @@
 ---
+import ImageMod from "@/components/ImageMod.astro";
 import config from "@/config/config.json";
 import DynamicIcon from "@/helpers/DynamicIcon";
 import Base from "@/layouts/Base.astro";
@@ -7,13 +8,29 @@ import PageHeader from "@/partials/PageHeader.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 
-const { contact_form_action } = config.params;
 const contactIndex = (await getEntry(
   "contact",
-  "-index"
+  "-index",
 )) as CollectionEntry<"contact">;
-const { title, meta_title, description, image, bg_image, contact_info } =
+const { title, meta_title, description, image, contact_info } =
   contactIndex.data;
+
+const { google_map } = config.params;
+const { phone, email } = config.params.contact_info;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
+
+// What a quote request needs. This replaces the form fields: the buyer emails
+// the same information instead of filling boxes.
+const quoteChecklist = [
+  "Drawings or a written scope of work",
+  "Material and quantity",
+  "Tolerances and finish requirements",
+  "Required completion date",
+  "Delivery address or pickup",
+];
 ---
 
 <Base
@@ -21,72 +38,116 @@ const { title, meta_title, description, image, bg_image, contact_info } =
   meta_title={meta_title}
   description={description}
   image={image}>
-<PageHeader title="Contact Us" bg_image="/images/contact.png" />
+  <PageHeader title="Contact Us" bg_image="/images/contact.jpg" />
 
   <section class="section">
     <div class="container">
-      <!-- Bloque superior de ubicación y contacto -->
-      <div class="text-center mb-12">
-        <p class="text-lg text-primary font-semibold">Let's Connect</p>
-        <h2 class="text-2xl font-bold text-text mb-2">
-          Apache Fabricators’ Facility Is Conveniently Located In The Houston Area.
-        </h2>
-        <p class="text-base text-text">
-          8101 E Mt Houston Rd. Houston, TX 77050 <br />
-          (60,000 Sq. Ft. Fabrication Shop With 13.0 Acres Yard)
-        </p>
-      </div>
+      <div class="grid gap-x-12 gap-y-12 lg:grid-cols-12">
+        <!-- Request for quote -->
+        <div class="lg:col-span-7">
+          <p class="kicker mb-3">Request</p>
+          <h2>Request a Quote</h2>
+          <p class="mt-4 max-w-[62ch]">
+            Send a scope of work or drawings to the address below and we will
+            come back with pricing and a schedule.
+          </p>
 
-      <!-- Tarjetas de contacto -->
-      {
-        contact_info && (
-          <div class="grid md:grid-cols-3 gap-6 mb-16">
-            {contact_info.map((info) => {
-              const { name, icon, content } = info;
-
-              return (
-                <div class="p-6 shadow-lg rounded text-center border border-gray-200 bg-white">
-                  <div class="flex justify-center items-center mb-4">
-                    <div class="text-white bg-red-700 rounded-full w-12 h-12 flex items-center justify-center text-xl">
-                      <DynamicIcon icon={icon} />
-                    </div>
-                  </div>
-                  <div class="text-text-dark text-sm" set:html={markdownify(content)} />
-                </div>
-              );
-            })}
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a class="btn btn-primary" href={`mailto:${email}`}>Email a request</a>
+            <a class="btn btn-outline-dark" href={`tel:${phone}`}>
+              Call {phoneDisplay}
+            </a>
           </div>
-        )
-      }
+
+          <div class="mt-12 border border-border p-8">
+            <h3 class="h6">What to include</h3>
+            <p class="mt-2 text-sm text-text">
+              The more of this we have up front, the faster the quote comes
+              back.
+            </p>
+            <ul class="mt-6 border-t border-border">
+              {quoteChecklist.map((item) => (
+                <li class="border-b border-border py-3 text-sm text-text-dark">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Facility and direct contact -->
+        <div class="lg:col-span-4 lg:col-start-9">
+          <p class="kicker mb-3">Facility</p>
+          <h2 class="h3">Houston Facility</h2>
+
+          <dl class="mt-6 border-t border-border">
+            <div class="flex justify-between gap-4 border-b border-border py-4">
+              <dt class="label">Shop</dt>
+              <dd class="data text-text-dark">60,000 sq ft</dd>
+            </div>
+            <div class="flex justify-between gap-4 border-b border-border py-4">
+              <dt class="label">Yard</dt>
+              <dd class="data text-text-dark">13.0 acres</dd>
+            </div>
+            <div class="flex justify-between gap-4 border-b border-border py-4">
+              <dt class="label">Address</dt>
+              <dd class="text-right text-text-dark">
+                8101 E Mt Houston Rd.<br />Houston, TX 77050
+              </dd>
+            </div>
+          </dl>
+
+          {
+            contact_info && (
+              <ul class="mt-8 space-y-5">
+                {contact_info.map((info) => {
+                  const { name, icon, content } = info;
+                  return (
+                    <li class="flex items-start gap-3">
+                      <span class="mt-1 shrink-0 text-secondary">
+                        <DynamicIcon icon={icon} />
+                      </span>
+                      <div>
+                        <span class="sr-only">{name}</span>
+                        <div
+                          class="text-sm leading-6 text-text-dark"
+                          set:html={markdownify(content, true)}
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            )
+          }
+        </div>
+      </div>
     </div>
   </section>
 
-{
-  config.params.google_map &&
-  config.params.google_map.enable &&
-  config.params.google_map.address && (
-    <section class="flex flex-wrap w-full h-[500px] mt-8 gap-0">
-      {/* Satellite Static Image */}
-      <div class="w-full md:w-1/2 h-[500px] bg-white flex items-center justify-center overflow-hidden rounded-none md:rounded-l-lg">
-        <img
-          src="/images/apache_satellite.png"
-          alt="Satellite view of Apache Workforce"
-          class="max-h-full max-w-full object-contain"
-        />
-      </div>
-
-      {/* Embedded Google Map */}
-      <div class="w-full md:w-1/2 h-full overflow-hidden rounded-none md:rounded-r-lg">
-        <iframe
-          title="Google Map"
-          loading="lazy"
-          allowFullScreen
-          class="w-full h-full"
-          src={config.params.google_map.address}
-        />
-      </div>
-    </section>
-  )
-}
-
+  {
+    google_map?.enable && google_map.address && (
+      <section class="border-t border-border">
+        <div class="grid md:grid-cols-2">
+          <div class="flex h-[360px] items-center justify-center bg-light md:h-[460px]">
+            <ImageMod
+              src="/images/apache_satellite.jpg"
+              width={900}
+              class="h-full w-full object-contain"
+              alt="Satellite view of the Apache Fabricators facility on E Mt Houston Rd"
+            />
+          </div>
+          <div class="h-[360px] md:h-[460px]">
+            <iframe
+              title="Apache Fabricators on Google Maps"
+              loading="lazy"
+              allowfullscreen
+              class="h-full w-full border-0"
+              src={google_map.address}
+            />
+          </div>
+        </div>
+      </section>
+    )
+  }
 </Base>

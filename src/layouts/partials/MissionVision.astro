@@ -16,15 +16,11 @@ const { enable, subtitle, title, content: data, accordion, image } = content;
   <section class="section">
     <div class="container">
       <div class="row gy-4">
-        <div class="col-12 mb-5">
+        <div class="col-12 mb-10 lg:mb-14">
           {subtitle && (
-            <span
-              class="text-lg text-text"
-              set:html={markdownify(subtitle)}
-            />
+            <p class="kicker" set:html={markdownify(subtitle)} />
           )}
-          {title && <h2 set:html={markdownify(title)} />}
-          <div class="separator separator-secondary after:shadow-white after:bg-white" />
+          {title && <h2 class="max-w-[24ch]" set:html={markdownify(title)} />}
         </div>
 
         <div class="lg:col-6">
@@ -52,7 +48,7 @@ const { enable, subtitle, title, content: data, accordion, image } = content;
               width={700}
               height={700}
               alt={title || "mission image"}
-              class="w-full h-full object-cover rounded-xl shadow-lg border border-gray-300"
+              class="w-full h-full object-cover border border-border"
             />
           )}
         </div>

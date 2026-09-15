@@ -36,7 +36,15 @@ body.navbar-nav-collapsed .navbar-nav-wrapper {
 }
 
 .nav-link {
-  @apply font-primary font-normal lg:font-medium text-black uppercase transition duration-200 ease-in text-sm px-4 lg:px-2.5 py-2.5 xl:text-sm xl:px-2 hover:text-primary text-center lg:text-left cursor-pointer select-none;
+  @apply relative font-primary font-semibold text-text-dark uppercase tracking-[0.08em] transition duration-200 ease-in text-sm px-4 lg:px-2.5 py-2.5 xl:px-2 hover:text-primary text-center lg:text-left cursor-pointer select-none;
+
+  &.active {
+    @apply text-primary;
+  }
+
+  &.active::after {
+    @apply content-[''] absolute left-4 right-4 lg:left-2.5 lg:right-2.5 xl:left-2 xl:right-2 bottom-1 h-0.5 bg-secondary;
+  }
 }
 
 .arrow-icon {
@@ -77,4 +85,28 @@ body.navbar-nav-collapsed .navbar-nav-wrapper {
 }
 .nav-dropdown-link {
   @apply text-text-dark block w-full px-4 py-2 font-normal transition;
+}
+
+
+/* Dark header (direction C). The nav sits on the ink surface, so link colours
+   flip and the mobile drawer follows. */
+.header-dark {
+  .nav-link {
+    @apply text-white/75;
+  }
+  .nav-link:hover {
+    @apply text-white;
+  }
+  .nav-link.active {
+    @apply text-white;
+  }
+  .navbar-nav {
+    @apply max-lg:bg-dark;
+  }
+  .navbar-toggler {
+    @apply border-white/25 bg-transparent;
+  }
+  .nav-dropdown-menu {
+    @apply max-lg:bg-white/5;
+  }
 }

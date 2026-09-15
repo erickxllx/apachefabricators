@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Apache Fabricators",
-    "base_url": "",
+    "base_url": "https://www.apachefabricators.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -21,10 +21,10 @@
 
   "params": {
     "top_header": true,
-    "preloder": true,
-    "contact_form_action": "#",
+    "preloder": false,
+    "contact_form_action": "/contact",
     "footer_description": "We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical,industrial, refining, petrochemical, industrial, commercial and more.",
-    "copyright": "Copyright by Apache Fabricators",
+    "copyright": "Apache Fabricators. All rights reserved.",
     "contact_info": {
       "email": "sales@apachefabricators.com",
       "phone": "+18328046236"
@@ -44,7 +44,7 @@
   "subscription_in_footer": {
     "enable": true,
     "title": "Subscribe Us",
-    "description": "Lorem ipsum dolor sit amet, consect etur adipisicing. elit sed do eiusmod.",
+    "description": "Shop capacity, certifications and project updates from Apache Fabricators.",
     "placeholder": "Enter Your Email Address",
     "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
     "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
@@ -53,7 +53,7 @@
   "subscription_in_blog_sidebar": {
     "enable": true,
     "title": "Stay Updated",
-    "description": "Lorem ipsum dolor sit amet, consect etur adipisicing. elit sed do eiusmod.",
+    "description": "Shop capacity, certifications and project updates from Apache Fabricators.",
     "placeholder": "Enter Your Email Address",
     "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
     "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
@@ -66,8 +66,8 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
-    "meta_image": "/images/og-image.png",
-    "meta_description": "this is meta description"
+    "meta_author": "Apache Fabricators",
+    "meta_image": "/images/logo.png",
+    "meta_description": "ASME, AISC and ISO certified steel fabrication, machining and repair in Houston, Texas. 60,000 sq ft shop on 13 acres serving offshore, onshore, subsea and petrochemical markets."
   }
 }

@@ -1,10 +1,10 @@
 ---
-title: Privacy
-description: This is meta description
+title: Privacy Policy
+description: "Privacy policy for the Apache Fabricators website."
 bg_image: "/images/background/page-title.jpg"
-meta_title: Elements
+meta_title: Privacy Policy
 image: ""
-draft: false
+draft: true
 ---
 
 #### Responsibility of Contributors
