@@ -20,7 +20,6 @@
   "params": {
     "top_header": true,
     "preloder": false,
-    "contact_form_action": "/contact",
     "footer_description": "Fabrication, machining and repair for onshore, offshore, subsea, petrochemical, refining, industrial and commercial markets. One 60,000 sq ft shop in Houston, Texas.",
     "copyright": "Apache Fabricators. All rights reserved.",
     "credit": {
@@ -58,14 +57,9 @@
     "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
     "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
   },
-  "service_consultation_form": {
-    "enable": true,
-    "title": "Request Free Consultation",
-    "form_action": "#"
-  },
   "metadata": {
     "meta_author": "Apache Fabricators",
-    "meta_image": "/images/logo.png",
+    "meta_image": "/images/og-image.png",
     "meta_description": "ASME, AISC and ISO certified steel fabrication, machining and repair in Houston, Texas. 60,000 sq ft shop on 13 acres serving offshore, onshore, subsea and petrochemical markets."
   }
 }

@@ -34,6 +34,13 @@ export interface Props {
 // distructure frontmatters
 const { title, meta_title, description, image, noindex, canonical } =
   Astro.props;
+
+// A bare "About" or "Contact" in a search result says nothing about whose it
+// is. Every page carries the company name except the home page, which is it.
+const siteName = config.site.title.trim();
+const pageTitle = plainify(meta_title || title || siteName).trim();
+const fullTitle =
+  pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
 ---
 
 <!doctype html>
@@ -87,9 +94,7 @@ const { title, meta_title, description, image, noindex, canonical } =
     />
 
     <!-- title -->
-    <title>
-      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
-    </title>
+    <title>{fullTitle}</title>
 
     <!-- canonical url -->
     {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
@@ -109,12 +114,7 @@ const { title, meta_title, description, image, noindex, canonical } =
     <meta name="author" content={config.metadata.meta_author} />
 
     <!-- og-title -->
-    <meta
-      property="og:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
-      )}
-    />
+    <meta property="og:title" content={fullTitle} />
 
     <!-- og-description -->
     <meta
@@ -130,12 +130,7 @@ const { title, meta_title, description, image, noindex, canonical } =
     />
 
     <!-- twitter-title -->
-    <meta
-      name="twitter:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
-      )}
-    />
+    <meta name="twitter:title" content={fullTitle} />
 
     <!-- twitter-description -->
     <meta

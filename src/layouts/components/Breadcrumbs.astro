@@ -10,6 +10,12 @@ const { class: className, title }: Props = Astro.props;
 
 const paths = Astro.url.pathname.split("/").filter((x) => x);
 
+// The route segment is not always what the section is called. /projects holds
+// the certifications, and the crumb should say so.
+const segmentLabels: Record<string, string> = {
+  projects: "Certifications",
+};
+
 type Crumb = {
   label: string;
   href: string;
@@ -29,7 +35,9 @@ paths.forEach((label: string, i: number) => {
 
   if (label !== "page" && label !== "categories" && label !== "tags") {
     parts.push({
-      label: humanize(label.replace(".html", "").replace(/[-_]/g, " ")) || "",
+      label:
+        segmentLabels[label] ??
+        (humanize(label.replace(".html", "").replace(/[-_]/g, " ")) || ""),
       href,
       "aria-current": Astro.url.pathname === href ? ("page" as const) : undefined,
     });

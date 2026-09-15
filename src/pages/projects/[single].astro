@@ -1,31 +1,43 @@
 ---
 import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PageHeader from "@/partials/PageHeader.astro";
-import ProjectSidebar from "@/partials/ProjectSidebar.astro";
 import { render, type CollectionEntry } from "astro:content";
 
 type Props = {
   project: CollectionEntry<"projects">;
+  siblings: CollectionEntry<"projects">[];
 };
-export async function getStaticPaths() {
-  const COLLECTION_FOLDER = "projects";
-  const projectsCollection = await getSinglePage(COLLECTION_FOLDER);
 
-  const paths = projectsCollection.map((project) => ({
-    params: {
-      single: project.id,
-    },
-    props: { project },
+export async function getStaticPaths() {
+  const certifications = await getSinglePage("projects");
+
+  return certifications.map((project) => ({
+    params: { single: project.id },
+    props: { project, siblings: certifications },
   }));
-  return paths;
 }
 
-const { project } = Astro.props;
-const { data, body } = project;
-const { title, meta_title, description, image, bg_image } = data;
+const { project, siblings } = Astro.props;
+const { title, meta_title, description, image, bg_image, overview, category } =
+  project.data;
 const { Content } = await render(project);
+
+const email = config.params.contact_info.email;
+const phone = config.params.contact_info.phone;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
+
+// A buyer asking for a certificate should not have to compose the email.
+const mailto = `mailto:${email}?subject=${encodeURIComponent(
+  `Certificate request: ${title}`,
+)}`;
+
+const others = siblings.filter((item) => item.id !== project.id);
 ---
 
 <Base
@@ -37,28 +49,112 @@ const { Content } = await render(project);
 
   <section class="section">
     <div class="container">
-      <div class="row gy-5 flex-col-reverse lg:flex-row">
-        <ProjectSidebar content={project} />
-        <article class="lg:col-8">
+      <div class="grid gap-x-16 gap-y-12 lg:grid-cols-12">
+        <!-- The certificate itself, with its record -->
+        <aside class="lg:col-span-4">
           {
             image && (
-              <ImageMod
-                src={image}
-                width={900}
-                height={500}
-                class="w-full mb-8 md:mb-16 rounded-md max-h-[500px] object-cover object-top"
-                alt="service"
-              />
+              <figure class="m-0 flex items-center justify-center border border-border bg-light p-10">
+                <ImageMod
+                  src={image}
+                  width={420}
+                  class="h-[180px] w-auto object-contain"
+                  alt={`${title} certification mark`}
+                  loading="eager"
+                />
+              </figure>
+            )
+          }
+
+          {
+            overview && overview.length > 0 && (
+              <dl class="mt-8 border-t border-border">
+                {overview.map(({ label, data }) => (
+                  <div class="grid grid-cols-[7.5rem_1fr] gap-4 border-b border-border py-4">
+                    <dt class="label pt-[3px]">{label}</dt>
+                    <dd class="m-0 text-[15px] leading-6 text-text-dark">
+                      {data}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            )
+          }
+
+          <a class="btn btn-primary btn-sm mt-8 inline-block" href={mailto}>
+            Request this certificate
+          </a>
+        </aside>
+
+        <!-- What it is and what it covers -->
+        <article class="lg:col-span-7 lg:col-start-6">
+          {category && <p class="kicker">{category}</p>}
+          {
+            description && (
+              <p class="mt-4 max-w-[26ch] text-[clamp(1.5rem,1.1rem+1.5vw,2.25rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-text-dark">
+                {description}
+              </p>
             )
           }
           {
-            body && (
-              <div class="content">
+            project.body && (
+              <div class="content mt-8 max-w-[64ch]">
                 <Content />
               </div>
             )
           }
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- The rest of the file -->
+  <section class="section-sm border-t border-border bg-light">
+    <div class="container">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-5">
+        <h2 class="h4 m-0">Other certifications on file</h2>
+        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects">
+          See all
+        </a>
+      </div>
+      <ul class="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
+        {
+          others.map((item) => (
+            <li class="bg-body">
+              <a
+                class="flex h-full flex-col justify-between gap-4 p-6 transition-colors hover:bg-light"
+                href={`/projects/${item.id}`}>
+                <span class="label !text-secondary">{item.data.category}</span>
+                <span class="text-[15px] font-bold leading-6 text-text-dark">
+                  {item.data.title}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="bg-dark text-white">
+    <div class="container">
+      <div class="flex flex-wrap items-center justify-between gap-8 py-14">
+        <div>
+          <h2 class="max-w-[22ch] text-white">
+            Need this for a prequalification?
+          </h2>
+          <p class="mt-4 max-w-[52ch] text-white/65">
+            We can supply the certificate, the scope it covers and the
+            supporting records on request.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-primary" href={mailto}>Email us</a>
+          <a class="btn btn-outline-light" href={`tel:${phone}`}>
+            {phoneDisplay}
+          </a>
+        </div>
       </div>
     </div>
   </section>

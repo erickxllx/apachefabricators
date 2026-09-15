@@ -3,7 +3,7 @@ title: Services
 date: 2018-07-12T18:19:33+06:00
 bg_image: "/images/background/page-title.jpg"
 description: If it needs to be made of steel, we can fabricate it.
-meta_title: Service
+meta_title: Steel Fabrication Services
 
 ################## Satisfied clients ###############
 satisfied_clients:

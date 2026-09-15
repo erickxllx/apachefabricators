@@ -2,7 +2,7 @@
 title: About Us
 bg_image: "/images/background/page-title.jpg"
 description: "Apache Fabricators is an ASME, AISC and ISO certified steel fabricator in Houston, Texas, with a 60,000 sq ft shop on 13 acres of yard."
-meta_title: About
+meta_title: About Us
 image: ""
 draft: false
 
