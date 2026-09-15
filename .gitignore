@@ -26,3 +26,6 @@ package-lock.json
 
 # ignore .astro directory
 .astro
+
+# paquetes de despliegue
+*.zip
