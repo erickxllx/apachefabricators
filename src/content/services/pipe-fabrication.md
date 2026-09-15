@@ -4,6 +4,7 @@ date: 2018-09-29T11:51:17+06:00
 description: "Pipe spool fabrication, welding and testing for refining, petrochemical and industrial clients."
 short_description: "Pipe spool fabrication, welding and testing for refining, petrochemical and industrial clients."
 image: "/images/industry/pipe.png"
+detail_image: "/images/market/pipe-fabrication.jpg"
 bg_image: "/images/background/page-title.jpg"
 brochure: ""
 regular_day: Mon-Fri

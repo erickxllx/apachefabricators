@@ -15,16 +15,16 @@ export async function getStaticPaths() {
   return [
     ...industries.map((service) => ({
       params: { single: service.id },
-      props: { service, siblings: industries },
+      props: { service, siblings: industries, kind: "industry" },
     })),
     ...capabilities.map((service) => ({
       params: { single: service.id },
-      props: { service, siblings: capabilities },
+      props: { service, siblings: capabilities, kind: "capability" },
     })),
   ];
 }
 
-const { service, siblings } = Astro.props;
+const { service, siblings, kind } = Astro.props;
 const { title, meta_title, description, image, detail_image, bg_image } =
   service.data;
 
@@ -47,17 +47,30 @@ const { Content } = await render(service);
         <ServiceSidebar content={service} servicesCollection={siblings} />
         <article class="lg:col-8 lg:order-2 order-1">
           {
-            hero && (
-              <figure class="mb-10 flex items-center justify-center border border-border bg-light p-5 md:mb-14 md:p-8">
-                <ImageMod
-                  src={hero}
-                  width={1000}
-                  class="max-h-[460px] w-auto max-w-full object-contain"
-                  alt={title}
-                  loading="eager"
-                />
-              </figure>
-            )
+            hero &&
+              (kind === "industry" ? (
+                /* Scene photography fills its frame. */
+                <figure class="mb-10 m-0 overflow-hidden border border-border md:mb-14">
+                  <ImageMod
+                    src={hero}
+                    width={1200}
+                    class="aspect-[16/10] w-full object-cover"
+                    alt={title}
+                    loading="eager"
+                  />
+                </figure>
+              ) : (
+                /* Cutouts sit on a light band so the transparency reads. */
+                <figure class="mb-10 flex items-center justify-center border border-border bg-light p-5 md:mb-14 md:p-8">
+                  <ImageMod
+                    src={hero}
+                    width={1000}
+                    class="max-h-[460px] w-auto max-w-full object-contain"
+                    alt={title}
+                    loading="eager"
+                  />
+                </figure>
+              ))
           }
           {
             service.body && (
