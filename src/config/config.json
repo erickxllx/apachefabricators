@@ -6,41 +6,37 @@
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
-    "logo_width": "110",
-    "logo_height": "80",
-    "logo_footer": "/images/logo-footer.png",
-    "logo_footer_width": "180",
-    "logo_footer_height": "52",
+    "logo_width": "720",
+    "logo_height": "457",
+    "logo_footer": "/images/logo-light.png",
+    "logo_footer_width": "720",
+    "logo_footer_height": "457",
     "logo_text": "Apache Fabricators"
   },
-
   "settings": {
     "pagination": 6,
     "blog_folder": "blog"
   },
-
   "params": {
     "top_header": true,
     "preloder": false,
     "contact_form_action": "/contact",
-    "footer_description": "We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical,industrial, refining, petrochemical, industrial, commercial and more.",
+    "footer_description": "Fabrication, machining and repair for onshore, offshore, subsea, petrochemical, refining, industrial and commercial markets. One 60,000 sq ft shop in Houston, Texas.",
     "copyright": "Apache Fabricators. All rights reserved.",
     "contact_info": {
       "email": "sales@apachefabricators.com",
       "phone": "+18328046236"
     },
-"google_map": {
-  "enable": true,
-  "address": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13892.3863808551!2d-95.2710786!3d29.8925511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b0f52794f33d%3A0x3b8b98deb6596d0!2s8101%20E%20Mt%20Houston%20Rd%2C%20Houston%2C%20TX%2077050%2C%20USA!5e0!3m2!1sen!2sus!4v1719261768359!5m2!1sen!2sus"
-  }
-},
-
+    "google_map": {
+      "enable": true,
+      "address": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13892.3863808551!2d-95.2710786!3d29.8925511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b0f52794f33d%3A0x3b8b98deb6596d0!2s8101%20E%20Mt%20Houston%20Rd%2C%20Houston%2C%20TX%2077050%2C%20USA!5e0!3m2!1sen!2sus!4v1719261768359!5m2!1sen!2sus"
+    }
+  },
   "navigation_button": {
     "enable": true,
     "label": "Get A Quote",
     "link": "/contact"
   },
-
   "subscription_in_footer": {
     "enable": true,
     "title": "Subscribe Us",
@@ -49,7 +45,6 @@
     "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
     "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
   },
-
   "subscription_in_blog_sidebar": {
     "enable": true,
     "title": "Stay Updated",
@@ -58,13 +53,11 @@
     "mailchimp_form_action": "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074",
     "mailchimp_form_name": "b_463ee871f45d2d93748e77cad_a0a2c6d074"
   },
-
   "service_consultation_form": {
     "enable": true,
     "title": "Request Free Consultation",
     "form_action": "#"
   },
-
   "metadata": {
     "meta_author": "Apache Fabricators",
     "meta_image": "/images/logo.png",

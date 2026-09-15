@@ -11,7 +11,7 @@ philosophy:
   subtitle: Know About
   title: Our Philosophy
   content: We understand that each customer has unique needs, and we are committed to providing every customer with the specific services they require. When your part leaves Apache Fabricators it will be nothing less than perfect. If it needs to be made of steel, we can fabricate it.
-  image: "/images/about/philosophy.jpg"
+  image: "/images/banner/banner-2.jpg"
 
 mission:
   enable: true
@@ -19,7 +19,7 @@ mission:
 
 funfacts:
   enable: true
-  bg_image: "/images/background/cta.jpg"
+  bg_image: "/images/banner/banner-4.jpg"
   counter:
     - title: "Projects Done"
       icon: "TfiServer" # themify icon pack : https://react-icons.github.io/react-icons/icons/tfi/

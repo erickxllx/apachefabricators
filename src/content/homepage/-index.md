@@ -7,7 +7,7 @@ banner_slider:
     - bg_image: "/images/banner/banner-1.jpg"
       subtitle:  Is a one-stop-shop for fabrication and machining.
       title: Apache Fabricators 
-      content: We supply fabrication, machining and repair services to a wide range of markets, including, onshore, offshore, subsea, petrochemical, industrial, refining, commercial and more.
+      content: "We supply fabrication, machining and repair to a wide range of markets: onshore, offshore, subsea, petrochemical, refining, industrial and commercial."
       paginationIcon: TfiComments
       paginationName: Welding
       button:

@@ -86,6 +86,19 @@ export const quality = defineCollection({
         title: z.string(),
         content: z.string(),
         image: z.string().optional(),
+
+        // The safety goal in the company's own words, set as a statement.
+        statement: z.string().optional(),
+
+        // Named programmes, pulled out of the prose so they can be scanned.
+        programs: z
+          .array(
+            z.object({
+              title: z.string(),
+              description: z.string(),
+            }),
+          )
+          .optional(),
         subtitleB: z.string().optional(),
         contentB: z.string(),
         imageB: z.string().optional(),
@@ -103,6 +116,17 @@ export const quality = defineCollection({
         title: z.string(),
         content: z.string(),
         image: z.string().optional(),
+
+        // The orientation steps used to live only inside an image, where they
+        // were unreadable to search engines and screen readers.
+        steps: z
+          .array(
+            z.object({
+              title: z.string(),
+              points: z.array(z.string()),
+            }),
+          )
+          .optional(),
         subtitleB: z.string().optional(),
         contentB: z.string(),
         imageB: z.string().optional(),

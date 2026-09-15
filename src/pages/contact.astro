@@ -21,16 +21,6 @@ const phoneDisplay = phone.replace(
   /^\+1(\d{3})(\d{3})(\d{4})$/,
   "+1 ($1) $2-$3",
 );
-
-// What a quote request needs. This replaces the form fields: the buyer emails
-// the same information instead of filling boxes.
-const quoteChecklist = [
-  "Drawings or a written scope of work",
-  "Material and quantity",
-  "Tolerances and finish requirements",
-  "Required completion date",
-  "Delivery address or pickup",
-];
 ---
 
 <Base
@@ -57,21 +47,6 @@ const quoteChecklist = [
             <a class="btn btn-outline-dark" href={`tel:${phone}`}>
               Call {phoneDisplay}
             </a>
-          </div>
-
-          <div class="mt-12 border border-border p-8">
-            <h3 class="h6">What to include</h3>
-            <p class="mt-2 text-sm text-text">
-              The more of this we have up front, the faster the quote comes
-              back.
-            </p>
-            <ul class="mt-6 border-t border-border">
-              {quoteChecklist.map((item) => (
-                <li class="border-b border-border py-3 text-sm text-text-dark">
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 

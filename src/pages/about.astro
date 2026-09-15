@@ -1,20 +1,14 @@
 ---
+import ImageMod from "@/components/ImageMod.astro";
 import TextCounter from "@/components/TextCounter.astro";
-import DynamicIcon from "@/helpers/DynamicIcon";
 import Base from "@/layouts/Base.astro";
 import bgImageMod from "@/lib/utils/bgImageMod";
-import { markdownify } from "@/lib/utils/textConverter";
-import MissionVision from "@/partials/MissionVision.astro";
-import OurExpertise from "@/partials/OurExpertise.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify, plainify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
+import config from "@/config/config.json";
 import { getEntry, type CollectionEntry } from "astro:content";
 
-const ourExpertiseContent = (
-  (await getEntry(
-    "ourExpertiseSection",
-    "our-expertise",
-  )) as CollectionEntry<"ourExpertiseSection">
-).data;
 const missionVisionContent = (
   (await getEntry(
     "missionVisionSection",
@@ -22,30 +16,41 @@ const missionVisionContent = (
   )) as CollectionEntry<"missionVisionSection">
 ).data;
 
-const aboutIndex = (await getEntry("about", "-index")) as CollectionEntry<"about">;
+const aboutIndex = (await getEntry(
+  "about",
+  "-index",
+)) as CollectionEntry<"about">;
 const { title, meta_title, description, image, philosophy, mission, funfacts } =
   aboutIndex.data;
 
+const capabilities = await getSinglePage("servicesMain");
+const industries = await getSinglePage("services");
+const certifications = await getSinglePage("projects");
+
 const funfactsBgImage = await bgImageMod(funfacts?.bg_image!);
 
-// Standout claims are facts about the operation, not decoration.
-const standout = [
-  {
-    label: "Turnaround",
-    value: "Fast turnkey",
-    note: "Engineering support through coating and delivery under one roof.",
-  },
-  {
-    label: "Scope",
-    value: "One stop shop",
-    note: "Welding, fabrication, CNC machining, plate processing, coating and load testing.",
-  },
-  {
-    label: "Experience",
-    value: "30+ years",
-    note: "Fabrication for offshore, onshore, subsea and petrochemical markets.",
-  },
+const phone = config.params.contact_info.phone;
+const phoneDisplay = phone.replace(
+  /^\+1(\d{3})(\d{3})(\d{4})$/,
+  "+1 ($1) $2-$3",
+);
+
+// The hard facts a buyer checks before anything else.
+const facility = [
+  { k: "Shop", v: "60,000 sq ft" },
+  { k: "Yard", v: "13.0 acres" },
+  { k: "Experience", v: "30+ years" },
+  { k: "Certifications", v: certifications.length + " current" },
 ];
+
+// Mission, vision and goal were hidden behind collapsed accordions. On an
+// about page they are the content, so they are open by default.
+const pillars = (missionVisionContent.accordion ?? [])
+  .filter((item: any) => item?.title)
+  .map((item: any) => ({
+    title: String(item.title).replace(/^Our Company\s+/i, ""),
+    body: item.description,
+  }));
 ---
 
 <Base
@@ -53,85 +58,259 @@ const standout = [
   meta_title={meta_title}
   description={description}
   image={image}>
-  <PageHeader title="About Us" bg_image="/images/about/about_us.jpg" />
+  <PageHeader title="About Us" bg_image="/images/banner/banner-3.jpg" />
 
+  {/* Opening statement */}
   {
     philosophy?.enable && (
-      <section class="section text-left">
+      <section class="section">
         <div class="container">
-          <p class="kicker mb-3">About</p>
-
-          <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
-            <header class="lg:col-span-5">
-              {philosophy.title && <h2 set:html={markdownify(philosophy.title)} />}
-            </header>
-            {philosophy.content && (
-              <div class="lg:col-span-6 lg:col-start-7">
+          <div class="grid items-center gap-x-14 gap-y-10 lg:grid-cols-2">
+            <div>
+              <p class="kicker">About Apache</p>
+              {philosophy.title && (
+                <h2
+                  class="mt-3 max-w-[18ch]"
+                  set:html={markdownify(philosophy.title)}
+                />
+              )}
+              {philosophy.content && (
                 <p
-                  class="max-w-[68ch]"
+                  class="mt-6 max-w-[58ch] text-lg"
                   set:html={markdownify(philosophy.content)}
                 />
+              )}
+              <p class="mt-4 max-w-[58ch]">
+                We work from a single facility on Houston's east side, where
+                every process from cutting to coating happens under one roof and
+                under one inspection regime.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a class="btn btn-primary" href="/services">Our services</a>
+                <a class="btn btn-outline-dark" href="/quality">
+                  Quality &amp; safety
+                </a>
               </div>
+            </div>
+
+            {philosophy.image && (
+              <figure class="m-0 overflow-hidden border border-border">
+                <ImageMod
+                  src={philosophy.image}
+                  width={1000}
+                  class="aspect-[4/3] w-full object-cover"
+                  alt="Apache Fabricators machinist at a CNC control panel in the Houston shop"
+                  loading="eager"
+                />
+              </figure>
+            )}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Facility at a glance */}
+  <section class="border-y border-border bg-light">
+    <div class="container">
+      <dl class="grid gap-7 py-9 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          facility.map((item) => (
+            <div>
+              <dt class="label">{item.k}</dt>
+              <dd class="data mt-1 text-[26px] font-bold text-text-dark">
+                {item.v}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {/* Mission, vision, goal */}
+  {
+    mission?.enable && pillars.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="mb-11 max-w-[60ch]">
+            <p class="kicker">What drives us</p>
+            {missionVisionContent.title && (
+              <h2
+                class="mt-3 max-w-[22ch]"
+                set:html={markdownify(missionVisionContent.title)}
+              />
+            )}
+            {missionVisionContent.content && (
+              <p
+                class="mt-4"
+                set:html={markdownify(missionVisionContent.content)}
+              />
             )}
           </div>
 
-          <dl class="mt-16 grid gap-px border border-border bg-border sm:grid-cols-3">
-            {standout.map((item) => (
-              <div class="bg-body p-8">
-                <dt class="label">
-                  {item.label}
-                </dt>
-                <dd class="mt-3">
-                  <p class="h5 text-text-dark">{item.value}</p>
-                  <p class="mt-3 text-sm leading-6 text-text-dark/75">
-                    {item.note}
-                  </p>
-                </dd>
-              </div>
+          <div class="grid gap-6 lg:grid-cols-3">
+            {pillars.map((pillar, index) => (
+              <article class="flex flex-col border border-border bg-body p-7">
+                <p class="data text-sm text-secondary">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 class="h5 mt-4 border-t border-border pt-4">
+                  {pillar.title}
+                </h3>
+                <p class="mt-3 text-[15px] leading-6 text-text">
+                  {plainify(pillar.body)}
+                </p>
+              </article>
             ))}
-          </dl>
-        </div>
-      </section>
-    )
-  }
-
-  {mission?.enable && <MissionVision content={missionVisionContent} />}
-
-  {
-    funfacts?.enable && (
-      <section
-        class="section-sm overlay bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${funfactsBgImage})` }}>
-        <div class="container overlay-content">
-          <div class="grid gap-8 sm:grid-cols-3">
-            {funfacts.counter &&
-              funfacts.counter.map((funfact) => (
-                <div class="flex items-center gap-4">
-                  {funfact?.icon && (
-                    <span class="flex h-[60px] w-[60px] shrink-0 items-center justify-center border border-white/30 text-2xl text-white">
-                      <DynamicIcon className="inline-block" icon={funfact.icon} />
-                    </span>
-                  )}
-                  <div>
-                    {funfact?.count && (
-                      <p class="data mb-1 text-[34px] font-bold text-white">
-                        <TextCounter value={funfact.count} />
-                      </p>
-                    )}
-                    {funfact?.title && (
-                      <p
-                        class="label !text-white/70"
-                        set:html={markdownify(funfact.title)}
-                      />
-                    )}
-                  </div>
-                </div>
-              ))}
           </div>
         </div>
       </section>
     )
   }
 
-  <OurExpertise content={ourExpertiseContent} />
+  {/* What we do */}
+  <section class="section border-t border-border bg-light">
+    <div class="container">
+      <div class="mb-11 max-w-[60ch]">
+        <p class="kicker">Scope</p>
+        <h2 class="mt-3 max-w-[22ch]">One shop, end to end</h2>
+        <p class="mt-4">
+          Seven processes in house and six markets served, all under the same
+          procedures and the same inspection.
+        </p>
+      </div>
+
+      <div class="grid gap-x-14 gap-y-10 lg:grid-cols-2">
+        <div>
+          <h3 class="h6 border-b border-border pb-3">Capabilities</h3>
+          <ul class="mt-1">
+            {
+              capabilities.map((item) => (
+                <li class="border-b border-border">
+                  <a
+                    class="flex items-center justify-between gap-4 py-3.5 text-text-dark hover:text-primary"
+                    href={`/services/${item.id}`}>
+                    <span class="font-semibold">{item.data.title}</span>
+                    <span aria-hidden="true" class="text-secondary">
+                      &rarr;
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="h6 border-b border-border pb-3">Markets</h3>
+          <ul class="mt-1">
+            {
+              industries.map((item) => (
+                <li class="border-b border-border">
+                  <a
+                    class="flex items-center justify-between gap-4 py-3.5 text-text-dark hover:text-primary"
+                    href={`/services/${item.id}`}>
+                    <span class="font-semibold">{item.data.title}</span>
+                    <span aria-hidden="true" class="text-secondary">
+                      &rarr;
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Track record */}
+  {
+    funfacts?.enable && (
+      <section
+        class="section-sm overlay bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${funfactsBgImage})` }}>
+        <div class="container overlay-content">
+          <p class="kicker mb-8 !text-white/70">Track record</p>
+          <div class="grid gap-8 sm:grid-cols-3">
+            {funfacts.counter?.map((funfact) => (
+              <div>
+                {funfact?.count && (
+                  <p class="data text-[38px] font-bold leading-none text-white">
+                    +<TextCounter value={funfact.count} />
+                  </p>
+                )}
+                {funfact?.title && (
+                  <p
+                    class="label mt-3 !text-white/75"
+                    set:html={markdownify(funfact.title)}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Certifications */}
+  <section class="section">
+    <div class="container">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-5">
+        <div class="max-w-[60ch]">
+          <p class="kicker">Verified</p>
+          <h2 class="mt-3 max-w-[22ch]">Certifications on file</h2>
+          <p class="mt-4">
+            Current and auditable. Ask us for the certificates at any point in a
+            bid.
+          </p>
+        </div>
+        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects">
+          See all
+        </a>
+      </div>
+
+      <ul
+        class="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
+        {
+          certifications.map((cert) => (
+            <li class="flex items-center justify-center bg-body p-6">
+              {cert.data.image && (
+                <ImageMod
+                  src={cert.data.image}
+                  width={220}
+                  class="h-[86px] w-auto object-contain"
+                  alt={cert.data.title}
+                  loading="lazy"
+                />
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* Close */}
+  <section class="bg-dark text-white">
+    <div class="container">
+      <div class="flex flex-wrap items-center justify-between gap-8 py-14">
+        <div>
+          <h2 class="max-w-[20ch] text-white">Send us a scope of work</h2>
+          <p class="mt-4 max-w-[52ch] text-white/65">
+            Drawings, material and a required date are enough to get pricing and
+            a schedule back.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="/contact">Contact us</a>
+          <a class="btn btn-outline-light" href={`tel:${phone}`}>
+            {phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
