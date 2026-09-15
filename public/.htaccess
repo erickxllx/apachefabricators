@@ -1,3 +1,30 @@
+##### Custom error page
+ErrorDocument 404 /404.html
+
+##### Clean URLs without a trailing slash
+# The site builds /about/index.html but links to /about. Left alone, Apache
+# 301s /about to /about/, which contradicts the canonical URL in the page.
+# Rewriting to the index file first means mod_dir never sees a directory.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Drop a trailing slash if the visitor types one (root excepted).
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # 2. Serve the folder's index.html in place, without redirecting.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*[^/])$ $1/index.html [L]
+</IfModule>
+
+##### MIME types some older servers do not ship with
+<IfModule mod_mime.c>
+  AddType image/webp  .webp
+  AddType font/woff2  .woff2
+</IfModule>
+
 ##### Optimize default expiration time - BEGIN
 <IfModule mod_expires.c>
   
