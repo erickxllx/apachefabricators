@@ -39,7 +39,7 @@ const phoneDisplay = phone.replace(
                   {/* The link is built from the entry id. Building it from
                       slugify(title) produced URLs that did not exist. */}
                   <a
-                    href={`/services/${serviceItem.id}`}
+                    href={`/services/${serviceItem.id}/`}
                     aria-current={isCurrent ? "page" : undefined}
                     class={`block px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] transition-colors ${
                       isCurrent
@@ -94,7 +94,7 @@ const phoneDisplay = phone.replace(
           <a href={`mailto:${email}`}>{email}</a>
         </li>
       </ul>
-      <a class="btn btn-primary btn-sm w-full" href="/contact">Contact us</a>
+      <a class="btn btn-primary btn-sm w-full" href="/contact/">Contact us</a>
     </div>
   </div>
 </aside>

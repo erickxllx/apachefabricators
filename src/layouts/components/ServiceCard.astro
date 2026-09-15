@@ -18,7 +18,7 @@ type Props = {
 const { content, href } = Astro.props;
 const { title, image, short_description, description } = content.data;
 const summary = short_description || description || "";
-const link = href ?? `/services/${content.id}`;
+const link = href ?? `/services/${content.id}/`;
 ---
 
 <article

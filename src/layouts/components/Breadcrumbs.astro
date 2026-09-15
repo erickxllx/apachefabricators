@@ -31,7 +31,9 @@ let parts: Crumb[] = [
 ];
 
 paths.forEach((label: string, i: number) => {
-  const href = `/${paths.slice(0, i + 1).join("/")}`;
+  // Trailing slash, to match how the rest of the site links and how Apache
+  // serves these paths. Without it every crumb costs a redirect.
+  const href = `/${paths.slice(0, i + 1).join("/")}/`;
 
   if (label !== "page" && label !== "categories" && label !== "tags") {
     parts.push({

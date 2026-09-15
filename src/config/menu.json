@@ -6,33 +6,33 @@
     },
     {
       "name": "About Us",
-      "url": "/about"
+      "url": "/about/"
     },
     {
       "name": "Services",
-      "url": "/services"
+      "url": "/services/"
     },
     {
       "name": "Quality and Safety",
-      "url": "/quality"
+      "url": "/quality/"
     },
     {
       "name": "Contact Us",
-      "url": "/contact"
+      "url": "/contact/"
     }
   ],
   "industry": [
     {
       "name": "Chemical Processing",
-      "url": "/about"
+      "url": "/about/"
     },
     {
       "name": "Construction and Infrastructure",
-      "url": "/about"
+      "url": "/about/"
     },
     {
       "name": "Marine and Dredging",
-      "url": "/about"
+      "url": "/about/"
     }
   ],
   "quick_links": [
@@ -42,19 +42,19 @@
     },
     {
       "name": "About",
-      "url": "/about"
+      "url": "/about/"
     },
     {
       "name": "Services",
-      "url": "/services"
+      "url": "/services/"
     },
     {
       "name": "Quality and Safety",
-      "url": "/quality"
+      "url": "/quality/"
     },
     {
       "name": "Contact",
-      "url": "/contact"
+      "url": "/contact/"
     }
   ]
 }

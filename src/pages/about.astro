@@ -86,8 +86,8 @@ const pillars = (missionVisionContent.accordion ?? [])
                 under one inspection regime.
               </p>
               <div class="mt-8 flex flex-wrap gap-3">
-                <a class="btn btn-primary" href="/services">Our services</a>
-                <a class="btn btn-outline-dark" href="/quality">
+                <a class="btn btn-primary" href="/services/">Our services</a>
+                <a class="btn btn-outline-dark" href="/quality/">
                   Quality &amp; safety
                 </a>
               </div>
@@ -190,7 +190,7 @@ const pillars = (missionVisionContent.accordion ?? [])
                 <li class="border-b border-border">
                   <a
                     class="flex items-center justify-between gap-4 py-3.5 text-text-dark hover:text-primary"
-                    href={`/services/${item.id}`}>
+                    href={`/services/${item.id}/`}>
                     <span class="font-semibold">{item.data.title}</span>
                     <span aria-hidden="true" class="text-secondary">
                       &rarr;
@@ -210,7 +210,7 @@ const pillars = (missionVisionContent.accordion ?? [])
                 <li class="border-b border-border">
                   <a
                     class="flex items-center justify-between gap-4 py-3.5 text-text-dark hover:text-primary"
-                    href={`/services/${item.id}`}>
+                    href={`/services/${item.id}/`}>
                     <span class="font-semibold">{item.data.title}</span>
                     <span aria-hidden="true" class="text-secondary">
                       &rarr;
@@ -267,7 +267,7 @@ const pillars = (missionVisionContent.accordion ?? [])
             bid.
           </p>
         </div>
-        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects">
+        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects/">
           See all
         </a>
       </div>
@@ -305,7 +305,7 @@ const pillars = (missionVisionContent.accordion ?? [])
           </p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="/contact">Contact us</a>
+          <a class="btn btn-primary" href="/contact/">Contact us</a>
           <a class="btn btn-outline-light" href={`tel:${phone}`}>
             {phoneDisplay}
           </a>

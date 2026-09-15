@@ -119,7 +119,7 @@ const others = siblings.filter((item) => item.id !== project.id);
     <div class="container">
       <div class="mb-8 flex flex-wrap items-end justify-between gap-5">
         <h2 class="h4 m-0">Other certifications on file</h2>
-        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects">
+        <a class="btn btn-outline-dark btn-sm shrink-0" href="/projects/">
           See all
         </a>
       </div>
@@ -129,7 +129,7 @@ const others = siblings.filter((item) => item.id !== project.id);
             <li class="bg-body">
               <a
                 class="flex h-full flex-col justify-between gap-4 p-6 transition-colors hover:bg-light"
-                href={`/projects/${item.id}`}>
+                href={`/projects/${item.id}/`}>
                 <span class="label !text-secondary">{item.data.category}</span>
                 <span class="text-[15px] font-bold leading-6 text-text-dark">
                   {item.data.title}
